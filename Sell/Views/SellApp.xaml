@@ -1,0 +1,24 @@
+﻿<Window x:Class="Sell.Views.SellApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sell.Views"
+        mc:Ignorable="d"
+        xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Title="SellApp" Height="510" Width="860">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="28"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid MouseDown="Grid_MouseDown" Background="{DynamicResource {x:Static res:ColorASB.BD400}}">
+        </Grid>
+            <Grid Grid.Row="1" Background="White">
+                
+            </Grid>
+    </Grid>
+</Window>
