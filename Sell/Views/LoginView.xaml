@@ -1,18 +1,17 @@
-﻿<Window x:Class="Sell.Views.SellApp"
+﻿<Window x:Class="Sell.Views.LoginView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sell.Views"
-        xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        mc:Ignorable="d"
+        mc:Ignorable="d"            
         xmlns:prism="http://prismlibrary.com/"
         xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
         Background="Transparent"
         AllowsTransparency="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None"
-        Title="SellApp" Height="510" Width="860">
+        Title="Login" Height="510" Width="860">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
@@ -25,22 +24,19 @@
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
                 <bt:Button2 BorderThickness="0" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
-                <bt:Button2 BorderThickness="0" Click="Button2_Click" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
+                <bt:Button2 BorderThickness="0" FontSize="12" Color="White" Click="Button2_Click" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
             </StackPanel>
         </Grid>
-            <Grid Grid.Row="1" Background="White">
+        <Grid Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160">
-                    
+                <ColumnDefinition>
+
                 </ColumnDefinition>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ContentControl prism:RegionManager.RegionName="Navbar">
-                
+            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="log" >
+
             </ContentControl>
-            <ContentControl Grid.Column="1" prism:RegionManager.RegionName="Body" >
-                
-            </ContentControl>
-            </Grid>
+        </Grid>
     </Grid>
 </Window>

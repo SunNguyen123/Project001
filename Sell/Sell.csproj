@@ -91,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Boottrapper.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SellApp.xaml.cs">
       <DependentUpon>SellApp.xaml</DependentUpon>
     </Compile>
@@ -129,6 +133,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SellApp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

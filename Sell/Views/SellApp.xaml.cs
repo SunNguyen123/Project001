@@ -29,5 +29,10 @@ namespace Sell.Views
                 else this.WindowState = WindowState.Normal;
             }
         }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
