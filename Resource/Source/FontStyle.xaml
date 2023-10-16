@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:Resource.AssemblySource"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:FontASB},ResourceId=bold}">/Resource;component/Font_Roboto/Roboto-Bold.ttf#Roboto</FontFamily>
+    <FontFamily x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:FontASB},ResourceId=medium}">/Resource;component/Font_Roboto/Roboto-Medium.ttf#Roboto Medium</FontFamily>
+    <FontFamily x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:FontASB},ResourceId=regular}">/Resource;component/Font_Roboto/Roboto-Regular.ttf#Roboto</FontFamily>
+    <FontFamily x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:FontASB},ResourceId=black}">/Resource;component/Font_Roboto/Roboto-Bold.ttf#Roboto</FontFamily>
+    <FontFamily x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:FontASB},ResourceId=italic}">/Resource;component/Font_Roboto/Roboto-Italic.ttf#Roboto</FontFamily>
+</ResourceDictionary>

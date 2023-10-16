@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+namespace Resource.AssemblySource
+{
+   public class TextBoxASB
+    {
+
+
+        public static ComponentResourceKey TB1
+        {
+            get => new ComponentResourceKey(typeof(TextBoxASB),"tb1");
+        }
+
+    }
+}

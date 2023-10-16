@@ -3,8 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    >
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Resource;component\Source\ColorXAML.xaml"/>
-        <ResourceDictionary Source="Resource;component\Source\ButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/ColorXAML.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/ButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/FontStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/TextBoxStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

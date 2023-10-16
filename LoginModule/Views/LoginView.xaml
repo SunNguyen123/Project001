@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="LoginModule.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoginModule.Views"
+             mc:Ignorable="d" 
+             xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+             Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
+             FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" 
+             xmlns:pass="clr-namespace:LoginModule.ViewModels"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:prism="http://prismlibrary.com/"   
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="36" FontFamily="{DynamicResource {x:Static res:FontASB.Bold}}"   HorizontalAlignment="Center">Chào Bạn !</TextBlock>
+            <TextBox Width="240" Height="38" Tag="Tài khoản" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+            <PasswordBox pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+            <CheckBox>Ghi nhớ</CheckBox>
+            <Button Command="{Binding LoginCommand}">Đăng nhập</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

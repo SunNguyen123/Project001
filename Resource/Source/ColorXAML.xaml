@@ -10,4 +10,5 @@
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd500}" Color="#2e5389"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd600}" Color="#1e375c"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd700}" Color="#132339"></SolidColorBrush>
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=nl700}" Color="#bfc6cc"></SolidColorBrush>
 </ResourceDictionary>
