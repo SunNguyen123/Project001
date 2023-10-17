@@ -9,7 +9,6 @@ namespace LoginModule.Model
    public struct TAIKHOAN
     {
         public string TaiKhoan;
-
         public string MatKhau;
         public string MaTk;
         public string PhanLoai;

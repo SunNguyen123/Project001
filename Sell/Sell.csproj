@@ -34,6 +34,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Img\images.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro.IconPacks.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.IconPacks.MaterialDesign.4.11.0\lib\net47\MahApps.Metro.IconPacks.Core.dll</HintPath>
@@ -152,6 +159,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\images.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Coding workshop-rafiki.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Education-rafiki.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\images-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\images-removebg-preview %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

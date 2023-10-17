@@ -9,35 +9,48 @@
         xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
         Background="Transparent"
         AllowsTransparency="True"
-       prism:ViewModelLocator.AutoWireViewModel="True"
+         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None"
-        Title="Login" Height="510" Width="860">
-    <Grid>
+        
+        Title="Login" Height="518" Width="768">
+
+    <Grid Margin="8" Background="White">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Opacity="0.8" />
+        </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid MouseDown="Grid_MouseDown" Background="{DynamicResource {x:Static res:ColorASB.BD300}}">
-            <Grid VerticalAlignment="Center" HorizontalAlignment="Left">
-                <TextBlock FontWeight="SemiBold" Foreground="White">Quản lý sinh viên</TextBlock>
-            </Grid>
+            <StackPanel Margin="8 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+           
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="18" Height="18" VerticalAlignment="Center" Source="/Img/images-removebg-preview (1).png" />
+
+
+                <TextBlock Margin="4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">Quản lý sinh viên</TextBlock>
+            </StackPanel>
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
-                <bt:Button2 BorderThickness="0" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
-                <bt:Button2 BorderThickness="0" FontSize="12" Color="White" Click="Button2_Click" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
+                <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Opacity="0.9"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Remove"/>
+
+                <bt:Button2 BorderThickness="0" FontSize="12" Color="White" 
+                         Click="Button2_Click" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition>
-
-                </ColumnDefinition>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="43*"/>
+                <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
+            <Grid>
+                <Image Width="440" RenderOptions.BitmapScalingMode="HighQuality" Source="/Img/Coding workshop-rafiki.png" />
+
+            </Grid>
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="log" >
 
             </ContentControl>
         </Grid>
     </Grid>
+
 </Window>

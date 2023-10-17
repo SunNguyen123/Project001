@@ -7,6 +7,7 @@
         <ResourceDictionary Source="/Resource;component/Source/ButtonStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/FontStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/TextBoxStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/CheckBoxStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

@@ -18,6 +18,8 @@ namespace LoginModule.ViewModels
         public LoginViewModel2(IConnectDB connect,IEventAggregator ev)
         {
             user = new TAIKHOAN();
+            user.MatKhau = "";
+            user.TaiKhoan = "";
             this.connect = connect;
             
             LoginCommand = new DelegateCommand(LoginExecute);

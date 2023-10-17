@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoginModule.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  
+             xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
              FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" 
@@ -12,14 +13,36 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:prism="http://prismlibrary.com/"   
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="400">
+             d:DesignHeight="450" d:DesignWidth="330">
+    <UserControl.Resources>
+
+
+    </UserControl.Resources>
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock FontSize="36" FontFamily="{DynamicResource {x:Static res:FontASB.Bold}}"   HorizontalAlignment="Center">Chào Bạn !</TextBlock>
-            <TextBox Width="240" Height="38" Tag="Tài khoản" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
-            <PasswordBox pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
-            <CheckBox>Ghi nhớ</CheckBox>
-            <Button Command="{Binding LoginCommand}">Đăng nhập</Button>
+            <TextBlock  FontSize="36" FontFamily="{DynamicResource {x:Static res:FontASB.Bold}}"  
+                       HorizontalAlignment="Left">Quản lý </TextBlock>
+            <TextBlock Margin="0 0 0 32" FontSize="11">
+                Chào mừng đến với HNIVC
+            </TextBlock>
+            <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" >Tài khoản</TextBlock>
+            <TextBox Margin="0 4 0 16" Width="240" Height="38"  Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+            <StackPanel>
+                <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Mật khẩu</TextBlock>
+                <PasswordBox x:Name="ps" Width="240" Style="{DynamicResource {x:Static res:TextBoxASB.PS1}}" Margin="0 4 0 8" Tag="Mật Khẩu" Height="38" pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" >
+                   
+                </PasswordBox>
+
+            </StackPanel>
+      
+            <CheckBox Margin="0 0 0 16" Style="{DynamicResource {x:Static res:CheckBoxASB.CHK1}}">Ghi nhớ</CheckBox>
+            <bt:Button2  Height="34" Color="White" 
+                         FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"
+                         Name="bt1" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                         Hover="{DynamicResource {x:Static res:ColorASB.BD200}}"
+                         Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
+                         Press="{DynamicResource {x:Static res:ColorASB.BD400}}"
+                         Command="{Binding LoginCommand}">Đăng nhập</bt:Button2>
         </StackPanel>
     </Grid>
 </UserControl>

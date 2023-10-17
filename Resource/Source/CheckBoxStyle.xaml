@@ -1,4 +1,33 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:local="clr-namespace:Resource.AssemblySource"
+                    xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+    <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:CheckBoxASB},ResourceId=ck1}" TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="4" Margin="0 0 4 0" VerticalAlignment="Center"
+                                SnapsToDevicePixels="True"
+                                Width="16" Height="16"
+                                >
+                            <icon:PackIconMaterialDesign Kind="Check" Foreground="White" Width="10" Height="10" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ic" Visibility="Collapsed"/>
+                        </Border>
+                        <ContentPresenter Margin="0 2 0 0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="ic"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.BD300}}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.BD300}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

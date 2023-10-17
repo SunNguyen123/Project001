@@ -80,6 +80,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AssemblySource\ButtonASB.cs" />
+    <Compile Include="AssemblySource\CheckBoxASB.cs" />
     <Compile Include="AssemblySource\ColorASB.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,27 +104,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Font_Roboto\Roboto-Black.ttf">
+    <Resource Include="Font_Roboto\Roboto-Black.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
     <Resource Include="Font_Roboto\Roboto-Bold.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Font_Roboto\Roboto-Italic.ttf">
+    <Resource Include="Font_Roboto\Roboto-Italic.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Font_Roboto\Roboto-Light.ttf">
+    </Resource>
+    <Resource Include="Font_Roboto\Roboto-Light.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Font_Roboto\Roboto-Medium.ttf">
+    </Resource>
+    <Resource Include="Font_Roboto\Roboto-Medium.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Font_Roboto\Roboto-Regular.ttf">
+    </Resource>
+    <Resource Include="Font_Roboto\Roboto-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Font_Roboto\Roboto-Thin.ttf">
+    </Resource>
+    <Resource Include="Font_Roboto\Roboto-Thin.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

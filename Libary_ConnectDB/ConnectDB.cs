@@ -9,7 +9,7 @@ namespace Libary_ConnectDB
     {
         public ConnectDB()
         {
-
+            connection = new SqlConnection(SettingFile.Default.KeyDB);
         }
         private SqlConnection connection;
         public string Key {
@@ -17,14 +17,18 @@ namespace Libary_ConnectDB
             {                 
                 SettingFile.Default.KeyDB = value;
                 SettingFile.Default.Save();
+                UpdateKey();
             } }
 
+        private void UpdateKey() 
+        {
+            connection = new SqlConnection(SettingFile.Default.KeyDB);
+        }
         public void Execute(string query)
         { 
-            using (connection=new SqlConnection(SettingFile.Default.KeyDB)) 
-                {
+
                     connection.Query(query);
-                }
+                
       
         }
 
@@ -32,10 +36,9 @@ namespace Libary_ConnectDB
         {
             IList<T> list = null;
 
-            using (connection = new SqlConnection(SettingFile.Default.KeyDB))
-            {
+
                 list = new ObservableCollection<T>(connection.Query<T>(query).AsList());
-            }
+            
 
 
             return list;
