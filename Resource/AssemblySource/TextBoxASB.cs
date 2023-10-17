@@ -15,5 +15,11 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(TextBoxASB),"tb1");
         }
 
+
+        public static ComponentResourceKey PS1
+        {
+            get => new ComponentResourceKey(typeof(TextBoxASB), "ps1");
+        }
+
     }
 }

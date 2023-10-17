@@ -10,8 +10,8 @@ namespace LoginModule.ViewModels
 {
    public class BoundPasswordBox
     {
-        public static readonly DependencyProperty PasswordProperty = DependencyProperty.RegisterAttached("Password", typeof(string), typeof(BoundPasswordBox),
-          new FrameworkPropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+        private static readonly DependencyProperty PasswordProperty = DependencyProperty.RegisterAttached("Password", typeof(string), typeof(BoundPasswordBox),
+          new FrameworkPropertyMetadata("", OnPasswordPropertyChanged));
 
         public static readonly DependencyProperty AttachProperty = DependencyProperty.RegisterAttached("Attach", typeof(bool), typeof(BoundPasswordBox),
             new PropertyMetadata(false, Attach));
