@@ -5,12 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NavBarModule.Views"
              mc:Ignorable="d" 
+             xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              FontFamily="{StaticResource {x:Static res:FontASB.Regular}}"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconMaterialDesign Margin="0 0 6 0" Kind="Home"/>
+                <TextBlock Text="Home"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconMaterialDesign Margin="0 0 6 0" Kind="Home"/>
+                <TextBlock Text="Home"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconMaterialDesign Margin="0 0 6 0" Kind="Home"/>
+                <TextBlock Text="Home"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconMaterialDesign Margin="0 0 6 0" Kind="Home"/>
+                <TextBlock Text="Home"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <icon:PackIconMaterialDesign Margin="0 0 6 0" Kind="Home"/>
+                <TextBlock Text="Home"/>
+            </StackPanel>
+        </RadioButton>
+    </StackPanel>
 </UserControl>

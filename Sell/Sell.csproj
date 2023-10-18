@@ -142,6 +142,10 @@
       <Project>{59aff13d-76db-4b1f-a08e-81ac0bdc3b46}</Project>
       <Name>LoginModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NavBarModule\NavBarModule.csproj">
+      <Project>{c178a371-9bb3-4f4d-ae48-5da016a95783}</Project>
+      <Name>NavBarModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resource\Resource.csproj">
       <Project>{0f00cb6b-73e9-4902-8559-c84c066dddfb}</Project>
       <Name>Resource</Name>

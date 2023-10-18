@@ -29,7 +29,7 @@
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Width="18" Height="18" VerticalAlignment="Center" Source="/Img/images-removebg-preview (1).png" />
 
 
-                <TextBlock Margin="4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">Quản lý sinh viên</TextBlock>
+                <TextBlock Margin="4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">HNIVC</TextBlock>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Opacity="0.9"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Remove"/>
