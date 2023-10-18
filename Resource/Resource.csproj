@@ -54,6 +54,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="PasswordBoxNew\PasswordBox2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +91,9 @@
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\TextBoxASB.cs" />
     <Compile Include="ButtonNew\Button2.cs" />
+    <Compile Include="PasswordBoxNew\PasswordBox2.xaml.cs">
+      <DependentUpon>PasswordBox2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
