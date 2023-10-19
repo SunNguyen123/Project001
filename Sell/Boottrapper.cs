@@ -30,7 +30,7 @@ namespace Sell
             moduleCatalog.AddModule(new ModuleInfo() { ModuleType = navigateType.AssemblyQualifiedName, ModuleName = navigateType.Name });
 
             Type SinhVienType = typeof(SinhVienCentre);
-            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = SinhVienType.AssemblyQualifiedName, ModuleName = SinhVienType.Name });
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = SinhVienType.AssemblyQualifiedName, ModuleName = SinhVienType.Name, InitializationMode=InitializationMode.OnDemand });
 
             Type UserInfoType = typeof(UserCentre);
             moduleCatalog.AddModule(new ModuleInfo() { ModuleType = UserInfoType.AssemblyQualifiedName, ModuleName = UserInfoType.Name });

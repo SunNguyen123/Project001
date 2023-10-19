@@ -27,10 +27,10 @@ namespace LoginModule.ViewModels
         }
         private void LoginExecute() 
         {
-            IList<TAIKHOAN> list = connect.GetData<TAIKHOAN>($"SELECT * FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
+            IList<TAIKHOAN> list = connect.GetData<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
             if (list.Count == 1) 
             {
-                ev.GetEvent<PackageLogin>().Publish(new DataLogin() { MaTk=list[0].MaTk,PhanQuyen=list[0].PhanLoai });
+                ev.GetEvent<PackageLogin>().Publish(( list[0].MaTk,list[0].PhanLoai ));
             }
             else 
             {

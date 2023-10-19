@@ -16,20 +16,7 @@
             <StackPanel Orientation="Horizontal">
 
                 <Image Width="20" Margin="0 0 12 0" RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="/NavBarModule;component/IMG/8674986_ic_fluent_home_regular_icon (1).png" />
-                <Path  Fill="Black" Width="20" Data="M92 244 l-52 -46 0 -79 c0 -75 1 -79 24 -85 48 -12 66 3 66 52 0 42
-1 44 30 44 29 0 30 -2 30 -45 0 -39 3 -45 24 -51 14 -3 34 -3 45 1 19 6 21 14
-21 85 l0 78 -52 46 c-29 25 -60 46 -68 46 -8 0 -39 -21 -68 -46z m122 -11 l46
--38 0 -72 c0 -71 -1 -73 -25 -73 -22 0 -25 4 -25 34 0 55 -8 66 -50 66 -42 0
--50 -11 -50 -66 0 -30 -3 -34 -25 -34 -24 0 -25 2 -25 73 l0 72 46 38 c26 20
-50 37 54 37 4 0 28 -17 54 -37z">
-                    <Path.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="360"/>
-                            <ScaleTransform ScaleX="-0.1" ScaleY="-0.1"/>
-                            <TranslateTransform  X="0.2"/>
-                        </TransformGroup>
-                    </Path.RenderTransform>
-                </Path>
+
 
                 <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Trang chủ"/>
             </StackPanel>

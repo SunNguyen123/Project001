@@ -12,11 +12,12 @@
     <StackPanel Margin="16 0 0 0" Orientation="Horizontal" >
         <Border Width="46" BorderThickness="2" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD300}}" Height="46" CornerRadius="36" >
             <Border.Background>
-                <ImageBrush  AlignmentX="Center"  Stretch="UniformToFill" AlignmentY="Center" RenderOptions.BitmapScalingMode="HighQuality" ImageSource="D:\QLSV2\Project001\UserModule\img\wash-your-hands.png">
+                <ImageBrush  AlignmentX="Center"  Stretch="UniformToFill" AlignmentY="Center" RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/UserModule;component/img/frog.png">
                     <ImageBrush.RelativeTransform>
+
                         <TransformGroup>
-                            <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
-                            <TranslateTransform X="-0.07" Y="-0.05"/>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform X="0" Y="0"/>
                         </TransformGroup>
                     </ImageBrush.RelativeTransform>
                 </ImageBrush>

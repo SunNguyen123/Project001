@@ -47,7 +47,10 @@
                          Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
                          Press="{DynamicResource {x:Static res:ColorASB.BD400}}"
                          Command="{Binding LoginCommand}">Đăng nhập</bt:Button2>
-
         </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 20">
+            <TextBlock>Bạn quên mật khẩu? <Hyperlink>Lấy lại ngay</Hyperlink></TextBlock>
+                
+            </StackPanel>
     </Grid>
 </UserControl>
