@@ -135,5 +135,14 @@
       <Name>Resource</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IMG\8674986_ic_fluent_home_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IMG\8674986_ic_fluent_home_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IMG\8674986_ic_fluent_home_regular_icon-_1_.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

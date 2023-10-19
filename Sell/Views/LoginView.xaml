@@ -44,7 +44,7 @@
                 <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
             <Grid>
-                <Image Width="440" RenderOptions.BitmapScalingMode="HighQuality" Source="/Img/Coding workshop-rafiki.png" />
+                <Image Width="440" RenderOptions.BitmapScalingMode="HighQuality" Source="/Img/Coding_workshop-rafiki-removebg-preview.png" />
 
             </Grid>
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="log" >

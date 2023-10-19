@@ -9,6 +9,8 @@ using Prism.Modularity;
 using Libary_ConnectDB;
 using LoginModule.ViewModels;
 using NavBarModule.ViewModels;
+using SinhVienModule.ViewModels;
+using UserModule.ViewModels;
 namespace Sell
 {
     public class Boottrapper : PrismBootstrapper
@@ -27,6 +29,11 @@ namespace Sell
             Type navigateType = typeof(NavBarCentre);
             moduleCatalog.AddModule(new ModuleInfo() { ModuleType = navigateType.AssemblyQualifiedName, ModuleName = navigateType.Name });
 
+            Type SinhVienType = typeof(SinhVienCentre);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = SinhVienType.AssemblyQualifiedName, ModuleName = SinhVienType.Name });
+
+            Type UserInfoType = typeof(UserCentre);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = UserInfoType.AssemblyQualifiedName, ModuleName = UserInfoType.Name });
         }
         protected override void OnInitialized()
         {

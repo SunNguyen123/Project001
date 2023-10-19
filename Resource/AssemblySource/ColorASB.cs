@@ -54,6 +54,17 @@ namespace Resource.AssemblySource
         {
             get => new ComponentResourceKey(typeof(ColorASB), "grey200");
         }
-
+        public static ComponentResourceKey Grey300
+        {
+            get => new ComponentResourceKey(typeof(ColorASB), "grey300");
+        }
+        public static ComponentResourceKey Grey100
+        {
+            get => new ComponentResourceKey(typeof(ColorASB), "grey100");
+        }
+        public static ComponentResourceKey Grey400
+        {
+            get => new ComponentResourceKey(typeof(ColorASB), "grey400");
+        }
     }
 }

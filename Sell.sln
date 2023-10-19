@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33423.256
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sell", "Sell\Sell.csproj", "{E545A205-E709-451D-81AC-52CFFE206469}"
 EndProject
@@ -14,6 +14,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libary_ConnectDB", "Libary_ConnectDB\Libary_ConnectDB.csproj", "{00369318-E2F3-4AD9-BA51-1A311281BF62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavBarModule", "NavBarModule\NavBarModule.csproj", "{C178A371-9BB3-4F4D-AE48-5DA016A95783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinhVienModule", "SinhVienModule\SinhVienModule.csproj", "{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserModule", "UserModule\UserModule.csproj", "{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiaoVienModule", "GiaoVienModule\GiaoVienModule.csproj", "{D84BBC18-41EA-49A5-80EC-E34B0378879A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,18 @@ Global
 		{C178A371-9BB3-4F4D-AE48-5DA016A95783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C178A371-9BB3-4F4D-AE48-5DA016A95783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C178A371-9BB3-4F4D-AE48-5DA016A95783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84BBC18-41EA-49A5-80EC-E34B0378879A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84BBC18-41EA-49A5-80EC-E34B0378879A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84BBC18-41EA-49A5-80EC-E34B0378879A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84BBC18-41EA-49A5-80EC-E34B0378879A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +66,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{59AFF13D-76DB-4B1F-A08E-81AC0BDC3B46} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
 		{C178A371-9BB3-4F4D-AE48-5DA016A95783} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
+		{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
+		{0D545E06-F0A7-438B-8D98-ACE94AE4ADB3} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
+		{D84BBC18-41EA-49A5-80EC-E34B0378879A} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {463ABA7B-E625-4CB2-9793-D0D011992BAC}
