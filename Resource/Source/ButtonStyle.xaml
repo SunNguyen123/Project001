@@ -54,7 +54,7 @@
                             SnapsToDevicePixels="True"
                             CornerRadius="8"
                             >
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

@@ -19,8 +19,9 @@ namespace Sell.Views
             ev.GetEvent<PackageLogin>().Subscribe(LoginAction);
         }
 
-        private void LoginAction(DataLogin obj)
+        private void LoginAction((string ,string) a)
         {
+            MessageBox.Show(a.Item2);
             this.DialogResult = true;
         }
 

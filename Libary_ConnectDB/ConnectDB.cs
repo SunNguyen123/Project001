@@ -25,11 +25,9 @@ namespace Libary_ConnectDB
             connection = new SqlConnection(SettingFile.Default.KeyDB);
         }
         public void Execute(string query)
-        { 
+        {
 
-                    connection.Query(query);
-                
-      
+            connection.Query(query);                  
         }
 
         public IList<T> GetData<T>(string query)
@@ -37,10 +35,7 @@ namespace Libary_ConnectDB
             IList<T> list = null;
 
 
-                list = new ObservableCollection<T>(connection.Query<T>(query).AsList());
-            
-
-
+                list = new ObservableCollection<T>(connection.Query<T>(query).AsList());            
             return list;
         }
     }

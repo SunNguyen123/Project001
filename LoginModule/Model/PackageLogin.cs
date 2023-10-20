@@ -5,7 +5,8 @@ using Prism.Services;
 
 namespace LoginModule.Model
 {
-    public class PackageLogin:PubSubEvent<(string,string)>
+    public class PackageLogin : PubSubEvent<(string, string)>
     {
+
     }
 }

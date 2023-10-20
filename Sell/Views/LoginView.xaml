@@ -12,7 +12,7 @@
          prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None"
-        
+        WindowStartupLocation="CenterScreen"
         Title="Login" Height="518" Width="768">
 
     <Grid Margin="8" Background="White">

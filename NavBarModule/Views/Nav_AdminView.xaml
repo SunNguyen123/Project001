@@ -14,45 +14,53 @@
     <StackPanel>
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-
-                <Image Width="20" Margin="0 0 12 0" RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="/NavBarModule;component/IMG/8674986_ic_fluent_home_regular_icon (1).png" />
-
-
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Trang chủ"/>
+                <Image  Width="20" Height="20" SnapsToDevicePixels="True"  RenderOptions.BitmapScalingMode="HighQuality"  Source="/NavBarModule;component/IMG/8674986_ic_fluent_home_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 0" Text="Trang chủ"/>
             </StackPanel>
         </RadioButton>
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-                <icon:PackIconMaterialDesign Margin="0 0 12 0" Kind="Home"/>
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Khoa"/>
+                
+                <Image Width="20" RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="/NavBarModule;component/IMG/8674616_ic_fluent_building_government_regular_icon.png" />
+
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Khoa"/>
             </StackPanel>
         </RadioButton>
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-                <icon:PackIconMaterialDesign Margin="0 0 12 0" Kind="Book"/>
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Môn học"/>
+
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675003_ic_fluent_library_regular_icon.png" />
+
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Môn học"/>
             </StackPanel>
         </RadioButton>
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-                <icon:PackIconMaterialDesign Margin="0 0 12 0" Kind="Home"/>
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Giáo Viên"/>
+
+
+                <Image Width="20" Height="20"  RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8674867_ic_fluent_hat_graduation_regular_icon.png" />
+
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Giáo Viên"/>
             </StackPanel>
         </RadioButton>
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-                <icon:PackIconMaterialDesign Margin="0 0 12 0" Kind="Home"/>
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Phân công"/>
+
+
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675172_ic_fluent_notepad_regular_icon.png" />
+
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Phân công"/>
             </StackPanel>
         </RadioButton>
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-                <icon:PackIconMaterialDesign Margin="0 0 12 0" Kind="PermContactCalendar"/>
-                <TextBlock VerticalAlignment="Center" Margin="0 1" Text="Sinh Viên"/>
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675143_ic_fluent_person_regular_icon.png" />
+
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Sinh Viên"/>
             </StackPanel>
         </RadioButton>
     </StackPanel>

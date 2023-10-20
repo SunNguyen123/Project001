@@ -18,6 +18,7 @@ namespace Sell
             base.OnStartup(e);
             Boottrapper boottrapper = new Boottrapper();
             boottrapper.Run();
+            
         }
     }
 }

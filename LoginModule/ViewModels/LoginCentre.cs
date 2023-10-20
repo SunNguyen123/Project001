@@ -14,8 +14,7 @@ namespace LoginModule.ViewModels
         private IRegionManager manager;
         public LoginCentre(IRegionManager manager, IConnectDB connect)
         {
-            this.manager = manager;
-         
+            this.manager = manager;         
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

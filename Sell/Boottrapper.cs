@@ -27,7 +27,7 @@ namespace Sell
 
 
             Type navigateType = typeof(NavBarCentre);
-            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = navigateType.AssemblyQualifiedName, ModuleName = navigateType.Name });
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleType = navigateType.AssemblyQualifiedName, ModuleName = navigateType.Name, InitializationMode = InitializationMode.WhenAvailable });
 
             Type SinhVienType = typeof(SinhVienCentre);
             moduleCatalog.AddModule(new ModuleInfo() { ModuleType = SinhVienType.AssemblyQualifiedName, ModuleName = SinhVienType.Name, InitializationMode=InitializationMode.OnDemand });
@@ -43,8 +43,9 @@ namespace Sell
         }
         protected override void ConfigureViewModelLocator()
         {
-            ViewModelLocationProvider.Register<LoginView,LoginViewModel>();
             base.ConfigureViewModelLocator();
+            ViewModelLocationProvider.Register<LoginView,LoginViewModel>();
+            ViewModelLocationProvider.Register<SellApp,ShellViewModel>();
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {

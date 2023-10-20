@@ -39,6 +39,10 @@
                             <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}" TargetName="br2"/>
                             
                         </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value="0.7" />
+
+                        </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}" TargetName="br"/>
                             <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.BD300}}" TargetName="br2"/>

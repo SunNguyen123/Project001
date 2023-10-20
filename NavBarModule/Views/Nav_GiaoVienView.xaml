@@ -10,7 +10,38 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+
+    <StackPanel>
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <Image  Width="20" Height="20" SnapsToDevicePixels="True"  RenderOptions.BitmapScalingMode="HighQuality"  Source="/NavBarModule;component/IMG/8674986_ic_fluent_home_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 0" Text="Trang chủ"/>
+            </StackPanel>
+        </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675143_ic_fluent_person_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Sinh Viên"/>
+            </StackPanel>
+        </RadioButton>
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="/NavBarModule;component/IMG/8674473_ic_fluent_clipboard_task_list_icon (1).png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Nhập điểm"/>
+            </StackPanel>
+        </RadioButton>
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20"  RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8674867_ic_fluent_hat_graduation_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Giáo Viên"/>
+            </StackPanel>
+        </RadioButton>
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675172_ic_fluent_notepad_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Phân công"/>
+            </StackPanel>
+        </RadioButton>
+    </StackPanel>
 </UserControl>

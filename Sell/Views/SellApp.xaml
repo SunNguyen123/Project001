@@ -10,9 +10,10 @@
         xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
         Background="Transparent"
         AllowsTransparency="True"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
-        WindowStyle="None"
-      
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
         Title="SellApp" Height="540" Width="900">
     <Grid Margin="8" Background="White">
         <Grid.Effect>
@@ -43,16 +44,30 @@
                 </ColumnDefinition>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel>
-                <ContentControl Height="60" prism:RegionManager.RegionName="Infor">
+            <Grid>
+                <StackPanel>
+                    <ContentControl Margin="0 0 0 12" Height="60" prism:RegionManager.RegionName="Infor">
 
-                </ContentControl>
-                <ContentControl prism:RegionManager.RegionName="Navbar">
+                    </ContentControl>
+                  
+                    <ContentControl Margin="0 16 0 0" prism:RegionManager.RegionName="Navbar">
 
-                </ContentControl>
-            </StackPanel>
+                    </ContentControl>
+                </StackPanel>
+                <bt:Button2 Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
+                            HorizontalContentAlignment="Left" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                            Width="154" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                    <StackPanel Margin="18 0 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="/Img/8675245_ic_fluent_sign_out_regular_icon.png" />
+                        <TextBlock Margin="10 1" Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}" 
+                                   FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  Text="Thoát"/>
+
+                    </StackPanel>
+                </bt:Button2>
+            </Grid>
             <ContentControl  Grid.Column="1" prism:RegionManager.RegionName="Body">
-                
+               
+
             </ContentControl>
             </Grid>
     </Grid>
