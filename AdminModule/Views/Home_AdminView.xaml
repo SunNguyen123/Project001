@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AdminModule.Views.Home_AdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdminModule.Views"
+             mc:Ignorable="d" 
+             xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+             Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
+             FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" 
+             Background="{DynamicResource {x:Static res:ColorASB.Grey100}}"
+             d:DesignHeight="542" d:DesignWidth="750">
+    <Grid>
+        <StackPanel Margin="16">
+            <TextBlock FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">
+                Thống kê
+            </TextBlock>
+        </StackPanel> 
+    </Grid>
+</UserControl>

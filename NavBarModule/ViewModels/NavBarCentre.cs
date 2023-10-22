@@ -27,7 +27,7 @@ namespace NavBarModule.ViewModels
         public void OnInitialized(IContainerProvider containerProvider)
         {
 
-            IRegion regionNavbar = manager.Regions["Navbar"];
+            regionNavbar = manager.Regions["Navbar"];
             ViewModelLocationProvider.Register<Nav_AdminView,Nav_AdminViewModels>();        
             ViewModelLocationProvider.Register<Nav_GiaoVienView,Nav_GiaoVienViewModels>();        
             ViewModelLocationProvider.Register<Nav_SinhVienView,Nav_SinhVienViewModels>();

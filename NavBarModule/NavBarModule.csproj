@@ -130,6 +130,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdminModule\AdminModule.csproj">
+      <Project>{8680edba-3ca5-4748-a324-2fa8aa7cae9f}</Project>
+      <Name>AdminModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library_Dialog\Library_Dialog.csproj">
+      <Project>{6F5B8882-0E61-4568-B5C8-AB27C01A3CE3}</Project>
+      <Name>Library_Dialog</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LoginModule\LoginModule.csproj">
       <Project>{59AFF13D-76DB-4B1F-A08E-81AC0BDC3B46}</Project>
       <Name>LoginModule</Name>

@@ -68,5 +68,43 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+
+    <Style BasedOn="{DynamicResource {x:Static soure:ButtonASB.Bt_Round}}"  TargetType="{x:Type local:Button2}" x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type localASB:ButtonASB},ResourceId=bt_round_text_icon}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Button2}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                             Background="{TemplateBinding Background}"
+                            Name="br"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="8"
+                            >
+
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <icon:PackIconMaterialDesign Kind="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Icon}" 
+                                                   Width="{TemplateBinding FontSize}"  
+                                                   Height="{TemplateBinding FontSize}"
+                                                   Background="Transparent"
+                                                   Margin="0 0 8 0"
+                                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Color}"/>
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Hover}" TargetName="br"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

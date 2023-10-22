@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{509FDAAD-67D6-4DD3-BF7E-8B34AA0F2534}</ProjectGuid>
+    <ProjectGuid>{8680EDBA-3CA5-4748-A324-2FA8AA7CAE9F}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>SinhVienModule</RootNamespace>
-    <AssemblyName>SinhVienModule</AssemblyName>
+    <RootNamespace>AdminModule</RootNamespace>
+    <AssemblyName>AdminModule</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -45,6 +51,7 @@
       <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net47\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -86,12 +93,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\SinhVienCentre.cs" />
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
+    <Compile Include="ViewModels\AdminModuleCentre.cs" />
+    <Compile Include="ViewModels\Home_AdminViewModels.cs" />
+    <Compile Include="ViewModels\qlKhoa_AdminViewModels.cs" />
+    <Compile Include="Views\AddKhoa_AdminView.xaml.cs">
+      <DependentUpon>AddKhoa_AdminView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QuanlySvView.xaml.cs">
-      <DependentUpon>QuanlySvView.xaml</DependentUpon>
+    <Compile Include="Views\Home_AdminView.xaml.cs">
+      <DependentUpon>Home_AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\qlKhoa_AdminView.xaml.cs">
+      <DependentUpon>qlKhoa_AdminView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,21 +115,24 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\HomeView.xaml">
+    <Page Include="Views\AddKhoa_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\QuanlySvView.xaml">
+    <Page Include="Views\Home_AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\qlKhoa_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libary_ConnectDB\Libary_ConnectDB.csproj">
-      <Project>{00369318-e2f3-4ad9-ba51-1a311281bf62}</Project>
-      <Name>Libary_ConnectDB</Name>
+    <ProjectReference Include="..\Library_Dialog\Library_Dialog.csproj">
+      <Project>{6f5b8882-0e61-4568-b5c8-ab27c01a3ce3}</Project>
+      <Name>Library_Dialog</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resource\Resource.csproj">
       <Project>{0f00cb6b-73e9-4902-8559-c84c066dddfb}</Project>

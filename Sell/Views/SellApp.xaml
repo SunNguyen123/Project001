@@ -14,7 +14,7 @@
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen"
-        Title="SellApp" Height="540" Width="900">
+        Title="SellApp" Height="570" Width="920">
     <Grid Margin="8" Background="White">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Opacity="0.8" />
@@ -66,7 +66,7 @@
                 </bt:Button2>
             </Grid>
             <ContentControl  Grid.Column="1" prism:RegionManager.RegionName="Body">
-               
+                
 
             </ContentControl>
             </Grid>

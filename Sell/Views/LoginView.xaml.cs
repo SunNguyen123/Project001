@@ -21,7 +21,7 @@ namespace Sell.Views
 
         private void LoginAction((string ,string) a)
         {
-            MessageBox.Show(a.Item2);
+            
             this.DialogResult = true;
         }
 

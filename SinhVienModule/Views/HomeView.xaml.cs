@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NavBarModule.Views
+namespace SinhVienModule.Views
 {
     /// <summary>
-    /// Interaction logic for Nav_AdminView.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class Nav_AdminView : UserControl
+    public partial class HomeView : Window
     {
-        public Nav_AdminView()
+        public HomeView()
         {
             InitializeComponent();
-            begin.IsChecked = true;
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +15,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NavBarModule.Views
+namespace AdminModule.Views
 {
     /// <summary>
-    /// Interaction logic for Nav_AdminView.xaml
+    /// Interaction logic for qlKhoa_AdminView.xaml
     /// </summary>
-    public partial class Nav_AdminView : UserControl
+
+
+    [Export]
+    [ViewSortHint("02")]
+
+    public partial class qlKhoa_AdminView : UserControl
     {
-        public Nav_AdminView()
+        public qlKhoa_AdminView()
         {
             InitializeComponent();
-            begin.IsChecked = true;
         }
     }
 }

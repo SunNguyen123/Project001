@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NavBarModule.Views
+namespace AdminModule.Views
 {
     /// <summary>
-    /// Interaction logic for Nav_AdminView.xaml
+    /// Interaction logic for AddKhoa_AdminView.xaml
     /// </summary>
-    public partial class Nav_AdminView : UserControl
+    public partial class AddKhoa_AdminView : UserControl
     {
-        public Nav_AdminView()
+        public AddKhoa_AdminView()
         {
             InitializeComponent();
-            begin.IsChecked = true;
         }
     }
 }

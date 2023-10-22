@@ -26,16 +26,21 @@ namespace Libary_ConnectDB
         }
         public void Execute(string query)
         {
-
             connection.Query(query);                  
         }
 
         public IList<T> GetData<T>(string query)
         {
             IList<T> list = null;
-
-
-                list = new ObservableCollection<T>(connection.Query<T>(query).AsList());            
+            try 
+            {
+                list = new ObservableCollection<T>(connection.Query<T>(query).AsList());
+            }
+            catch 
+            { 
+            
+            }
+            
             return list;
         }
     }
