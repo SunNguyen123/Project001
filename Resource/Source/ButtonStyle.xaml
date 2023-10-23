@@ -52,7 +52,7 @@
                              Background="{TemplateBinding Background}"
                             Name="br"
                             SnapsToDevicePixels="True"
-                            CornerRadius="8"
+                            CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=border_radius}"
                             >
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
@@ -76,7 +76,7 @@
                 <ControlTemplate TargetType="{x:Type local:Button2}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
-                             Background="{TemplateBinding Background}"
+                            Background="{TemplateBinding Background}"
                             Name="br"
                             SnapsToDevicePixels="True"
                             CornerRadius="8"

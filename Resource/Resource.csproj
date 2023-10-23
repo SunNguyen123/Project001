@@ -71,6 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
+    <Page Include="Source\ComboboxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\FontStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,7 @@
     <Compile Include="AssemblySource\ColorASB.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblySource\ComboboxASB.cs" />
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\RadioButtonASB.cs" />
     <Compile Include="AssemblySource\TextBoxASB.cs" />

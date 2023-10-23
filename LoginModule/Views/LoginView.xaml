@@ -40,6 +40,7 @@
 
             <CheckBox Margin="0 0 0 16" Style="{DynamicResource {x:Static res:CheckBoxASB.CHK1}}">Ghi nhớ</CheckBox>
             <bt:Button2  Cursor="Hand"
+                         border_radius="8"
                          Height="34" Color="White" 
                          FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"
                          Name="bt1" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 

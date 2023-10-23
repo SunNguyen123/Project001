@@ -7,12 +7,24 @@ namespace Resource.ButtonNew
 {
    public class Button2:Button
     {
+        public Button2()
+        {
+
+        }
         private static readonly DependencyProperty BackgroundNewProperty = DependencyProperty.Register("BackgroundNew",typeof(Brush),typeof(Button2));
         public Brush BackgroundNew 
         {
             set => SetValue(BackgroundNewProperty, value);
             get =>(Brush)GetValue(BackgroundNewProperty);
         }
+
+        private static readonly DependencyProperty BoderRadiusProperty = DependencyProperty.Register("border_radius", typeof(CornerRadius), typeof(Button2));
+        public CornerRadius border_radius
+        {
+            set => SetValue(BoderRadiusProperty, value);
+            get => (CornerRadius)GetValue(BoderRadiusProperty);
+        }
+
 
         private static readonly DependencyProperty ColorgroundNewProperty = DependencyProperty.Register("Color", typeof(Brush), typeof(Button2));
         public Brush Color

@@ -12,6 +12,8 @@
          prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None"
+        Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
+        FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
         WindowStartupLocation="CenterScreen"
         Title="Login" Height="518" Width="768">
 
@@ -29,10 +31,19 @@
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Width="18" Height="18" VerticalAlignment="Center" Source="/Img/images-removebg-preview (1).png" />
 
 
-                <TextBlock Margin="4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">HNIVC</TextBlock>
+                <TextBlock Margin="4 1 4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">HNIVC</TextBlock>
+
+                
+                <Line Margin="4 0" VerticalAlignment="Center" SnapsToDevicePixels="True" Stroke="White" StrokeThickness="0.7" X1="0" Y1="0" X2="0" Y2="16" >
+                    
+                </Line>
+                <bt:Button2 border_radius="3" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" BorderThickness="0"  Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="24" Height="24" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}">
+                    <Image Width="18" Height="18" Source="/Img/8674932_ic_fluent_globe_regular_icon (3).png" />
+                </bt:Button2>
+
             </StackPanel>
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Opacity="0.9"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Remove"/>
+                <bt:Button2  Color="White" BorderThickness="0" FontSize="12"  Opacity="0.9"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Remove"/>
 
                 <bt:Button2 BorderThickness="0" FontSize="12" Color="White" 
                          Click="Button2_Click" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
@@ -45,6 +56,7 @@
             </Grid.ColumnDefinitions>
             <Grid>
                 <Image Width="440" RenderOptions.BitmapScalingMode="HighQuality" Source="/Img/Coding_workshop-rafiki-removebg-preview.png" />
+               
 
             </Grid>
             <ContentControl Grid.Column="1" prism:RegionManager.RegionName="log" >

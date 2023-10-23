@@ -212,5 +212,17 @@
   <ItemGroup>
     <Resource Include="Img\8675245_ic_fluent_sign_out_regular_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\8674932_ic_fluent_globe_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\8674932_ic_fluent_globe_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\8674932_ic_fluent_globe_regular_icon %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\8674932_ic_fluent_globe_regular_icon %283%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
