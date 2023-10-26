@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Source\ContextMenuStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\FontStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,10 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblySource\ComboboxASB.cs" />
+    <Compile Include="AssemblySource\ContextMenuASB.cs" />
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\RadioButtonASB.cs" />
     <Compile Include="AssemblySource\TextBoxASB.cs" />
     <Compile Include="ButtonNew\Button2.cs" />
+    <Compile Include="NewControl\ToggleButtonNew.cs" />
     <Compile Include="PasswordBoxNew\PasswordBox2.xaml.cs">
       <DependentUpon>PasswordBox2.xaml</DependentUpon>
     </Compile>

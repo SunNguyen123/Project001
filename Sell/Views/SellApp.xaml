@@ -15,7 +15,7 @@
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen"
         Title="SellApp" Height="570" Width="920">
-    <Grid Margin="8" Background="White">
+    <Grid Focusable="True" MouseDown="Grid_MouseDown_1" Margin="8" Background="White">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Opacity="0.8" />
         </Grid.Effect>
@@ -54,7 +54,8 @@
 
                     </ContentControl>
                 </StackPanel>
-                <bt:Button2 Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
+                <bt:Button2 border_radius="5"
+                            Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
                             HorizontalContentAlignment="Left" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
                             Width="154" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                     <StackPanel Margin="18 0 0 0" HorizontalAlignment="Left" Orientation="Horizontal">

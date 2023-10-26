@@ -63,6 +63,9 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
                         </Trigger>
+
+      
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -79,7 +82,7 @@
                             Background="{TemplateBinding Background}"
                             Name="br"
                             SnapsToDevicePixels="True"
-                            CornerRadius="8"
+                            CornerRadius="4"
                             >
 
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
@@ -101,10 +104,14 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
                         </Trigger>
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+
+
 
 </ResourceDictionary>

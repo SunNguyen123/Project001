@@ -62,6 +62,9 @@ namespace Sell
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IConnectDB,ConnectDB>();
+            containerRegistry.RegisterDialogWindow<ChangeNameServerView>();
+
+           
         }
     }
 }

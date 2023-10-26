@@ -32,7 +32,12 @@ namespace Sell.Views
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+           Application.Current.Shutdown();
+        }
+
+        private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            //FocusManager.SetFocusedElement(this,null);
         }
     }
 }

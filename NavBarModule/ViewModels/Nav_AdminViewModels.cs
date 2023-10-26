@@ -9,13 +9,13 @@ using AdminModule.Views;
 using AdminModule.ViewModels;
 using Prism.Services.Dialogs;
 using Library_Dialog.Views;
+using System.Windows.Navigation;
 
 namespace NavBarModule.ViewModels
 {
    public class Nav_AdminViewModels:BindableBase,IRegionMemberLifetime
     {
         public DelegateCommand<string> navigateView { set; get; }
-
         public bool KeepAlive => true;
         private IContainerProvider containerProvider;
         private IRegionManager manager;
@@ -29,25 +29,33 @@ namespace NavBarModule.ViewModels
            
         }
 
-        private void ExecuteNavigateView(string obj)
+        private  void ExecuteNavigateView(string obj)
         {
-            dialogWindow = containerProvider.Resolve<DialogMessageView>();
-            dialogWindow.ShowDialog();
-            manager.RequestNavigate("Body",new Uri(obj, UriKind.Relative),(result)=> 
+            
+            
+            manager.RequestNavigate("Body", new Uri(obj, UriKind.Relative), (result) =>
          {
-             if (result.Result==false) 
+             if (result.Result == false)
              {
-                 switch (obj) 
+                 switch (obj)
                  {
                      case "qlKhoa_AdminView":
                          var rgbody = manager.Regions["Body"];
-                         var qlKhoa = containerProvider.Resolve<qlKhoa_AdminView>();                       
+                         var qlKhoa = containerProvider.Resolve<qlKhoa_AdminView>();
                          rgbody.Add(qlKhoa);
                          rgbody.Activate(qlKhoa);
                          break;
                  }
-             }        
+             }
          });
+
+
+
+
+
+
+
+
         }
     }
 }

@@ -9,6 +9,8 @@
         <ResourceDictionary Source="/Resource;component/Source/TextBoxStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/CheckBoxStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/RadioButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/ComboboxStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/ContextMenuStyle.xaml"/>
       
     </ResourceDictionary.MergedDictionaries>
 

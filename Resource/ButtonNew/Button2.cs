@@ -3,14 +3,18 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media;
 using MahApps.Metro.IconPacks;
+using Resource.NewControl;
+
 namespace Resource.ButtonNew
 {
    public class Button2:Button
     {
         public Button2()
         {
-
+            
         }
+
+
         private static readonly DependencyProperty BackgroundNewProperty = DependencyProperty.Register("BackgroundNew",typeof(Brush),typeof(Button2));
         public Brush BackgroundNew 
         {

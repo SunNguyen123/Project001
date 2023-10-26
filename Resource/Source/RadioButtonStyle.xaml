@@ -21,7 +21,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding  BorderThickness}"
                             SnapsToDevicePixels="True"
-                            CornerRadius="8"
+                            CornerRadius="5"
                             Name="br"
                             >
                         <Grid>

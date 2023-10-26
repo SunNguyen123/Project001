@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterOwner"
-         Background="#80000000"
+        xmlns:prism="http://prismlibrary.com/"
         Title="DialogMessageView" Height="570" Width="920">
     <Grid>
         
