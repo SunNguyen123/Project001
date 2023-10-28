@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NavBarModule.Views"
              mc:Ignorable="d" 
+             RenderOptions.ClearTypeHint="Enabled"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              FontFamily="{StaticResource {x:Static res:FontASB.Regular}}"

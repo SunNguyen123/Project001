@@ -78,7 +78,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\DialogCentre.cs" />
+    <Compile Include="ViewModels\DialogMessageTextViewModel.cs" />
     <Compile Include="ViewModels\DialogMessageViewModel.cs" />
+    <Compile Include="Views\DialogMessageTextView.xaml.cs">
+      <DependentUpon>DialogMessageTextView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DialogMessageView.xaml.cs">
       <DependentUpon>DialogMessageView.xaml</DependentUpon>
     </Compile>
@@ -102,6 +106,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\DialogMessageTextView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DialogMessageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

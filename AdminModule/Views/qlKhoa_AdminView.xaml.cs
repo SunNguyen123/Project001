@@ -31,5 +31,11 @@ namespace AdminModule.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            FocusManager.SetFocusedElement(this,null);
+            Keyboard.ClearFocus();
+        }
     }
 }

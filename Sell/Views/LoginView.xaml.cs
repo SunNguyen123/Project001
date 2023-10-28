@@ -37,5 +37,10 @@ namespace Sell.Views
         {
             this.Close();
         }
+
+        private void Button2_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

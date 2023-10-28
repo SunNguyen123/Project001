@@ -13,7 +13,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:prism="http://prismlibrary.com/"   
              Background="White"
-
+             RenderOptions.ClearTypeHint="Enabled"
              d:DesignHeight="450" d:DesignWidth="330">
 
     <UserControl.Resources>

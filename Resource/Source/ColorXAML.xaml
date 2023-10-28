@@ -4,13 +4,15 @@
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=red}" Color="#ff3b30"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=green}" Color="#4cd964"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=orange}" Color="#ff9500"></SolidColorBrush>
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd200}" Color="#81aded"></SolidColorBrush>
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd200}" Color="#5097f4"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd300}" Color="#4c8ae5"></SolidColorBrush>
-    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd400}" Color="#3d6eb7"></SolidColorBrush>
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd400}" Color="#4677d1"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd500}" Color="#2e5389"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd600}" Color="#1e375c"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=bd700}" Color="#132339"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=nl700}" Color="#bfc6cc"></SolidColorBrush>
+    <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=grey50}" Color="#FAFAFA"></SolidColorBrush>
+
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=grey100b}" Color="#eaedf0"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=grey200}" Color="#eeeeee"></SolidColorBrush>
     <SolidColorBrush x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ColorASB},ResourceId=grey300}" Color="#e0e0e0"></SolidColorBrush>

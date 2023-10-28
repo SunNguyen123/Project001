@@ -79,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Source\DatagridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\FontStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +106,7 @@
   <ItemGroup>
     <Compile Include="AssemblySource\ComboboxASB.cs" />
     <Compile Include="AssemblySource\ContextMenuASB.cs" />
+    <Compile Include="AssemblySource\DatagridASB.cs" />
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\RadioButtonASB.cs" />
     <Compile Include="AssemblySource\TextBoxASB.cs" />
@@ -154,6 +159,18 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\8674477_ic_fluent_checkbox_unchecked_regular_icon.png" />
+    <Resource Include="img\8674683_ic_fluent_dismiss_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8675339_ic_fluent_search_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8675560_ic_fluent_subtract_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674683_ic_fluent_dismiss_regular_icon %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

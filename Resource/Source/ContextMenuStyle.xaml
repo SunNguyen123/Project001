@@ -19,9 +19,7 @@
          SnapsToDevicePixels="True"
          CornerRadius="10"
          >
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Opacity="0.8"/>
-                        </Border.Effect>
+
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>
 
@@ -37,26 +35,40 @@
 
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ContextMenuASB},ResourceId=mnitem1}" TargetType="MenuItem">
-        <Setter Property="Background" Value="Green"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Margin" Value="2 4"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="MenuItem">
-                    <Border BorderThickness="{TemplateBinding BorderThickness}" 
-         BorderBrush="{TemplateBinding BorderBrush}"
-          Background="{TemplateBinding Background}"
-                            
-         Name="br"
-         SnapsToDevicePixels="True"
-         CornerRadius="4"
-         >
-                        <ContentPresenter  />
+                <ControlTemplate TargetType="MenuItem"> 
+                    <Border x:Name="templateRoot" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                        <Grid VerticalAlignment="Center">
+         
+    
+
+                            <ContentPresenter ContentSource="Header" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <!--<Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="Slide" PlacementTarget="{Binding ElementName=templateRoot}">
+                                <Border x:Name="SubMenuBorder" Background="White"  BorderThickness="1" Padding="2">
+                                    <ScrollViewer x:Name="SubMenuScrollViewer">
+                                        <Grid RenderOptions.ClearTypeHint="Enabled">
+                                            <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Grid.IsSharedSizeScope="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle"/>
+                                        </Grid>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>-->
+                        </Grid>
                     </Border>
-
-
                     <ControlTemplate.Triggers>
+                        <!--<Trigger Property="IsSuspendingPopupAnimation" Value="true">
+                            <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+                        </Trigger>-->
+
+                        <Trigger Property="IsChecked" Value="true">
+
+                            <Setter Property="Background" TargetName="templateRoot" Value="pink"/>
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" TargetName="templateRoot" Value="blue"/>
+                            <Setter Property="BorderBrush" TargetName="templateRoot" Value="blue"/>
+                        </Trigger>
+
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

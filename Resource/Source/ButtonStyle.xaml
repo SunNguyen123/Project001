@@ -59,9 +59,11 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Hover}" TargetName="br"/>
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Hover}" TargetName="br"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
+                            <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
                         </Trigger>
 
       

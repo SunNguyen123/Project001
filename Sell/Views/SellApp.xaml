@@ -32,9 +32,29 @@
                 <TextBlock Margin="4 0" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="White">HNIVC</TextBlock>
             </StackPanel>
             <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <bt:Button2 Color="White" BorderThickness="0" FontSize="12"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
-                <bt:Button2 BorderThickness="0" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="AccessTime"/>
-                <bt:Button2 BorderThickness="0" Click="Button2_Click" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round_Icon}}"  Icon="Close"/>
+                <bt:Button2  Click="Button2_Click_2" 
+                             Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                             Color="White" BorderThickness="0" 
+                             FontSize="12"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                             Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  
+                             Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" >
+                    <Image Width="20" Height="20"  Source="/Resource;component/img/8675560_ic_fluent_subtract_regular_icon (1).png" />
+
+                </bt:Button2>
+                <bt:Button2  Click="Button2_Click_1"
+                             Press="{DynamicResource {x:Static res:ColorASB.BD400}}" BorderThickness="0" 
+                             FontSize="12" Color="White" 
+                             Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                             Background="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                             Width="36"  Height="28" 
+                             Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}"  >
+                    <Image Width="17" Height="17" SnapsToDevicePixels="True"  Source="/Resource;component/img/8674477_ic_fluent_checkbox_unchecked_regular_icon.png" />
+
+                </bt:Button2>
+                <bt:Button2 BorderThickness="0" Click="Button2_Click" FontSize="12" Color="White" Hover="{DynamicResource {x:Static res:ColorASB.Red}}" Background="{DynamicResource {x:Static res:ColorASB.BD400}}" Width="36"  Height="28" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" >
+                    <Image Width="20" Height="20" SnapsToDevicePixels="True"  Source="/Resource;component/img/8674683_ic_fluent_dismiss_regular_icon.png" />
+
+                </bt:Button2>
             </StackPanel>
         </Grid>
             <Grid Grid.Row="1" Background="White">
@@ -54,6 +74,8 @@
 
                     </ContentControl>
                 </StackPanel>
+           
+                <Line StrokeThickness="0.4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 60" Stroke="{DynamicResource {x:Static res:ColorASB.NL700}}" X1="0" Y1="0" X2="140" Y2="0"/>
                 <bt:Button2 border_radius="5"
                             Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
                             HorizontalContentAlignment="Left" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 

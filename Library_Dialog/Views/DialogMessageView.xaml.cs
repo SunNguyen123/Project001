@@ -12,17 +12,13 @@ namespace Library_Dialog.Views
     /// <summary>
     /// Interaction logic for DialogMessageView.xaml
     /// </summary>
-    public partial class DialogMessageView : Window,IDialogWindow
+    public partial class DialogMessageView : Window
     {
         public DialogMessageView()
         {
             InitializeComponent();
         }
 
-        public IDialogResult Result 
-        {
-            get => new DialogResult(ButtonResult.OK);
-            set => throw new NotImplementedException(); 
-        }
+
     }
 }

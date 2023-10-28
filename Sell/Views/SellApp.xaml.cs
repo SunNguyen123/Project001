@@ -37,7 +37,27 @@ namespace Sell.Views
 
         private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            //FocusManager.SetFocusedElement(this,null);
+            FocusManager.SetFocusedElement(this, null);
+            Keyboard.ClearFocus();
+        }
+
+        private void Button2_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState==WindowState.Normal) 
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else 
+            { 
+                this.WindowState = WindowState.Normal;
+
+            }
+        }
+
+        private void Button2_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+
         }
     }
 }

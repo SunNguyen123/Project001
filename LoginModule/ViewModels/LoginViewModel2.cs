@@ -7,15 +7,18 @@ using Prism.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using Prism.Events;
+using Prism.Services.Dialogs;
+
 namespace LoginModule.ViewModels
 {
    public class LoginViewModel2:BindableBase
     {
         private TAIKHOAN user;
         private IConnectDB connect;
+        private IDialogService dialogService;
         public DelegateCommand LoginCommand {set;get;}
         private IEventAggregator ev;
-        public LoginViewModel2(IConnectDB connect,IEventAggregator ev)
+        public LoginViewModel2(IConnectDB connect,IEventAggregator ev, IDialogService dialogService)
         {
             user = new TAIKHOAN();
             user.MatKhau = "";
@@ -24,6 +27,7 @@ namespace LoginModule.ViewModels
             
             LoginCommand = new DelegateCommand(LoginExecute);
             this.ev = ev;
+            this.dialogService = dialogService;
         }
         private void LoginExecute() 
         {
@@ -34,7 +38,19 @@ namespace LoginModule.ViewModels
             }
             else 
             {
-                MessageBox.Show("Tài khoản ko tồn tại");
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", "Tài khoản hoặc mật khẩu không tồn tại!");
+                ts1.Add("message2", "Vui lòng thử lại!");
+
+
+                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                {
+                    if (r.Result == ButtonResult.OK)
+                    {
+
+                    }
+
+                });
             }
         }
         public string TaiKhoan 

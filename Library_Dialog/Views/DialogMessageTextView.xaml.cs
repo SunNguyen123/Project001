@@ -1,5 +1,4 @@
-﻿using Prism.Services.Dialogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sell.Views
+namespace Library_Dialog.Views
 {
     /// <summary>
-    /// Interaction logic for ChangeNameServerView.xaml
+    /// Interaction logic for DialogMessageTextView.xaml
     /// </summary>
-    public partial class ChangeNameServerView : Window
+    public partial class DialogMessageTextView : UserControl
     {
-        public ChangeNameServerView()
+        public DialogMessageTextView()
         {
             InitializeComponent();
         }
-
-
     }
 }

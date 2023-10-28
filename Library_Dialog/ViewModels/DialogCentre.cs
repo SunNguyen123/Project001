@@ -17,7 +17,9 @@ namespace Library_Dialog.ViewModels
         }
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterDialogWindow<DialogMessageView>();
+           
+            ViewModelLocationProvider.Register<DialogMessageTextView, DialogMessageTextViewModel>();
+            containerRegistry.RegisterDialog<DialogMessageTextView, DialogMessageTextViewModel>();
         }
     }
 }
