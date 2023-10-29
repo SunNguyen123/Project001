@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Dapper;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+
 namespace Libary_ConnectDB
 {
     public class ConnectDB : IConnectDB
@@ -24,17 +26,17 @@ namespace Libary_ConnectDB
         {
             connection = new SqlConnection(SettingFile.Default.KeyDB);
         }
-        public void Execute(string query)
+        public async Task Execute(string query)
         {
-            connection.Query(query);                  
+          await connection.QueryAsync(query);                  
         }
 
-        public IList<T> GetData<T>(string query)
+        public async Task<ObservableCollection<T>> GetData<T>(string query)
         {
-            IList<T> list = null;
+            ObservableCollection<T> list = null;
             try 
             {
-                list = new ObservableCollection<T>(connection.Query<T>(query).AsList());
+                list = new ObservableCollection<T>( await connection.QueryAsync<T>(query));
             }
             catch 
             { 

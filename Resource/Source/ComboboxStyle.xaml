@@ -5,11 +5,26 @@
 
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ComboboxASB},ResourceId=tg}" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey100b}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border BorderThickness="0" CornerRadius="5" Background="{TemplateBinding Background}">
-                        <ContentPresenter/>
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition MaxWidth="24" Width="24"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Margin="16 0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Image Grid.Column="1" RenderOptions.BitmapScalingMode="HighQuality" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Resource;component/img/8674526_ic_fluent_chevron_down_regular_icon.png" />
+
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
@@ -29,14 +44,18 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <ToggleButton IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IsDropDownOpen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource {x:Static local:ComboboxASB.TG}}">
+                        <ToggleButton x:Name="tg" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=SelectionBoxItem}" IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IsDropDownOpen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource {x:Static local:ComboboxASB.TG}}">
                             
                         </ToggleButton>
-                        <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" PopupAnimation="Slide" AllowsTransparency="True" VerticalOffset="12">
-                            <Border Background="White" CornerRadius="4" SnapsToDevicePixels="True" BorderThickness="0.7" 
+                        <Popup StaysOpen="False" AllowsTransparency="True" Focusable="False" PlacementTarget="{Binding ElementName=tg}" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" PopupAnimation="Slide"  VerticalOffset="12">
+                            <Border Background="White" CornerRadius="5" SnapsToDevicePixels="True" BorderThickness="0"  Width="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ActualWidth}"
                                     BorderBrush="{DynamicResource {x:Static local:ColorASB.Grey200}}"
-                                    Padding="8"
+                                    Padding="4"
+                                    Margin="4"
                                     >
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7"/>
+                                </Border.Effect>
                                 <ItemsPresenter/>
                             </Border>
                         </Popup>
@@ -73,9 +92,15 @@
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ComboboxASB},ResourceId=cmbitem1}" TargetType="ComboBoxItem">
 
-        <Setter Property="Width" Value="110"/>
-        <Setter Property="Height" Value="32"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="28"/>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 2"/>
+        <Setter Property="Padding" Value="16 0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
@@ -84,7 +109,7 @@
                             x:Name="br"
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             Padding="{TemplateBinding Padding}">
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Border>
 
 
@@ -93,7 +118,9 @@
                             <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey100b}}" TargetName="br"/>
                         </Trigger>
 
-
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey300}}" TargetName="br"/>
+                        </Trigger>
 
 
 

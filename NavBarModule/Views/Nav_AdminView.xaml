@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NavBarModule.Views"
              mc:Ignorable="d" 
+             xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
              RenderOptions.ClearTypeHint="Enabled"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
@@ -12,15 +13,27 @@
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <RadioButton x:Name="begin" Command="{Binding navigateView}" CommandParameter="Home_AdminView" Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+    <StackPanel >
+
+        <RadioButton  x:Name="begin"  Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="Checked">
+                    <bh:InvokeCommandAction Command="{Binding navigateView}" CommandParameter="Home_AdminView" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
             <StackPanel Orientation="Horizontal">
                 <Image  Width="20" Height="20" SnapsToDevicePixels="True"  RenderOptions.BitmapScalingMode="HighQuality"  Source="/NavBarModule;component/IMG/8674986_ic_fluent_home_regular_icon.png" />
                 <TextBlock VerticalAlignment="Center" Margin="12 0" Text="Trang chủ"/>
             </StackPanel>
         </RadioButton>
 
-        <RadioButton Command="{Binding navigateView}" CommandParameter="qlKhoa_AdminView" Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+        <RadioButton KeyboardNavigation.AcceptsReturn="True"  x:Name="qlKhoa_AdminView" Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="Checked">
+                    <bh:InvokeCommandAction Command="{Binding navigateView}" CommandParameter="qlKhoa_AdminView" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
             <StackPanel Orientation="Horizontal">
                 
                 <Image Width="20" RenderOptions.BitmapScalingMode="HighQuality" Height="20" Source="/NavBarModule;component/IMG/8674616_ic_fluent_building_government_regular_icon.png" />

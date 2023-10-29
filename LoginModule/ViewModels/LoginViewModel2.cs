@@ -5,9 +5,11 @@ using LoginModule.Model;
 using Prism.Mvvm;
 using Prism.Commands;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Prism.Events;
 using Prism.Services.Dialogs;
+using System.Threading.Tasks;
 
 namespace LoginModule.ViewModels
 {
@@ -16,6 +18,18 @@ namespace LoginModule.ViewModels
         private TAIKHOAN user;
         private IConnectDB connect;
         private IDialogService dialogService;
+        private bool _isLoad=true;
+        public bool IsLoad 
+        {
+            get 
+            {
+                return _isLoad;
+            }
+            set 
+            {
+                SetProperty(ref _isLoad,value);
+            }
+        }
         public DelegateCommand LoginCommand {set;get;}
         private IEventAggregator ev;
         public LoginViewModel2(IConnectDB connect,IEventAggregator ev, IDialogService dialogService)
@@ -23,24 +37,31 @@ namespace LoginModule.ViewModels
             user = new TAIKHOAN();
             user.MatKhau = "";
             user.TaiKhoan = "";
-            this.connect = connect;
-            
-            LoginCommand = new DelegateCommand(LoginExecute);
+            this.connect = connect;           
             this.ev = ev;
             this.dialogService = dialogService;
+            LoginCommand = new DelegateCommand(LoginExecute,CanLoginExecute).ObservesProperty(()=> IsLoad);
         }
-        private void LoginExecute() 
+
+        private bool CanLoginExecute()
         {
-            IList<TAIKHOAN> list = connect.GetData<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
-            if (list.Count == 1) 
+            return IsLoad;
+        }
+
+        private async void LoginExecute() 
+        {
+            IsLoad = false;
+            ObservableCollection<TAIKHOAN> list = await connect.GetData<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
+            if (list.Count !=0) 
             {
                 ev.GetEvent<PackageLogin>().Publish((list[0].MaTk,list[0].PhanLoai));
             }
             else 
             {
+                IsLoad = true;
                 var ts1 = new DialogParameters();
-                ts1.Add("message1", "Tài khoản hoặc mật khẩu không tồn tại!");
-                ts1.Add("message2", "Vui lòng thử lại!");
+                ts1.Add("message1", "Tài khoản hoặc mật khẩu bạn vừa nhập không tồn tại");
+                ts1.Add("message2", "Vui lòng thử lại sau !");
 
 
                 dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>

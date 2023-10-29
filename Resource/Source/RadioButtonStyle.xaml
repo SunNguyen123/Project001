@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Resource.AssemblySource"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:RadioButtonASB},ResourceId=rd1}" TargetType="RadioButton">
-
+        <Setter Property="KeyboardNavigation.AcceptsReturn" Value="True" />
         <Setter Property="Width" Value="154"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="White"/>
@@ -13,6 +13,7 @@
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static local:FontASB.Regular}}"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">

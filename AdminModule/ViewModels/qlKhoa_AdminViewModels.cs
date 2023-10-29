@@ -1,6 +1,10 @@
 ﻿using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using Libary_ConnectDB;
+using System.Collections.ObjectModel;
+using AdminModule.Models;
+using System.Threading.Tasks;
 
 namespace AdminModule.ViewModels
 {
@@ -8,17 +12,32 @@ namespace AdminModule.ViewModels
     {
         public bool KeepAlive => false;
         private IDialogService dialogsv;
-        private string ag="100";
+        private int _count;
+        private IConnectDB connectDB;
+        private ObservableCollection<Khoa> _dsKhoa;
 
-        public string Age
+        public ObservableCollection<Khoa> DsKhoa
         {
-            get { return ag; }
-            set { ag = value; }
+            get { return _dsKhoa; }
+            set { SetProperty(ref _dsKhoa,value); }
         }
 
-        public qlKhoa_AdminViewModels(IDialogService dialogsv,IDialogWindow window)
+        public int Count
+        {
+            get { return _count; }
+            set { SetProperty<int>(ref _count,value); }
+        }
+        private async void LoadData() 
+        {
+
+            DsKhoa= await connectDB.GetData<Khoa>("SELECT * FROM KHOA");
+            Count = DsKhoa.Count;
+        }
+        public qlKhoa_AdminViewModels(IDialogService dialogsv, IConnectDB connectDB)
         {
             this.dialogsv = dialogsv;
+            this.connectDB = connectDB;
+            LoadData();
         }
 
 

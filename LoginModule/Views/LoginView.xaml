@@ -13,6 +13,7 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:prism="http://prismlibrary.com/"   
              Background="White"
+             Focusable="False"
              RenderOptions.ClearTypeHint="Enabled"
              d:DesignHeight="450" d:DesignWidth="330">
 
@@ -35,13 +36,14 @@
                 <PasswordBox x:Name="ps" Width="240" Style="{DynamicResource {x:Static res:TextBoxASB.PS1}}" Margin="0 4 0 8" Tag="Mật Khẩu" Height="38" pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" >
 
                 </PasswordBox>
-
+         
             </StackPanel>
 
-            <CheckBox Margin="0 0 0 16" Style="{DynamicResource {x:Static res:CheckBoxASB.CHK1}}">Ghi nhớ</CheckBox>
+            <CheckBox KeyboardNavigation.AcceptsReturn="True"  HorizontalAlignment="Left" Margin="0 0 0 16" Style="{DynamicResource {x:Static res:CheckBoxASB.CHK1}}">Ghi nhớ</CheckBox>
             <bt:Button2  Cursor="Hand"
-                         border_radius="5"
+                         border_radius="5" Width="240"
                          Height="34" Color="White" 
+                         FontSize="16"
                          FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"
                          Name="bt1" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
                          Hover="{DynamicResource {x:Static res:ColorASB.BD200}}"

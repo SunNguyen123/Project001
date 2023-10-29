@@ -54,7 +54,7 @@
         <Grid>
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thông báo</TextBlock>
             <Separator VerticalAlignment="Top" Margin="0 54 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
-            <bt:Button2 CommandParameter="CANCEL" Command="{Binding ResultDialog}" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" Margin="16">
+            <bt:Button2 Width="24" Height="24" CommandParameter="CANCEL" Command="{Binding ResultDialog}" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" Margin="16">
                <Image Width="20" Margin="2" Height="20" Source="/Resource;component/img/8674683_ic_fluent_dismiss_regular_icon (1).png" />
 
 
@@ -70,7 +70,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
-                <bt:Button2 Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
+                <bt:Button2  Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
                     <TextBlock FontSize="14">Huỷ</TextBlock>
 

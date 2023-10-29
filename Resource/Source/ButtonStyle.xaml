@@ -39,9 +39,16 @@
     </Style>
 
 
+
+
     <Style  TargetType="{x:Type local:Button2}" x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type localASB:ButtonASB},ResourceId=bt_round}">
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="32"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static localASB:FocusVisualStyleASB.focus}}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static soure:FontASB.Medium}}"/>
         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=Color}"/>
         <Setter Property="Template">
@@ -54,7 +61,7 @@
                             SnapsToDevicePixels="True"
                             CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=border_radius}"
                             >
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -66,7 +73,10 @@
                             <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
                         </Trigger>
 
-      
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static localASB:ColorASB.Grey800}}" TargetName="br"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static localASB:ColorASB.Grey800}}" TargetName="br"/>
+                        </Trigger>
 
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

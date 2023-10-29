@@ -78,5 +78,10 @@ namespace Resource.AssemblySource
         }
 
 
+        public static ComponentResourceKey Grey800
+        {
+            get => new ComponentResourceKey(typeof(ColorASB), "grey800");
+        }
+
     }
 }

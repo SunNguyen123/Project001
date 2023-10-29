@@ -12,6 +12,7 @@
         <ResourceDictionary Source="/Resource;component/Source/ComboboxStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/ContextMenuStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/DatagridStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/FocusStyle.xaml"/>
       
     </ResourceDictionary.MergedDictionaries>
 

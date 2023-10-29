@@ -17,7 +17,7 @@
         Title="SellApp" Height="570" Width="920">
     <Grid Focusable="True" MouseDown="Grid_MouseDown_1" Margin="8" Background="White">
         <Grid.Effect>
-            <DropShadowEffect BlurRadius="10" ShadowDepth="0" Direction="0" Opacity="0.8" />
+            <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7" />
         </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"/>
@@ -69,18 +69,19 @@
                     <ContentControl Margin="0 0 0 12" Height="60" prism:RegionManager.RegionName="Infor">
 
                     </ContentControl>
-                  
+                    <Separator VerticalAlignment="Top" Margin="0 0 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
                     <ContentControl Margin="0 16 0 0" prism:RegionManager.RegionName="Navbar">
 
                     </ContentControl>
                 </StackPanel>
-           
-                <Line StrokeThickness="0.4" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 60" Stroke="{DynamicResource {x:Static res:ColorASB.NL700}}" X1="0" Y1="0" X2="140" Y2="0"/>
-                <bt:Button2 border_radius="5"
+
+                <Separator VerticalAlignment="Bottom" Margin="0 0 0 60" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
+                <bt:Button2 border_radius="5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                            Press="{DynamicResource {x:Static res:ColorASB.Grey300}}"
                             Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
-                            HorizontalContentAlignment="Left" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                             Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
                             Width="154" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                    <StackPanel Margin="18 0 0 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <StackPanel Margin="18 0 0 0"  Orientation="Horizontal">
                         <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="/Img/8675245_ic_fluent_sign_out_regular_icon.png" />
                         <TextBlock Margin="10 1" Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}" 
                                    FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  Text="Thoát"/>

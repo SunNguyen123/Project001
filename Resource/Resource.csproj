@@ -54,6 +54,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="NewControl\DatagridNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PasswordBoxNew\PasswordBox2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Source\FocusStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\FontStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,10 +115,15 @@
     <Compile Include="AssemblySource\ComboboxASB.cs" />
     <Compile Include="AssemblySource\ContextMenuASB.cs" />
     <Compile Include="AssemblySource\DatagridASB.cs" />
+    <Compile Include="AssemblySource\FocusVisualStyleASB.cs" />
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\RadioButtonASB.cs" />
     <Compile Include="AssemblySource\TextBoxASB.cs" />
     <Compile Include="ButtonNew\Button2.cs" />
+    <Compile Include="NewControl\DatagridNew.xaml.cs">
+      <DependentUpon>DatagridNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewControl\DatagridNew2.cs" />
     <Compile Include="NewControl\ToggleButtonNew.cs" />
     <Compile Include="PasswordBoxNew\PasswordBox2.xaml.cs">
       <DependentUpon>PasswordBox2.xaml</DependentUpon>
@@ -171,6 +184,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\8674683_ic_fluent_dismiss_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674741_ic_fluent_delete_regular_icon.png" />
+    <Resource Include="img\8675035_ic_fluent_edit_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674406_ic_fluent_add_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674526_ic_fluent_chevron_down_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

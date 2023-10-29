@@ -80,6 +80,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Chuyendoislbanghi.cs" />
+    <Compile Include="Models\Khoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -130,6 +132,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Libary_ConnectDB\Libary_ConnectDB.csproj">
+      <Project>{00369318-e2f3-4ad9-ba51-1a311281bf62}</Project>
+      <Name>Libary_ConnectDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Library_Dialog\Library_Dialog.csproj">
       <Project>{6f5b8882-0e61-4568-b5c8-ab27c01a3ce3}</Project>
       <Name>Library_Dialog</Name>

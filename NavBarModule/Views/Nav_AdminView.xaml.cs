@@ -25,5 +25,23 @@ namespace NavBarModule.Views
             InitializeComponent();
             begin.IsChecked = true;
         }
+
+        private void RadioButton_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                RadioButton radioButton = sender as RadioButton;
+                if (radioButton != null)
+                {
+                    radioButton.IsChecked = true;
+                    // Thực hiện hoạt động tương ứng khác
+                }
+            }
+        }
+
+        private void StackPanel_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

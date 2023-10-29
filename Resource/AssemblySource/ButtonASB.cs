@@ -22,5 +22,6 @@ namespace Resource.AssemblySource
         {
             get => new ComponentResourceKey(typeof(ButtonASB), "bt_round_text_icon");
         }
+
     }
 }
