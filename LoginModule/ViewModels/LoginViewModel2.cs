@@ -52,7 +52,7 @@ namespace LoginModule.ViewModels
         {
             IsLoad = false;
             ObservableCollection<TAIKHOAN> list = await connect.GetData<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
-            if (list.Count !=0) 
+            if (list != null && list.Count !=0) 
             {
                 ev.GetEvent<PackageLogin>().Publish((list[0].MaTk,list[0].PhanLoai));
             }

@@ -4,14 +4,16 @@ using Dapper;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-
+using Prism.Services.Dialogs;
 namespace Libary_ConnectDB
 {
     public class ConnectDB : IConnectDB
     {
-        public ConnectDB()
+        private IDialogService dialogService;
+        public ConnectDB(IDialogService dialogService)
         {
             connection = new SqlConnection(SettingFile.Default.KeyDB);
+            this.dialogService = dialogService;
         }
         private SqlConnection connection;
         public string Key {
@@ -28,7 +30,24 @@ namespace Libary_ConnectDB
         }
         public async Task Execute(string query)
         {
-          await connection.QueryAsync(query);                  
+            try 
+            { 
+            await connection.QueryAsync(query);                  
+            
+            }
+            catch 
+            {
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", "Lỗi kết nối tới cơ sở dữ liệu");
+                ts1.Add("message2", "Vui lòng thử lại sau !");
+
+
+                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                {
+
+
+                });
+            }
         }
 
         public async Task<ObservableCollection<T>> GetData<T>(string query)
@@ -39,8 +58,17 @@ namespace Libary_ConnectDB
                 list = new ObservableCollection<T>( await connection.QueryAsync<T>(query));
             }
             catch 
-            { 
-            
+            {
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", "Lỗi kết nối tới cơ sở dữ liệu");
+                ts1.Add("message2", "Vui lòng thử lại sau !");
+
+
+                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                {
+  
+
+                });
             }
             
             return list;

@@ -23,5 +23,13 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(ButtonASB), "bt_round_text_icon");
         }
 
+        public static ComponentResourceKey RepeatButtonTransparent
+        {
+            get => new ComponentResourceKey(typeof(ButtonASB), "RepeatButtonTransparent");
+        }
+        public static ComponentResourceKey ScrollBarButton
+        {
+            get => new ComponentResourceKey(typeof(ButtonASB), "ScrollBarButton");
+        }
     }
 }
