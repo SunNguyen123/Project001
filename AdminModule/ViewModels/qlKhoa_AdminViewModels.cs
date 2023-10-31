@@ -5,6 +5,8 @@ using Libary_ConnectDB;
 using System.Collections.ObjectModel;
 using AdminModule.Models;
 using System.Threading.Tasks;
+using Prism.Commands;
+using System;
 
 namespace AdminModule.ViewModels
 {
@@ -15,7 +17,7 @@ namespace AdminModule.ViewModels
         private int _count;
         private IConnectDB connectDB;
         private ObservableCollection<Khoa> _dsKhoa;
-
+        public DelegateCommand AddKhoaCommand { get; set; }
         public ObservableCollection<Khoa> DsKhoa
         {
             get { return _dsKhoa; }
@@ -37,11 +39,17 @@ namespace AdminModule.ViewModels
         {
             this.dialogsv = dialogsv;
             this.connectDB = connectDB;
+            AddKhoaCommand = new DelegateCommand(AddKhoaCommandMethod);
             LoadData();
         }
 
-
-
-
+        private void AddKhoaCommandMethod()
+        {
+            dialogsv.ShowDialog("AddKhoaServiceView",new DialogParameters(), (r) =>
+            { 
+            
+            
+            });
+        }
     }
 }

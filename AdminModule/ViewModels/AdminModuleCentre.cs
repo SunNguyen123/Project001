@@ -7,6 +7,8 @@ using AdminModule.ViewModels;
 using AdminModule.Views;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using Library_Dialog.ViewModels;
+using Library_Dialog.Views;
 
 namespace AdminModule.ViewModels
 {
@@ -23,6 +25,7 @@ namespace AdminModule.ViewModels
         public void OnInitialized(IContainerProvider containerProvider)
         {
             ViewModelLocationProvider.Register<Home_AdminView,Home_AdminViewModels>();
+            ViewModelLocationProvider.Register<AddKhoaServiceView,AddKhoaServiceViewModel>();
             ViewModelLocationProvider.Register<qlKhoa_AdminView,qlKhoa_AdminViewModels>();
             regionManager.RegisterViewWithRegion<Home_AdminView>("Body");
             regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
@@ -36,7 +39,7 @@ namespace AdminModule.ViewModels
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-           
+            containerRegistry.RegisterDialog<AddKhoaServiceView, AddKhoaServiceViewModel>();
         }
     }
 }

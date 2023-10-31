@@ -95,9 +95,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\AddKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\AdminModuleCentre.cs" />
     <Compile Include="ViewModels\Home_AdminViewModels.cs" />
     <Compile Include="ViewModels\qlKhoa_AdminViewModels.cs" />
+    <Compile Include="Views\AddKhoaServiceView.xaml.cs">
+      <DependentUpon>AddKhoaServiceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddKhoa_AdminView.xaml.cs">
       <DependentUpon>AddKhoa_AdminView.xaml</DependentUpon>
     </Compile>
@@ -118,6 +122,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AddKhoaServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddKhoa_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

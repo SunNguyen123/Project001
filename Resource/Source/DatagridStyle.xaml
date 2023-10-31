@@ -133,6 +133,8 @@
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgvrow}" TargetType="{x:Type DataGridRow}">
 
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
         <Setter Property="Validation.ErrorTemplate"
@@ -156,85 +158,71 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 SnapsToDevicePixels="True">
                         
-                        <!--<VisualStateManager.VisualStateGroups>
+                        <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
 
-                                --><!--Provide a different appearance for every other row.--><!--
-                                <VisualState x:Name="Normal_AlternatingRow">
+
+                                <VisualState x:Name="Normal_Selected" >
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey400}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#4c8ae5"></ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
 
-                                --><!--In this example, a row in Editing or selected mode has an
-              identical appearances. In other words, the states 
-              Normal_Selected, Unfocused_Selected, Normal_Editing, 
-              MouseOver_Editing, MouseOver_Unfocused_Editing,
-              and Unfocused_Editing are identical.--><!--
-                                <VisualState x:Name="Normal_Selected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.BD300}}"></ColorAnimation>
-                                    </Storyboard>
-                                </VisualState>
 
                                 <VisualState x:Name="Unfocused_Selected">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.BD200}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#FAFAFA"></ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="Normal_Editing">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey200}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#eeeeee"></ColorAnimation>
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="MouseOver_Editing">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey100b}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#f5f5f5"></ColorAnimation>
 
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="MouseOver_Unfocused_Editing">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey100}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#f5f5f5"></ColorAnimation>
 
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="Unfocused_Editing">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey50}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#f5f5f5"></ColorAnimation>
 
                                     </Storyboard>
                                 </VisualState>
 
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="Background" To="{DynamicResource {x:Static res:ColorASB.Grey200}}"></ColorAnimation>
+                                        <ColorAnimation Duration="0:0:1" Storyboard.TargetName="DGR_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="#eaedf0"></ColorAnimation>
 
                                     </Storyboard>
                                 </VisualState>
 
-                                --><!--In this example, the appearance of a selected row 
-              that has the mouse over it is the same regardless of
-              whether the row is selected.  In other words, the states 
-              MouseOver_Editing and MouseOver_Unfocused_Editing are identical.--><!--
+           
                                 <VisualState x:Name="MouseOver_Selected">
                                     <Storyboard>
-                                     
+           
                                     </Storyboard>
                                 </VisualState>
-
+                              
                                 <VisualState x:Name="MouseOver_Unfocused_Selected">
                                     <Storyboard>
                                         
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>-->
+                        </VisualStateManager.VisualStateGroups>
 
                         <SelectiveScrollingGrid>
                             <SelectiveScrollingGrid.ColumnDefinitions>
@@ -259,6 +247,7 @@
                             
                         </SelectiveScrollingGrid>
                     </Border>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

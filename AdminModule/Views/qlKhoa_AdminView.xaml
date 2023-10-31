@@ -50,7 +50,7 @@
 
 
             <StackPanel Margin="16 8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <bt:Button2 FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" Width="88" Color="White" BorderThickness="0.6" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5">
+                <bt:Button2 Command="{Binding AddKhoaCommand}" FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" Width="88" Color="White" BorderThickness="0.6" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5">
                     <StackPanel Orientation="Horizontal">
                         <Image  Width="20" Height="20" Source="/Resource;component/img/8674406_ic_fluent_add_regular_icon (1).png" />
                         <TextBlock Text="Thêm" Margin="2 2 0 0" FontSize="15"/>
