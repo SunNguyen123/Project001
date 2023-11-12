@@ -26,11 +26,11 @@
 
             <TextBlock  FontSize="36" FontFamily="{DynamicResource {x:Static res:FontASB.Bold}}"  
                         HorizontalAlignment="Left">Hello,Friend!</TextBlock>
-            <TextBlock  Margin="1 2 0 32" FontSize="11">
+            <TextBlock  Margin="1 2 0 44" FontSize="11">
                 Chào mừng bạn đến với HNIVC
             </TextBlock>
             <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" >Tài khoản</TextBlock>
-            <TextBox Margin="0 4 0 16" Width="240" Height="38"  Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+            <TextBox VerticalContentAlignment="Center" Margin="0 4 0 16" Width="240" Height="38"  Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
             <StackPanel>
                 <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Mật khẩu</TextBlock>
                 <PasswordBox x:Name="ps" Width="240" Style="{DynamicResource {x:Static res:TextBoxASB.PS1}}" Margin="0 4 0 8" Tag="Mật Khẩu" Height="38" pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" >

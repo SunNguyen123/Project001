@@ -1,6 +1,4 @@
 ﻿using System;
-using Prism.Mvvm;
-using System.Threading.Tasks;
 
 namespace AdminModule.Models
 {
@@ -10,8 +8,14 @@ namespace AdminModule.Models
 
         public string MaKhoa
         {
-            get { return _maKhoa; }
-            set { _maKhoa = value; }
+            get 
+            { 
+                return _maKhoa; 
+            }
+            set 
+            { 
+                _maKhoa = value; 
+            }
         }
 
         private string _tenKhoa;

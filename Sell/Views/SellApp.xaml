@@ -14,7 +14,7 @@
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None" 
         WindowStartupLocation="CenterScreen"
-        Title="SellApp" Height="570" Width="920">
+        Title="SellApp" Height="590" Width="940">
     <Grid Focusable="True" MouseDown="Grid_MouseDown_1" Margin="8" Background="White">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7" />
@@ -57,42 +57,48 @@
                 </bt:Button2>
             </StackPanel>
         </Grid>
-            <Grid Grid.Row="1" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170">
-                    
-                </ColumnDefinition>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid>
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170">
+
+                    </ColumnDefinition>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey200}}" BorderThickness="0 0 1 0"  Grid.Row="1" Background="White">
+            
+              
+                <Grid>
                 <StackPanel>
-                    <ContentControl Margin="0 0 0 12" Height="60" prism:RegionManager.RegionName="Infor">
+                        <ContentControl Margin="0 0 0 12" Height="60" prism:RegionManager.RegionName="Infor">
 
-                    </ContentControl>
-                    <Separator VerticalAlignment="Top" Margin="0 0 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
-                    <ContentControl Margin="0 16 0 0" prism:RegionManager.RegionName="Navbar">
+                        </ContentControl>
+                        <Separator VerticalAlignment="Top" Margin="0 0 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
+                        <ContentControl Margin="0 16 0 0" prism:RegionManager.RegionName="Navbar">
 
-                    </ContentControl>
-                </StackPanel>
+                        </ContentControl>
+                    </StackPanel>
 
-                <Separator VerticalAlignment="Bottom" Margin="0 0 0 60" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
-                <bt:Button2 border_radius="5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                    <Separator VerticalAlignment="Bottom" Margin="0 0 0 60" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
+                    <bt:Button2 border_radius="5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                             Press="{DynamicResource {x:Static res:ColorASB.Grey300}}"
                             Command="{Binding SignOut}" Cursor="Hand" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Margin="0 0 0 12" 
                              Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
                             Width="154" Height="34" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                    <StackPanel Margin="18 0 0 0"  Orientation="Horizontal">
-                        <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="/Img/8675245_ic_fluent_sign_out_regular_icon.png" />
-                        <TextBlock Margin="10 1" Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}" 
+                        <StackPanel Margin="18 0 0 0"  Orientation="Horizontal">
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="/Img/8675245_ic_fluent_sign_out_regular_icon.png" />
+                            <TextBlock Margin="10 1" Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}" 
                                    FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  Text="Thoát"/>
 
-                    </StackPanel>
-                </bt:Button2>
-            </Grid>
+                        </StackPanel>
+                    </bt:Button2>
+                </Grid>
+            </Border>
             <ContentControl  Grid.Column="1" prism:RegionManager.RegionName="Body">
-                
 
-            </ContentControl>
+
+                </ContentControl>
+                    
             </Grid>
+     
     </Grid>
 </Window>

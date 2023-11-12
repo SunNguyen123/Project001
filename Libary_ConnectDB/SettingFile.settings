@@ -3,7 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="KeyDB" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=DESKTOP-1RJVP0G;Initial Catalog=DB_QLSV;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-9OR80U7\SQLEXPRESS;Initial Catalog=DB_QLSV;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="NameServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DESKTOP-9OR80U7\SQLEXPRESS</Value>
+    </Setting>
+    <Setting Name="NameDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DB_QLSV</Value>
     </Setting>
   </Settings>
 </SettingsFile>

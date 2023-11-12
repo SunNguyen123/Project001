@@ -1,19 +1,12 @@
-﻿using Prism.Regions;
-using System;
-using System.Collections.Generic;
+﻿using AdminModule.Models;
+using AdminModule.ViewModels;
+using Prism.Events;
+using Prism.Regions;
 using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Linq;
 
 namespace AdminModule.Views
 {
@@ -27,15 +20,43 @@ namespace AdminModule.Views
 
     public partial class qlKhoa_AdminView : UserControl
     {
-        public qlKhoa_AdminView()
+        private IEventAggregator ev;
+        public qlKhoa_AdminView(IEventAggregator ev)
         {
             InitializeComponent();
+            this.ev = ev;
+     
+
         }
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
             FocusManager.SetFocusedElement(this,null);
             Keyboard.ClearFocus();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+                dgvKhoa.SelectAll();
+            
+          
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void dgvKhoa_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var datacontext = (qlKhoa_AdminViewModels)this.DataContext;
+            datacontext.SelectedObject = dgvKhoa.SelectedItems.Cast<Khoa>().ToList();
         }
     }
 }

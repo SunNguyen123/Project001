@@ -12,8 +12,8 @@
                 <ControlTemplate TargetType="TextBox">
                     <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="1.4" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
                         <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="Center" 
-                                      HorizontalScrollBarVisibility="Hidden" 
+                            <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
+                                      HorizontalScrollBarVisibility="Auto" 
                                       VerticalScrollBarVisibility="Disabled"></ScrollViewer>
                             <Label x:Name="lb" Padding="{TemplateBinding Padding}" 
                                    Margin="2 1 0 0" FontFamily="{TemplateBinding FontFamily}" 
@@ -91,7 +91,7 @@
                             
                             <Image Width="20" Height="20" HorizontalAlignment="Center" Margin="0 2 0 0" RenderOptions.BitmapScalingMode="HighQuality" VerticalAlignment="Center"  Source="/Resource;component/img/8675339_ic_fluent_search_regular_icon.png" />
 
-                            <ScrollViewer Grid.Column="1" x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                            <ScrollViewer Grid.Column="1" x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                                       HorizontalScrollBarVisibility="Hidden" 
                                       VerticalScrollBarVisibility="Disabled"></ScrollViewer>
                             <Label Grid.Column="1" x:Name="lb" Padding="{TemplateBinding Padding}" 

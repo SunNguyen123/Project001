@@ -29,5 +29,13 @@ namespace Resource.AssemblySource
         {
             get => new ComponentResourceKey(typeof(DatagridASB), "dgvrow");
         }
+
+        public static ComponentResourceKey DGVCELL
+        {
+            get => new ComponentResourceKey(typeof(DatagridASB), "dgvcell");
+        }
+
+
+     
     }
 }

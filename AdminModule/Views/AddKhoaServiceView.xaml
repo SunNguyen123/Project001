@@ -16,7 +16,7 @@
         <Style TargetType="Window">
             <Setter Property="MaxWidth" Value="918"/>
             <Setter Property="MaxHeight" Value="562"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="#E6000000"/>
             <Setter Property="AllowsTransparency" Value="True"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner"/>
@@ -24,7 +24,7 @@
             <Setter Property="ShowInTaskbar" Value="False"/>
         </Style>
     </prism:Dialog.WindowStyle>
-    <Border Height="350"   Width="272" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
+    <Border Height="380"   Width="272" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
         <Border.RenderTransformOrigin>
             <Point X="0.5" Y="0.5"/>
         </Border.RenderTransformOrigin>
@@ -63,7 +63,7 @@
                 <TextBlock  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên khoa(*)" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
 
                 <!--<TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Mã khoa" TextWrapping="Wrap" HorizontalAlignment="Left"  >
@@ -76,12 +76,12 @@
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Mã khoa" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <DatePicker/>
+                <DatePicker SelectedDate="{Binding NgayThanhLap,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
 
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ghi chú" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox Padding="4 4"  VerticalContentAlignment="Top" Text="{Binding GhiChu,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="92" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" TextWrapping="Wrap"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">

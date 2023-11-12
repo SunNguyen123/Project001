@@ -9,8 +9,9 @@ namespace Libary_ConnectDB
 {
    public interface IConnectDB
     {
-        string Key { set;}
+        void ConfigDB(string svname,string dbname);
         Task Execute(string query);
         Task<ObservableCollection<T>> GetData<T>(string query);
+        Task<int> CountRecord(string query);
     }
 }
