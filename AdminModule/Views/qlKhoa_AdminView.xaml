@@ -13,7 +13,7 @@
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="AdminModule.Views.qlKhoa_AdminView"
              mc:Ignorable="d"
-    Focusable="True" FocusVisualStyle="{x:Null}"
+             Focusable="False" FocusVisualStyle="{x:Null}"
              x:Name="khoa"
              RenderOptions.ClearTypeHint="Enabled"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -86,7 +86,8 @@
 
         </Grid>
 
-        <newcontrol:DatagridNew2 SelectionChanged="dgvKhoa_SelectionChanged" x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
+        <newcontrol:DatagridNew2 
+                                RowEditEnding="dgvKhoa_RowEditEnding"  SelectionChanged="dgvKhoa_SelectionChanged" x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
                                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
                                  ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"  
                                  AutoGenerateColumns="False"
@@ -137,19 +138,21 @@
 
             <newcontrol:DatagridNew2.Columns>
 
-                
-
-                <DataGridTextColumn  Binding="{Binding MaKhoa}" MinWidth="110" Header="MÃ KHOA">
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding STT}" MinWidth="90" Header="STT">
 
                 </DataGridTextColumn>
 
-                <DataGridTextColumn  Binding="{Binding TenKhoa}"  MinWidth="200" Header="TÊN KHOA">
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding MaKhoa}" MinWidth="110" Header="MÃ KHOA">
+
+                </DataGridTextColumn>
+
+                <DataGridTextColumn  Binding="{Binding TenKhoa,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MinWidth="200" Header="TÊN KHOA">
            
                 </DataGridTextColumn>
 
 
-                <DataGridTextColumn  Binding="{Binding NamBatDau}" MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
-   
+                <DataGridTextColumn   Binding="{Binding NamBatDau}" MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
+
                 </DataGridTextColumn>
 
 
@@ -161,13 +164,13 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                                <bt:Button2 Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" Background="Transparent" BorderThickness="0"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Width="24" Height="24" border_radius="5">
+                                <bt:Button2 Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" Background="Transparent" BorderThickness="0"  Hover="{DynamicResource {x:Static res:ColorASB.Grey400}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Width="24" Height="24" border_radius="5">
                                     <Image Width="16" Height="16" Source="/Resource;component/img/8675035_ic_fluent_edit_regular_icon.png" />
 
                                 </bt:Button2 >
                                 <bt:Button2 Command="{Binding DataContext.RemoveKhoa,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType=UserControl}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" Background="Transparent" 
                                             BorderThickness="0"  
-                                            Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Margin="8 0 0 0" Width="24" Height="24" border_radius="5">
+                                            Hover="{DynamicResource {x:Static res:ColorASB.Grey400}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Margin="8 0 0 0" Width="24" Height="24" border_radius="5">
                                     <Image Width="16" Height="16" Source="/Resource;component/img/8674741_ic_fluent_delete_regular_icon.png" />
 
                                 </bt:Button2>

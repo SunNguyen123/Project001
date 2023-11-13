@@ -16,7 +16,7 @@
         <Style TargetType="Window">
             <Setter Property="MaxWidth" Value="918"/>
             <Setter Property="MaxHeight" Value="562"/>
-            <Setter Property="Background" Value="#E6000000"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="AllowsTransparency" Value="True"/>
             <Setter Property="WindowStyle" Value="None"/>
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner"/>

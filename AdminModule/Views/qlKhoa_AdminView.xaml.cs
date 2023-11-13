@@ -31,7 +31,7 @@ namespace AdminModule.Views
 
         private void UserControl_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            FocusManager.SetFocusedElement(this,null);
+            FocusManager.SetFocusedElement(this, null);
             Keyboard.ClearFocus();
         }
 
@@ -57,6 +57,13 @@ namespace AdminModule.Views
         {
             var datacontext = (qlKhoa_AdminViewModels)this.DataContext;
             datacontext.SelectedObject = dgvKhoa.SelectedItems.Cast<Khoa>().ToList();
+        }
+
+        private void dgvKhoa_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            var datacontext = (qlKhoa_AdminViewModels)this.DataContext;
+
+            datacontext.EditKhoa.Execute();
         }
     }
 }

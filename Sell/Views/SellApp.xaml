@@ -12,10 +12,10 @@
         AllowsTransparency="True"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
-        WindowStyle="None" 
+        WindowStyle="None" Activated="Window_Activated" Deactivated="Window_Deactivated"
         WindowStartupLocation="CenterScreen"
         Title="SellApp" Height="590" Width="940">
-    <Grid Focusable="True" MouseDown="Grid_MouseDown_1" Margin="8" Background="White">
+    <Grid x:Name="shell"  MouseDown="Grid_MouseDown_1" Margin="8" Background="White">
         <Grid.Effect>
             <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7" />
         </Grid.Effect>

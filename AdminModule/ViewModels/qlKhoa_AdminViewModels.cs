@@ -23,6 +23,8 @@ namespace AdminModule.ViewModels
         private ObservableCollection<Khoa> _dsKhoa;
         public List<Khoa> SelectedObject { get; set; }
         public DelegateCommand RemoveKhoa { set; get; }
+        public DelegateCommand EditKhoa { set; get; }
+
         private string[] items = { "Mã", "Tên" };
         public string[]  ITEMS
         {
@@ -55,7 +57,7 @@ namespace AdminModule.ViewModels
         public DelegateCommand AddKhoaCommand { get; set; }
         public DelegateCommand<string> TimKiemKhoaCommand { get; set; }
 
-        private ListCollectionView listKhoa ;
+        private ListCollectionView listKhoa;
         public ListCollectionView DsKhoa
         {
             get { return listKhoa; }
@@ -71,9 +73,12 @@ namespace AdminModule.ViewModels
         {
 
             _dsKhoa= await connectDB.GetData<Khoa>(query);
-            DsKhoa = new ListCollectionView(_dsKhoa);
-            
-           if(DsKhoa != null) Count = DsKhoa.Count;
+            if (_dsKhoa!=null) 
+            {
+                DsKhoa = new ListCollectionView(_dsKhoa);
+                Count = DsKhoa.Count;
+            }
+
 
         }
         private IEventAggregator ev;
@@ -82,15 +87,18 @@ namespace AdminModule.ViewModels
             this.dialogsv = dialogsv;
             this.connectDB = connectDB;
             this.ev = ev;
-             AddKhoaCommand = new DelegateCommand(AddKhoaCommandMethod);
-            TimKiemKhoaCommand = new DelegateCommand<string>(TimKiemKhoaCommandMethod);
-          
-           
+            AddKhoaCommand = new DelegateCommand(AddKhoaCommandMethod);
+            TimKiemKhoaCommand = new DelegateCommand<string>(TimKiemKhoaCommandMethod);       
             RemoveKhoa = new DelegateCommand(RemoveKhoaMethod);
-            LoadData("SELECT * FROM KHOA");
+            EditKhoa = new DelegateCommand(EditKhoaMethod);
+            LoadData("SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA");
         }
 
-   
+        private async void EditKhoaMethod()
+        {
+            var khoa = listKhoa.CurrentItem as Khoa;          
+          await connectDB.Execute($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
+        }
 
         private async void RemoveKhoaMethod()
         {
@@ -98,10 +106,10 @@ namespace AdminModule.ViewModels
             foreach (var item in SelectedObject) 
             { 
             
-                await connectDB.Execute($"DELETE FROM KHOA WHERE MaKhoa='{item.MaKhoa}'");
+                await connectDB.Execute($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
             
             }
-            LoadData($"SELECT * FROM KHOA ");
+            LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA");
 
         }
 
@@ -110,7 +118,7 @@ namespace AdminModule.ViewModels
           
             if (string.IsNullOrWhiteSpace(q.Trim()) || q=="")
             {
-                LoadData($"SELECT * FROM KHOA ");
+                LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA");
               
             }
             else 
@@ -118,12 +126,12 @@ namespace AdminModule.ViewModels
 
                 if (DieuKienTimKiem.Trim() == "Mã")
                 {
-                    LoadData($"SELECT * FROM KHOA WHERE MaKhoa LIKE '{q}%'");
+                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA WHERE MaKhoa LIKE '{q}%'");
                 }
                 else
                 {
 
-                    LoadData($"SELECT * FROM KHOA WHERE TenKhoa LIKE N'{q}%'");
+                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA WHERE TenKhoa LIKE N'{q}%'");
                 }
             }
         }

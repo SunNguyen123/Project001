@@ -5,7 +5,7 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:ContextMenuASB},ResourceId=mn1}" TargetType="ContextMenu">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey300}}"/>
 
         <!--<Setter Property="PlacementTarget" Value="{Binding RelativeSource={RelativeSource Mode=Self}}"/>
@@ -21,7 +21,7 @@
          CornerRadius="5"
          >
                         <Border.Effect>
-                            <DropShadowEffect BlurRadius="5" ShadowDepth="0" Direction="-10" Opacity="0.6"/>
+                            <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7" />
                         </Border.Effect>
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>

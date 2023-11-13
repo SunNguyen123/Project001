@@ -39,11 +39,7 @@ namespace AdminModule.ViewModels
             this.dialogService = dialogService;
             ResultDialog = new DelegateCommand<string>(CloseDialog);
         }
-        private string AutoID() 
-        {
 
-            return "KH"+DateTime.Now.Second+ DateTime.Now.Minute+ DateTime.Now.Hour;
-        }
         private async void CloseDialog(string obj)
         {
           
@@ -53,8 +49,8 @@ namespace AdminModule.ViewModels
                 if (!string.IsNullOrWhiteSpace(TenKhoa) && count==0)
                 {
                     var khoanew = new Khoa();
-                    var c = AutoID();
-               await connectDB.Execute($"INSERT INTO KHOA VALUES('{AutoID()}',N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-dd")}',N'{GhiChu}')");
+                    
+               await connectDB.Execute($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("d-MM-yyyy")}',N'{GhiChu}')");
                     RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                 }
                 else 

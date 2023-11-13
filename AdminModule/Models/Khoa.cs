@@ -4,6 +4,16 @@ namespace AdminModule.Models
 {
   public  class Khoa
     {
+
+        private int _stt;
+
+        public int STT
+        {
+            get { return _stt; }
+            set { _stt = value; }
+        }
+
+
         private string _maKhoa;
 
         public string MaKhoa

@@ -74,8 +74,8 @@
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static localASB:ColorASB.Grey800}}" TargetName="br"/>
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static localASB:ColorASB.Grey800}}" TargetName="br"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static localASB:ColorASB.Grey500}}" TargetName="br"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static localASB:ColorASB.Grey600}}" TargetName="br"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>

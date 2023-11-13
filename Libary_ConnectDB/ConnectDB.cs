@@ -40,10 +40,10 @@ namespace Libary_ConnectDB
         {
             try 
             {
-                if (connection.State == System.Data.ConnectionState.Closed) await connection.OpenAsync();
 
+                if (connection.State != System.Data.ConnectionState.Open) await connection.OpenAsync();
                 await connection.QueryAsync(query);
-                connection.Close();
+                
             }
             catch(Exception e) 
             {
@@ -53,11 +53,10 @@ namespace Libary_ConnectDB
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
                 dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
                 {
-                    Process.Start(Process.GetCurrentProcess().MainModule.FileName);
-                    System.Windows.Application.Current.Shutdown();
+ 
 
                 });
-                connection.Close();
+              
 
             }
 
@@ -68,9 +67,9 @@ namespace Libary_ConnectDB
             ObservableCollection<T> list = null;
             try 
             {
-                if (connection.State == System.Data.ConnectionState.Closed) await connection.OpenAsync();
+                if (connection.State != System.Data.ConnectionState.Open) await connection.OpenAsync();
                 list = new ObservableCollection<T>( await connection.QueryAsync<T>(query));
-                connection.Close();
+              
 
             }
             catch (Exception e)
@@ -82,11 +81,10 @@ namespace Libary_ConnectDB
 
                 dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
                 {
-                    Process.Start(Process.GetCurrentProcess().MainModule.FileName);
-                    System.Windows.Application.Current.Shutdown();
+            
 
                 });
-                connection.Close();
+             
 
             }
 
@@ -101,10 +99,10 @@ namespace Libary_ConnectDB
             int count = 0;
             try
             {
-                if (connection.State == System.Data.ConnectionState.Closed) await connection.OpenAsync();
 
+                if (connection.State != System.Data.ConnectionState.Open) await connection.OpenAsync();
                 count = await connection.ExecuteScalarAsync<int>(query);
-                connection.Close();
+                
 
             }
             catch (Exception e)
@@ -119,7 +117,7 @@ namespace Libary_ConnectDB
 
 
                 });
-                connection.Close();
+                
 
             }
 
