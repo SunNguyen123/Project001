@@ -156,7 +156,7 @@
                 </DataGridTextColumn>
 
 
-                <DataGridTextColumn  Binding="{Binding GhiChu}"  MinWidth="180"  Header="GHI CHÚ">
+                <DataGridTextColumn  Binding="{Binding GhiChu,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MinWidth="180"  Header="GHI CHÚ">
 
                 </DataGridTextColumn>
 
