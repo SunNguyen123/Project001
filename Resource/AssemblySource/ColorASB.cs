@@ -10,6 +10,11 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(ColorASB),"red");
         }
 
+        public static ComponentResourceKey Red1
+        {
+            get => new ComponentResourceKey(typeof(ColorASB), "red1");
+        }
+
         public static ComponentResourceKey Green
         {
             get => new ComponentResourceKey(typeof(ColorASB),"green");

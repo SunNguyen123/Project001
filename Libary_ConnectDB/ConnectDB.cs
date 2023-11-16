@@ -19,12 +19,13 @@ namespace Libary_ConnectDB
         }
         private SqlConnection connection;
 
-       public void ConfigDB(string svname, string dbname) 
+       public  void ConfigDB(string svname, string dbname) 
         {
 
             SettingFile.Default.NameServer = svname;
             SettingFile.Default.NameDatabase = dbname;
             SettingFile.Default.Save();
+            CreateConnection();
         }
         private void CreateConnection() 
         {
@@ -51,7 +52,7 @@ namespace Libary_ConnectDB
                 var ts1 = new DialogParameters();
                 ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
-                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
                 {
  
 
@@ -79,7 +80,7 @@ namespace Libary_ConnectDB
                 ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
 
-                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
                 {
             
 
@@ -112,7 +113,7 @@ namespace Libary_ConnectDB
                 ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
 
-                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
                 {
 
 

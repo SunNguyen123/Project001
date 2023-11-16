@@ -39,7 +39,7 @@
                 <Line Margin="4 0" VerticalAlignment="Center" SnapsToDevicePixels="True" Stroke="White" StrokeThickness="0.7" X1="0" Y1="0" X2="0" Y2="16" >
                     
                 </Line>
-                <bt:Button2 Command="{Binding ConnectCommand}" border_radius="3" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" BorderThickness="0"  Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="24" Height="24" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}">
+                <bt:Button2 Command="{Binding ConfigCommand}" border_radius="3" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" BorderThickness="0"  Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="24" Height="24" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}">
                     <Image Width="18" Height="18" Source="/Img/8674932_ic_fluent_globe_regular_icon (3).png" />
                 </bt:Button2>
 

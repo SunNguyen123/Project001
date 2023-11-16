@@ -27,6 +27,7 @@ namespace AdminModule.ViewModels
             ViewModelLocationProvider.Register<Home_AdminView,Home_AdminViewModels>();
             ViewModelLocationProvider.Register<AddKhoaServiceView,AddKhoaServiceViewModel>();
             ViewModelLocationProvider.Register<qlKhoa_AdminView,qlKhoa_AdminViewModels>();
+            ViewModelLocationProvider.Register<EditKhoa_AdminView,EditKhoaServiceViewModel>();
             regionManager.RegisterViewWithRegion<Home_AdminView>("Body");
             regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
             //containerRegistry.RegisterForNavigation<qlKhoa_AdminView, qlKhoa_AdminViewModels>();
@@ -40,6 +41,7 @@ namespace AdminModule.ViewModels
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterDialog<AddKhoaServiceView, AddKhoaServiceViewModel>();
+            containerRegistry.RegisterDialog<EditKhoa_AdminView, EditKhoaServiceViewModel>();
         }
     }
 }

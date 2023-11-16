@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AdminModule.Views
+namespace Library_Dialog.Views
 {
     /// <summary>
-    /// Interaction logic for AddKhoa_AdminView.xaml
+    /// Interaction logic for DialogWindowView.xaml
     /// </summary>
-    public partial class AddKhoa_AdminView : UserControl
+    public partial class DialogWindowView : UserControl
     {
-        public AddKhoa_AdminView()
+        public DialogWindowView()
         {
             InitializeComponent();
         }

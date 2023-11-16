@@ -10,7 +10,7 @@
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              FontFamily="{StaticResource {x:Static res:FontASB.Regular}}"
-             xmlns:prism="http://prismlibrary.com/"
+             xmlns:prism="http://prismlibrary.com/" Focusable="False" 
              prism:ViewModelLocator.AutoWireViewModel="True"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel >

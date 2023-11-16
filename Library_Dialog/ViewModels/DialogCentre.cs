@@ -13,13 +13,17 @@ namespace Library_Dialog.ViewModels
         public void OnInitialized(IContainerProvider containerProvider)
         {
 
-            ViewModelLocationProvider.Register<DialogMessageView, DialogMessageViewModel>();
+           
+            ViewModelLocationProvider.Register<DialogWindowView, DialogWindowViewModel>();
+            ViewModelLocationProvider.Register<DialogMessageTextView, DialogMessageTextViewModel>();
+            ViewModelLocationProvider.Register<DialogDeleteView, DialogDeleteViewModel>();
         }
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
            
-            ViewModelLocationProvider.Register<DialogMessageTextView, DialogMessageTextViewModel>();
             containerRegistry.RegisterDialog<DialogMessageTextView, DialogMessageTextViewModel>();
+            containerRegistry.RegisterDialog<DialogWindowView, DialogWindowViewModel>();
+            containerRegistry.RegisterDialog<DialogDeleteView, DialogDeleteViewModel>();
         }
     }
 }

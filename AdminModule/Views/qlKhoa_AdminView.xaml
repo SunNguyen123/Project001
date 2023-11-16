@@ -14,7 +14,7 @@
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="AdminModule.Views.qlKhoa_AdminView"
              mc:Ignorable="d"
              Focusable="False" FocusVisualStyle="{x:Null}"
-             x:Name="khoa"
+             x:Name="khoa" 
              RenderOptions.ClearTypeHint="Enabled"
              prism:ViewModelLocator.AutoWireViewModel="True"
              Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
@@ -57,7 +57,7 @@
             <StackPanel HorizontalAlignment="Left" Margin="16 8" VerticalAlignment="Bottom" Orientation="Horizontal" >
 
 
-                <ComboBox ItemsSource="{Binding ITEMS}" SelectedItem="{Binding DieuKienTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Width="80" Margin="0 0 8 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" >
+                <ComboBox TabIndex="0" ItemsSource="{Binding ITEMS}" SelectedItem="{Binding DieuKienTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Width="80" Margin="0 0 8 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" >
 
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
@@ -66,7 +66,7 @@
                     </i:Interaction.Triggers>
 
                 </ComboBox>
-                <TextBox Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=500}" VerticalContentAlignment="Center" x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
+                <TextBox TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=500}" VerticalContentAlignment="Center" x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
 
                 </TextBox>
             </StackPanel>
@@ -74,7 +74,7 @@
 
 
             <StackPanel Margin="16 8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <bt:Button2 Command="{Binding AddKhoaCommand}" FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
+                <bt:Button2 TabIndex="2" Command="{Binding AddKhoaCommand}" FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
                             Width="88" Color="White" BorderThickness="0.6" 
                             BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5">
                     <StackPanel Orientation="Horizontal">
@@ -86,7 +86,7 @@
 
         </Grid>
 
-        <newcontrol:DatagridNew2 
+        <newcontrol:DatagridNew2 TabIndex="3"
                                 RowEditEnding="dgvKhoa_RowEditEnding"  SelectionChanged="dgvKhoa_SelectionChanged" x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
                                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
                                  ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"  
@@ -112,8 +112,8 @@
                                         </Grid>
                                     </MenuItem.Header>
                                 </MenuItem>
-                                <MenuItem >
-                                    <MenuItem.Header>
+                                <MenuItem Command="{Binding Data.EditKhoa2,Source={StaticResource DataContextProxy}}" >
+                                    <MenuItem.Header >
                                         <Grid>
                                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">Sửa</TextBlock>
                                             <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.NL700}}" VerticalAlignment="Center" HorizontalAlignment="Right">Ctrl+F</TextBlock>
@@ -160,7 +160,7 @@
 
                 </DataGridTextColumn>
 
-                <DataGridTemplateColumn MinWidth="100" Header="Hành động">
+                <!--<DataGridTemplateColumn MinWidth="100" Header="Hành động">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
@@ -177,7 +177,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
 
 
             </newcontrol:DatagridNew2.Columns>

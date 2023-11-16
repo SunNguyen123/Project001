@@ -14,13 +14,20 @@ namespace Sell.ViewModels
     {
 
         public DelegateCommand ConnectCommand { set; get; }
+        public DelegateCommand ConfigCommand { set; get; }
 
         private IDialogService dialogService;
 
         public LoginViewModel(IDialogService dialogService)
         {
             ConnectCommand = new DelegateCommand(ConnectMethod);
+            ConfigCommand = new DelegateCommand(ConfigMethod);
             this.dialogService = dialogService;
+        }
+
+        private void ConfigMethod()
+        {
+            dialogService.ShowDialog("ConfigView");
         }
 
         private void ConnectMethod()

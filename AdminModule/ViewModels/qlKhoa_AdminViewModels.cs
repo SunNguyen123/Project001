@@ -23,7 +23,9 @@ namespace AdminModule.ViewModels
         private ObservableCollection<Khoa> _dsKhoa;
         public List<Khoa> SelectedObject { get; set; }
         public DelegateCommand RemoveKhoa { set; get; }
+        private string sqlLoadFull = "SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA";
         public DelegateCommand EditKhoa { set; get; }
+        public DelegateCommand EditKhoa2 { set; get; }
 
         private string[] items = { "Mã", "Tên" };
         public string[]  ITEMS
@@ -91,25 +93,53 @@ namespace AdminModule.ViewModels
             TimKiemKhoaCommand = new DelegateCommand<string>(TimKiemKhoaCommandMethod);       
             RemoveKhoa = new DelegateCommand(RemoveKhoaMethod);
             EditKhoa = new DelegateCommand(EditKhoaMethod);
-            LoadData("SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA");
+            EditKhoa2 = new DelegateCommand(EditKhoa2Method, Caneditexecute).ObservesProperty(() => SelectedObject);
+            TimKiemKhoaCommandMethod(_gtTK);
+        }
+
+        private bool Caneditexecute()
+        {
+            bool flag = true;
+            if (SelectedObject!=null)
+            {
+                flag= SelectedObject.Count == 1 ? true : false;
+            }
+
+            return flag;
+        }
+
+        private void EditKhoa2Method()
+        {
+            var ts = new DialogParameters();
+            ts.Add("obj", listKhoa.CurrentItem );
+            dialogsv.ShowDialog("EditKhoa_AdminView",ts,(r)=> {
+              if(r.Result==ButtonResult.OK)  LoadData(sqlLoadFull);
+            });
         }
 
         private async void EditKhoaMethod()
         {
             var khoa = listKhoa.CurrentItem as Khoa;          
-          await connectDB.Execute($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
+            await connectDB.Execute($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
         }
 
-        private async void RemoveKhoaMethod()
+        private  void RemoveKhoaMethod()
         {
-            
-            foreach (var item in SelectedObject) 
-            { 
-            
-                await connectDB.Execute($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
-            
-            }
-            LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA");
+            var p = new DialogParameters();
+            p.Add("count", SelectedObject.Count);
+            dialogsv.ShowDialog("DialogDeleteView",p, async (r)=> 
+            {
+                if (r.Result==ButtonResult.OK)
+                {
+                    foreach (var item in SelectedObject)
+                    {
+
+                        await connectDB.Execute($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
+
+                    }
+                    TimKiemKhoaCommandMethod(_gtTK);
+                }
+            });
 
         }
 

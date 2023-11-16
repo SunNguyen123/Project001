@@ -100,13 +100,14 @@
     </Compile>
     <Compile Include="ViewModels\AddKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\AdminModuleCentre.cs" />
+    <Compile Include="ViewModels\EditKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\Home_AdminViewModels.cs" />
     <Compile Include="ViewModels\qlKhoa_AdminViewModels.cs" />
     <Compile Include="Views\AddKhoaServiceView.xaml.cs">
       <DependentUpon>AddKhoaServiceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddKhoa_AdminView.xaml.cs">
-      <DependentUpon>AddKhoa_AdminView.xaml</DependentUpon>
+    <Compile Include="Views\EditKhoa_AdminView.xaml.cs">
+      <DependentUpon>EditKhoa_AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home_AdminView.xaml.cs">
       <DependentUpon>Home_AdminView.xaml</DependentUpon>
@@ -129,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddKhoa_AdminView.xaml">
+    <Page Include="Views\EditKhoa_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

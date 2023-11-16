@@ -32,6 +32,14 @@
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Press}" TargetName="br"/>
                         </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static localASB:ColorASB.Grey300}}" />
+                            <Setter Property="Background" Value="{DynamicResource {x:Static localASB:ColorASB.Grey600}}" />
+                        </Trigger>
+
+
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

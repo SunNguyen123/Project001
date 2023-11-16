@@ -58,13 +58,14 @@ namespace Sell
             base.ConfigureViewModelLocator();
             ViewModelLocationProvider.Register<LoginView,LoginViewModel>();
             ViewModelLocationProvider.Register<SellApp,ShellViewModel>();
+            ViewModelLocationProvider.Register<ConfigView,ConfigViewModel>();
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IConnectDB,ConnectDB>();
-           
+           containerRegistry.RegisterDialog<ConfigView, ConfigViewModel>();
 
-           
+
         }
     }
 }

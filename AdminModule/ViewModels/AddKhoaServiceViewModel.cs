@@ -50,7 +50,7 @@ namespace AdminModule.ViewModels
                 {
                     var khoanew = new Khoa();
                     
-               await connectDB.Execute($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("d-MM-yyyy")}',N'{GhiChu}')");
+               await connectDB.Execute($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-d")}',N'{GhiChu}')");
                     RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                 }
                 else 

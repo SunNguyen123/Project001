@@ -209,5 +209,8 @@
   <ItemGroup>
     <Resource Include="img\8674526_ic_fluent_chevron_down_regular_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674741_ic_fluent_delete_regular_icon %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
