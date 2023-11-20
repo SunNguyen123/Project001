@@ -13,7 +13,7 @@
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None"
        
-        RenderOptions.ClearTypeHint="Auto"
+        UseLayoutRounding="True"
         Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
         FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
         WindowStartupLocation="CenterScreen"

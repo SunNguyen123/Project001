@@ -15,6 +15,7 @@
             <TextBlock FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">
                 Thống kê
             </TextBlock>
-        </StackPanel> 
+        </StackPanel>
+        <Calendar VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource {x:Static res:DatepickerASB.CalendarStyle}}"></Calendar>
     </Grid>
 </UserControl>

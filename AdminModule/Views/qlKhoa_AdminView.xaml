@@ -11,11 +11,12 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:model="clr-namespace:AdminModule.Models"        
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+             xmlns:cvres="clr-namespace:Resource;assembly=Resource"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="AdminModule.Views.qlKhoa_AdminView"
              mc:Ignorable="d"
              Focusable="False" FocusVisualStyle="{x:Null}"
              x:Name="khoa" 
-             RenderOptions.ClearTypeHint="Enabled"
+             UseLayoutRounding="True"
              prism:ViewModelLocator.AutoWireViewModel="True"
              Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
              FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" 
@@ -30,7 +31,7 @@
         <model:BindingProxy 
   x:Key="DataContextProxy"
   Data="{Binding}" />
-
+        <cvres:ConvertDateTime x:Key="convertdatetime"/>
 
         <cv:Chuyendoislbanghi x:Key="chuyendoislbanghi"/>
 
@@ -66,7 +67,7 @@
                     </i:Interaction.Triggers>
 
                 </ComboBox>
-                <TextBox TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=500}" VerticalContentAlignment="Center" x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
+                <TextBox TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=300}" VerticalContentAlignment="Center" x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
 
                 </TextBox>
             </StackPanel>
@@ -86,15 +87,18 @@
 
         </Grid>
 
-        <newcontrol:DatagridNew2 TabIndex="3"
-                                RowEditEnding="dgvKhoa_RowEditEnding"  SelectionChanged="dgvKhoa_SelectionChanged" x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
+        <newcontrol:DatagridNew2 TabIndex="3" 
+                                RowEditEnding="dgvKhoa_RowEditEnding"  
+                                 SelectionChanged="dgvKhoa_SelectionChanged" 
+                                 x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
                                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
                                  ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"  
                                  AutoGenerateColumns="False"
                                  CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
                                  GridLinesVisibility="All" HorizontalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
                                  VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
-                                 ItemsSource="{Binding DsKhoa, IsAsync=True}" Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}" Grid.Row="1" >
+                                 ItemsSource="{Binding DsKhoa, IsAsync=True}" 
+                                 Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}" Grid.Row="1" >
 
 
             <newcontrol:DatagridNew2.RowStyle>
@@ -151,9 +155,34 @@
                 </DataGridTextColumn>
 
 
-                <DataGridTextColumn   Binding="{Binding NamBatDau}" MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
+                <DataGridTemplateColumn   MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate >
+                            <Grid>
 
-                </DataGridTextColumn>
+                                <TextBlock HorizontalAlignment="Center" Text="{Binding NamBatDau,Converter={StaticResource convertdatetime}}" VerticalAlignment="Center" >
+
+                                </TextBlock>
+
+                            </Grid>
+                        </DataTemplate>
+                        
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="36"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBox VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime}}"/>
+                                <DatePicker Grid.Column="1" Foreground="White" Name="dt" Width="32" BorderThickness="0" VerticalAlignment="Center" Margin="4 0 0 0" HorizontalAlignment="Center" 
+                                        Style="{DynamicResource {x:Static res:DatepickerASB.datePickericonStyle}}" 
+                                        SelectedDate="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
 
 
                 <DataGridTextColumn  Binding="{Binding GhiChu,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MinWidth="180"  Header="GHI CHÚ">

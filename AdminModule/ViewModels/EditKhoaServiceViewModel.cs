@@ -60,7 +60,7 @@ namespace AdminModule.ViewModels
         {
             if (obj.Trim() == "OK")
             {
-                int count= await kn.CountRecord($"SELECT COUNT(*) FROM KHOA WHERE TenKhoa=N'{TenKhoa}'");
+                int count= await kn.CountRecord($"SELECT COUNT(*) FROM KHOA WHERE TenKhoa=N'{TenKhoa}' AND NOT MaKhoa='{MaKhoa}'");
                 if (!string.IsNullOrWhiteSpace(TenKhoa) && count==0)
                 {
                     await kn.Execute($"UPDATE KHOA SET TenKhoa=N'{TenKhoa}',NamBatDau='{NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{GhiChu}' WHERE MaKhoa='{MaKhoa}'");

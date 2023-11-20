@@ -130,6 +130,7 @@
     <Compile Include="AssemblySource\ComboboxASB.cs" />
     <Compile Include="AssemblySource\ContextMenuASB.cs" />
     <Compile Include="AssemblySource\DatagridASB.cs" />
+    <Compile Include="AssemblySource\DatepickerASB.cs" />
     <Compile Include="AssemblySource\FocusVisualStyleASB.cs" />
     <Compile Include="AssemblySource\FontASB.cs" />
     <Compile Include="AssemblySource\RadioButtonASB.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="AssemblySource\TextBoxASB.cs" />
     <Compile Include="ButtonNew\Button2.cs" />
     <Compile Include="CheckBoxBehavior.cs" />
+    <Compile Include="ConvertDateTime.cs" />
     <Compile Include="NewControl\DatagridNew2.cs" />
     <Compile Include="NewControl\ToggleButtonNew.cs" />
     <Compile Include="PasswordBoxNew\PasswordBox2.xaml.cs">
@@ -211,6 +213,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\8674741_ic_fluent_delete_regular_icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674897_ic_fluent_ios_arrow_ltr_icon.png" />
+    <Resource Include="img\8674914_ic_fluent_ios_arrow_rtl_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674570_ic_fluent_calendar_rtl_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

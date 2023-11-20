@@ -160,5 +160,9 @@
   <ItemGroup>
     <Resource Include="img\8674903_ic_fluent_filter_regular_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674897_ic_fluent_ios_arrow_ltr_icon.png" />
+    <Resource Include="img\8674914_ic_fluent_ios_arrow_rtl_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

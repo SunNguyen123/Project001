@@ -9,7 +9,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
         Background="Transparent"
-        AllowsTransparency="True"
+        AllowsTransparency="True" UseLayoutRounding="True"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
         WindowStyle="None" Activated="Window_Activated" Deactivated="Window_Deactivated"

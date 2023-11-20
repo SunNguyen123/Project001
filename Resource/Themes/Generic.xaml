@@ -14,6 +14,7 @@
         <ResourceDictionary Source="/Resource;component/Source/DatagridStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/FocusStyle.xaml"/>
         <ResourceDictionary Source="/Resource;component/Source/scrollbasrStyle.xaml"/>
+        <ResourceDictionary Source="/Resource;component/Source/DatepickerStyle.xaml"/>
       
     </ResourceDictionary.MergedDictionaries>
 

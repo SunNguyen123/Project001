@@ -14,7 +14,7 @@
              xmlns:prism="http://prismlibrary.com/"   
              Background="White"
              Focusable="False" 
-             RenderOptions.ClearTypeHint="Enabled"
+             UseLayoutRounding="True"
              d:DesignHeight="450" d:DesignWidth="330">
 
     <UserControl.Resources>

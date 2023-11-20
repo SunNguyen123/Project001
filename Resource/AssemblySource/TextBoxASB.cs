@@ -27,5 +27,11 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(TextBoxASB), "tbTK");
         }
 
+
+
+        public static ComponentResourceKey nonetb1
+        {
+            get => new ComponentResourceKey(typeof(TextBoxASB), "nonetb1");
+        }
     }
 }

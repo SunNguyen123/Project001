@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:NavBarModule.Views"
              mc:Ignorable="d" 
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
-             RenderOptions.ClearTypeHint="Enabled"
+             
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              FontFamily="{StaticResource {x:Static res:FontASB.Regular}}"

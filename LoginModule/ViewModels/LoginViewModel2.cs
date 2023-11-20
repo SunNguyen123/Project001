@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Windows;
 using Libary_ConnectDB;
 using LoginModule.Model;
@@ -10,6 +11,9 @@ using System.Collections.Generic;
 using Prism.Events;
 using Prism.Services.Dialogs;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.IO.Compression;
+using System.IO;
 
 namespace LoginModule.ViewModels
 {
@@ -41,8 +45,23 @@ namespace LoginModule.ViewModels
             this.ev = ev;
             this.dialogService = dialogService;
             LoginCommand = new DelegateCommand(LoginExecute,CanLoginExecute).ObservesProperty(()=> IsLoad);
+            string b = MD5Hash("admin");
+            string c = MD5Hash("123");
         }
-
+        private string MD5Hash(string exp) 
+        {
+                StringBuilder stringBuilder = new StringBuilder();
+            using (MD5 md5=MD5.Create()) 
+            {
+                byte[] sample = Encoding.UTF8.GetBytes(exp);
+                byte[] hash = md5.ComputeHash(sample);
+                foreach (var i in hash) 
+                {
+                    stringBuilder.Append(i.ToString());
+                }
+            }
+                return stringBuilder.ToString();
+        }
         private bool CanLoginExecute()
         {
             return IsLoad;
