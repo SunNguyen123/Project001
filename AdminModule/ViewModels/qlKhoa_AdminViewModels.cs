@@ -74,7 +74,7 @@ namespace AdminModule.ViewModels
         private async void LoadData(string query) 
         {
 
-            _dsKhoa= await connectDB.GetData<Khoa>(query);
+            _dsKhoa= await connectDB.GetDataAsync<Khoa>(query);
             if (_dsKhoa!=null) 
             {
                 DsKhoa = new ListCollectionView(_dsKhoa);
@@ -120,7 +120,7 @@ namespace AdminModule.ViewModels
         private async void EditKhoaMethod()
         {
             var khoa = listKhoa.CurrentItem as Khoa;          
-            await connectDB.Execute($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
+            await connectDB.ExecuteAsync($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
         }
 
         private  void RemoveKhoaMethod()
@@ -134,7 +134,7 @@ namespace AdminModule.ViewModels
                     foreach (var item in SelectedObject)
                     {
 
-                        await connectDB.Execute($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
+                        await connectDB.ExecuteAsync($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
 
                     }
                     TimKiemKhoaCommandMethod(_gtTK);

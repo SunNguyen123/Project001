@@ -10,8 +10,11 @@ namespace Libary_ConnectDB
    public interface IConnectDB
     {
         void ConfigDB(string svname,string dbname);
-        Task Execute(string query);
-        Task<ObservableCollection<T>> GetData<T>(string query);
-        Task<int> CountRecord(string query);
+        Task ExecuteAsync(string query);
+        Task<ObservableCollection<T>> GetDataAsync<T>(string query);
+        Task<int> CountRecordAsync(string query);
+        void Execute(string query);
+       ObservableCollection<T> GetData<T>(string query);
+        int CountRecord(string query);
     }
 }

@@ -11,5 +11,11 @@
     <Setting Name="NameDatabase" Type="System.String" Scope="User">
       <Value Profile="(Default)">DB_QLSV</Value>
     </Setting>
+    <Setting Name="username" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

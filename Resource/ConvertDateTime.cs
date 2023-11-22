@@ -19,8 +19,12 @@ namespace Resource
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (!string.IsNullOrWhiteSpace(value.ToString())) 
-            { 
-            DateTime date = DateTime.Parse(value.ToString());
+            {
+                DateTime date;
+                if( !DateTime.TryParse(value.ToString(),out date))
+                {
+                    return null;
+                }
 
                 return date.ToString("yyyy-MM-d");
             }

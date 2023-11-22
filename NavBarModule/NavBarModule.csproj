@@ -174,5 +174,14 @@
   <ItemGroup>
     <Resource Include="IMG\8674473_ic_fluent_clipboard_task_list_icon %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IMG\8675104_ic_fluent_mail_inbox_all_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="8674809_ic_fluent_document_one_page_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IMG\8674809_ic_fluent_document_one_page_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

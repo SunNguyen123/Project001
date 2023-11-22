@@ -45,12 +45,12 @@ namespace AdminModule.ViewModels
           
             if (obj == "OK")
             {
-                int count = await connectDB.CountRecord($"SELECT COUNT(TenKhoa) FROM KHOA WHERE TenKhoa=N'{TenKhoa}'");
+                int count = await connectDB.CountRecordAsync($"SELECT COUNT(TenKhoa) FROM KHOA WHERE TenKhoa=N'{TenKhoa}'");
                 if (!string.IsNullOrWhiteSpace(TenKhoa) && count==0)
                 {
                     var khoanew = new Khoa();
                     
-               await connectDB.Execute($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-d")}',N'{GhiChu}')");
+               await connectDB.ExecuteAsync($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-d")}',N'{GhiChu}')");
                     RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                 }
                 else 

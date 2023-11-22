@@ -65,6 +65,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncVirtualCollection.cs" />
+    <Compile Include="VirtualizingCollection.cs" />
     <Page Include="PasswordBoxNew\PasswordBox2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +141,10 @@
     <Compile Include="ButtonNew\Button2.cs" />
     <Compile Include="CheckBoxBehavior.cs" />
     <Compile Include="ConvertDateTime.cs" />
+    <Compile Include="ConvertRecord.cs" />
+    <Compile Include="DataPage.cs" />
+    <Compile Include="DataWrapper.cs" />
+    <Compile Include="IItemsProvider.cs" />
     <Compile Include="NewControl\DatagridNew2.cs" />
     <Compile Include="NewControl\ToggleButtonNew.cs" />
     <Compile Include="PasswordBoxNew\PasswordBox2.xaml.cs">
@@ -220,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\8674570_ic_fluent_calendar_rtl_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8675707_ic_fluent_warning_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

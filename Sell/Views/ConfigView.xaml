@@ -65,7 +65,7 @@
                 <TextBlock  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên máy chủ" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenMayChu,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox FontSize="12"  TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenMayChu,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
 
                 <!--<TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Mã khoa" TextWrapping="Wrap" HorizontalAlignment="Left"  >
@@ -78,17 +78,17 @@
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên cơ sở dữ liệu" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenDataBase,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox FontSize="12" TabIndex="1" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenDataBase,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
                 <TextBlock Margin="0 16 0 0"  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tài khoản người dùng" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox FontSize="12" TabIndex="2" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
                 <TextBlock Margin="0 16 0 0"  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Mật khẩu" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                <TextBox FontSize="12" TabIndex="3" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">

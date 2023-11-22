@@ -33,7 +33,7 @@
   Data="{Binding}" />
         <cvres:ConvertDateTime x:Key="convertdatetime"/>
 
-        <cv:Chuyendoislbanghi x:Key="chuyendoislbanghi"/>
+        <cvres:ConvertRecord x:Key="chuyendoislbanghi"/>
 
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -75,9 +75,15 @@
 
 
             <StackPanel Margin="16 8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <bt:Button2 TabIndex="2" Command="{Binding AddKhoaCommand}" FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
+                <bt:Button2 TabIndex="2" Command="{Binding AddKhoaCommand}" 
+                            FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
                             Width="88" Color="White" BorderThickness="0.6" 
-                            BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5">
+                            BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                            Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
+                            Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                            border_radius="5">
                     <StackPanel Orientation="Horizontal">
                         <Image  Width="20" Height="20" Source="/Resource;component/img/8674406_ic_fluent_add_regular_icon (1).png" />
                         <TextBlock Text="Thêm" Margin="2 2 0 0" FontSize="15"/>
@@ -87,8 +93,8 @@
 
         </Grid>
 
-        <newcontrol:DatagridNew2 TabIndex="3" 
-                                RowEditEnding="dgvKhoa_RowEditEnding"  
+        <newcontrol:DatagridNew2 TabIndex="3" CanUserResizeRows="True"
+                                 RowEditEnding="dgvKhoa_RowEditEnding"  
                                  SelectionChanged="dgvKhoa_SelectionChanged" 
                                  x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
                                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
@@ -155,7 +161,7 @@
                 </DataGridTextColumn>
 
 
-                <DataGridTemplateColumn   MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
+                <DataGridTemplateColumn MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
                             <Grid>
@@ -170,12 +176,12 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <Grid >
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="36"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBox VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime}}"/>
+                                <TextBox PreviewKeyDown="TextBox_PreviewKeyDown" VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime},NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
                                 <DatePicker Grid.Column="1" Foreground="White" Name="dt" Width="32" BorderThickness="0" VerticalAlignment="Center" Margin="4 0 0 0" HorizontalAlignment="Center" 
                                         Style="{DynamicResource {x:Static res:DatepickerASB.datePickericonStyle}}" 
                                         SelectedDate="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>

@@ -17,11 +17,24 @@ namespace Resource.NewControl
         {
                 
         }
- 
-
-        private void CheckAll(object sender, RoutedEventArgs e)
+        private static readonly DependencyProperty LoadingRowProperty = DependencyProperty.Register("IsLoading",typeof(bool),typeof(DatagridNew2));
+  public bool IsLoading
         {
-            MessageBox.Show("hahaha");
+            set 
+            {
+                SetValue(LoadingRowProperty,value);
+            }
+            get => (bool)GetValue(LoadingRowProperty);
         }
+        private static readonly DependencyProperty InitializingRowProperty = DependencyProperty.Register("IsInitializing", typeof(bool), typeof(DatagridNew2));
+        public bool IsInitializing
+        {
+            set
+            {
+                SetValue(InitializingRowProperty, value);
+            }
+            get => (bool)GetValue(InitializingRowProperty);
+        }
+
     }
 }

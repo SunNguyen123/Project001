@@ -26,7 +26,7 @@
             <Setter Property="ShowInTaskbar" Value="False"/>
         </Style>
     </prism:Dialog.WindowStyle>
-    <Border Height="180"  Width="350" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
+    <Border HorizontalAlignment="Center" VerticalAlignment="Center"  Width="350" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
         <Border.RenderTransformOrigin>
             <Point X="0.5" Y="0.5"/>
         </Border.RenderTransformOrigin>
@@ -52,6 +52,12 @@
             <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7"/>
         </Border.Effect>
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto">
+                    
+                </RowDefinition>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thông báo</TextBlock>
             <Separator VerticalAlignment="Top" Margin="0 54 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
             <bt:Button2 Width="24" Height="24" CommandParameter="CANCEL" Command="{Binding ResultDialog}" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" Margin="16">
@@ -60,26 +66,29 @@
 
             </bt:Button2>
 
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="16 0 16 0" Orientation="Vertical">
 
-                <TextBlock VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Left"  Text="{Binding Message1}">
+            <StackPanel Margin="0 8 0 0" Grid.Row="1">
+                <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="16 0 16 0" Orientation="Vertical">
 
-                </TextBlock>
-                <TextBlock VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 2 0 0" Text="{Binding Message2}">
+                    <TextBlock Width="320" VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Left"  Text="{Binding Message1}">
 
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
-                <bt:Button2  Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
+                    </TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="0 2 0 0" Text="{Binding Message2}">
 
-                    <TextBlock FontSize="14">Huỷ</TextBlock>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
+                    <bt:Button2  Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
-                </bt:Button2>
-                <bt:Button2 Command="{Binding ResultDialog}" CommandParameter="OK" Margin="8 0 0 0" Color="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
+                        <TextBlock FontSize="14">Huỷ</TextBlock>
 
-                    <TextBlock FontSize="14">Đồng ý</TextBlock>
+                    </bt:Button2>
+                    <bt:Button2 Command="{Binding ResultDialog}" CommandParameter="OK" Margin="8 0 0 0" Color="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
-                </bt:Button2>
+                        <TextBlock FontSize="14">Đồng ý</TextBlock>
+
+                    </bt:Button2>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Border>

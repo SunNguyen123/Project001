@@ -37,7 +37,7 @@ namespace Libary_ConnectDB
             key.IntegratedSecurity = true;
             connection = new SqlConnection(key.ConnectionString);
         }
-        public async Task Execute(string query)
+        public async Task ExecuteAsync(string query)
         {
             try 
             {
@@ -50,7 +50,7 @@ namespace Libary_ConnectDB
             {
                
                 var ts1 = new DialogParameters();
-                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu : ({e.Message})");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
                 dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
                 {
@@ -63,7 +63,7 @@ namespace Libary_ConnectDB
 
         }
 
-        public async Task<ObservableCollection<T>> GetData<T>(string query)
+        public async Task<ObservableCollection<T>> GetDataAsync<T>(string query)
         {
             ObservableCollection<T> list = null;
             try 
@@ -77,7 +77,7 @@ namespace Libary_ConnectDB
             {
               
                 var ts1 = new DialogParameters();
-                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
 
                 dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
@@ -94,7 +94,7 @@ namespace Libary_ConnectDB
         }
 
 
-        public async Task<int> CountRecord(string query) 
+        public async Task<int> CountRecordAsync(string query) 
         {
 
             int count = 0;
@@ -110,7 +110,7 @@ namespace Libary_ConnectDB
             {
               
                 var ts1 = new DialogParameters();
-                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu {e.Message}");
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
                 ts1.Add("message2", $"Vui lòng thử lại sau !");
 
                 dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
@@ -119,6 +119,92 @@ namespace Libary_ConnectDB
 
                 });
                 
+
+            }
+
+
+            return count;
+        }
+
+        public void Execute(string query)
+        {
+            try
+            {
+
+                if (connection.State != System.Data.ConnectionState.Open) connection.OpenAsync();
+                connection.Query(query);
+
+            }
+            catch (Exception e)
+            {
+
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu : ({e.Message})");
+                ts1.Add("message2", $"Vui lòng thử lại sau !");
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
+                {
+
+
+                });
+
+
+            }
+        }
+
+        public ObservableCollection<T> GetData<T>(string query)
+        {
+            ObservableCollection<T> list = null;
+            try
+            {
+                if (connection.State != System.Data.ConnectionState.Open)  connection.Open();
+                list = new ObservableCollection<T>(connection.Query<T>(query));
+
+
+            }
+            catch (Exception e)
+            {
+
+                //var ts1 = new DialogParameters();
+                //ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
+                //ts1.Add("message2", $"Vui lòng thử lại sau !");
+
+                //dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
+                //{
+
+
+                //});
+
+
+            }
+
+
+            return list;
+        }
+
+        public int CountRecord(string query)
+        {
+            int count = 0;
+            try
+            {
+
+                if (connection.State != System.Data.ConnectionState.Open) connection.Open();
+                count = connection.ExecuteScalar<int>(query);
+
+
+            }
+            catch (Exception e)
+            {
+
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
+                ts1.Add("message2", $"Vui lòng thử lại sau !");
+
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
+                {
+
+
+                });
+
 
             }
 

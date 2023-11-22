@@ -36,6 +36,9 @@ namespace Resource.AssemblySource
         }
 
 
-     
+        public static ComponentResourceKey DGVROWHEADER
+        {
+            get => new ComponentResourceKey(typeof(DatagridASB), "DataGridRowHeader");
+        }
     }
 }

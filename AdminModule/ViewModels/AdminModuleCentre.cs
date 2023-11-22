@@ -28,14 +28,16 @@ namespace AdminModule.ViewModels
             ViewModelLocationProvider.Register<AddKhoaServiceView,AddKhoaServiceViewModel>();
             ViewModelLocationProvider.Register<qlKhoa_AdminView,qlKhoa_AdminViewModels>();
             ViewModelLocationProvider.Register<EditKhoa_AdminView,EditKhoaServiceViewModel>();
+            ViewModelLocationProvider.Register<qlSinhVien_AdminView,qlSinhVien_AdminViewModel>();
             regionManager.RegisterViewWithRegion<Home_AdminView>("Body");
             regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
+            regionManager.RegisterViewWithRegion<qlSinhVien_AdminView>("Body");
             //containerRegistry.RegisterForNavigation<qlKhoa_AdminView, qlKhoa_AdminViewModels>();
             //regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
             //var rgbody = regionManager.Regions["Body"];
             //var qlKhoa = containerProvider.Resolve<qlKhoa_AdminView>();
             //rgbody.Add(qlKhoa);
-            
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

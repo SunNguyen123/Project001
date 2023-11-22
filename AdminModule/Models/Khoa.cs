@@ -1,8 +1,8 @@
 ﻿using System;
-
+using Prism.Mvvm;
 namespace AdminModule.Models
 {
-  public  class Khoa
+  public  class Khoa:BindableBase
     {
 
         private int _stt;
@@ -10,7 +10,7 @@ namespace AdminModule.Models
         public int STT
         {
             get { return _stt; }
-            set { _stt = value; }
+            set { SetProperty<int>(ref _stt,value); }
         }
 
 
@@ -23,8 +23,8 @@ namespace AdminModule.Models
                 return _maKhoa; 
             }
             set 
-            { 
-                _maKhoa = value; 
+            {
+                SetProperty(ref _maKhoa, value);
             }
         }
 
@@ -33,21 +33,24 @@ namespace AdminModule.Models
         public string TenKhoa
         {
             get { return _tenKhoa; }
-            set { _tenKhoa = value; }
+            set
+            {
+                SetProperty(ref _tenKhoa, value);
+            }
         }
         private DateTime _nambatdau;
 
         public DateTime NamBatDau
         {
             get { return _nambatdau; }
-            set { _nambatdau = value; }
+            set { SetProperty<DateTime>(ref _nambatdau, value); }
         }
         private string _ghichu;
 
         public string GhiChu
         {
             get { return _ghichu; }
-            set { _ghichu = value; }
+            set { SetProperty(ref _ghichu, value); }
         }
 
     }

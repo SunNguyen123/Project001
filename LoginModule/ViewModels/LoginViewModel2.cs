@@ -22,7 +22,7 @@ namespace LoginModule.ViewModels
         private TAIKHOAN user;
         private IConnectDB connect;
         private IDialogService dialogService;
-        private bool _isLoad=true;
+        private bool _isLoad=false;
         public bool IsLoad 
         {
             get 
@@ -64,33 +64,48 @@ namespace LoginModule.ViewModels
         }
         private bool CanLoginExecute()
         {
-            return IsLoad;
+            return !IsLoad;
         }
 
         private async void LoginExecute() 
         {
-            IsLoad = false;
-            ObservableCollection<TAIKHOAN> list = await connect.GetData<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{TaiKhoan}' AND MatKhau='{MatKhau}'");
-            if (list != null && list.Count !=0) 
+            IsLoad = true;
+            try
             {
-                ev.GetEvent<PackageLogin>().Publish((list[0].MaTk,list[0].PhanLoai));
-            }
-            else 
-            {
-                IsLoad = true;
-                var ts1 = new DialogParameters();
-                ts1.Add("message1", "Tài khoản hoặc mật khẩu bạn vừa nhập không tồn tại");
-                ts1.Add("message2", "Vui lòng thử lại sau !");
+                ObservableCollection<TAIKHOAN> list = await connect.GetDataAsync<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{MD5Hash(TaiKhoan)}' AND MatKhau='{MD5Hash(MatKhau)}'");
 
-
-                dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
+                if (list == null) { 
+                    
+                    
+                    IsLoad = false;
+                    return; 
+                }
+                if (list != null && list.Count != 0)
                 {
-                    if (r.Result == ButtonResult.OK)
+                    ev.GetEvent<PackageLogin>().Publish((list[0].MaTk, list[0].PhanLoai));
+                }
+                else
+                {
+                    IsLoad = false;
+
+                    var ts1 = new DialogParameters();
+                    ts1.Add("message1", "Tài khoản hoặc mật khẩu bạn vừa nhập không tồn tại");
+                    ts1.Add("message2", "Vui lòng thử lại sau !");
+
+
+                    dialogService.ShowDialog("DialogMessageTextView", ts1, (r) =>
                     {
+                        if (r.Result == ButtonResult.OK)
+                        {
 
-                    }
+                        }
 
-                });
+                    });
+                }
+            }
+            catch
+            {
+
             }
         }
         public string TaiKhoan 

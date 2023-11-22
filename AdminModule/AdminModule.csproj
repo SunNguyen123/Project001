@@ -85,6 +85,8 @@
     <Compile Include="Models\Chuyendoislbanghi.cs" />
     <Compile Include="Models\Khoa.cs" />
     <Compile Include="Models\MenuItemKhoa.cs" />
+    <Compile Include="Models\SinhVien.cs" />
+    <Compile Include="Models\SinhVienProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,6 +105,7 @@
     <Compile Include="ViewModels\EditKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\Home_AdminViewModels.cs" />
     <Compile Include="ViewModels\qlKhoa_AdminViewModels.cs" />
+    <Compile Include="ViewModels\qlSinhVien_AdminViewModel.cs" />
     <Compile Include="Views\AddKhoaServiceView.xaml.cs">
       <DependentUpon>AddKhoaServiceView.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,9 @@
     </Compile>
     <Compile Include="Views\qlKhoa_AdminView.xaml.cs">
       <DependentUpon>qlKhoa_AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\qlSinhVien_AdminView.xaml.cs">
+      <DependentUpon>qlSinhVien_AdminView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,6 +148,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\qlSinhVien_AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libary_ConnectDB\Libary_ConnectDB.csproj">
@@ -159,10 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\8674903_ic_fluent_filter_regular_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\8674897_ic_fluent_ios_arrow_ltr_icon.png" />
-    <Resource Include="img\8674914_ic_fluent_ios_arrow_rtl_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
