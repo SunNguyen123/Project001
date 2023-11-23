@@ -4,17 +4,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:TextBoxASB},ResourceId=tb1}" TargetType="TextBox">
         <Setter Property="Padding" Value="8 0"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey100b}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey500}}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="1.4" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
+                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="0.7" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
                                       HorizontalScrollBarVisibility="Auto" 
-                                      VerticalScrollBarVisibility="Disabled"></ScrollViewer>
+                                      VerticalScrollBarVisibility="Disabled">
+                                
+                            </ScrollViewer>
                             <Label x:Name="lb" Padding="{TemplateBinding Padding}" 
                                    Margin="2 1 0 0" FontFamily="{TemplateBinding FontFamily}" 
                                    Visibility="Collapsed" FontSize="{TemplateBinding FontSize}" 
@@ -91,7 +93,8 @@
                             
                             <Image Width="20" Height="20" HorizontalAlignment="Center" Margin="0 2 0 0" RenderOptions.BitmapScalingMode="HighQuality" VerticalAlignment="Center"  Source="/Resource;component/img/8675339_ic_fluent_search_regular_icon.png" />
 
-                            <ScrollViewer Grid.Column="1" x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                            <ScrollViewer Grid.Column="1" x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                                       HorizontalScrollBarVisibility="Hidden" 
                                       VerticalScrollBarVisibility="Disabled"></ScrollViewer>
                             <Label Grid.Column="1" x:Name="lb" Padding="{TemplateBinding Padding}" 

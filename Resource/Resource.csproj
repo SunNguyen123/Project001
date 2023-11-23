@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncVirtualCollection.cs" />
+    <Compile Include="Validation\DatetimeValidate.cs" />
     <Compile Include="VirtualizingCollection.cs" />
     <Page Include="PasswordBoxNew\PasswordBox2.xaml">
       <SubType>Designer</SubType>
@@ -229,6 +230,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\8675707_ic_fluent_warning_regular_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674511_ic_fluent_chevron_up_regular_icon.png" />
+    <Resource Include="img\8675229_ic_fluent_options_regular_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,7 +9,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -112,16 +112,25 @@
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Height" Value="36"/>
 
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DataGridColumnHeader">
                         <Grid>
                     <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                         <ContentPresenter  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Margin="8 0 8 0"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
+                                <Image VerticalAlignment="Center" Grid.Column="1" Margin="8" Width="16" Height="16" SnapsToDevicePixels="True" x:Name="img" Source="/Resource;component/img/8674526_ic_fluent_chevron_down_regular_icon.png" />
+
+
+                            </Grid>
+                        </Border>
                             <Thumb x:Name="PART_LeftHeaderGripper"
                  HorizontalAlignment="Left"
                  Style="{DynamicResource {x:Static res:ScrollBarASB.ColumnHeaderGripperStyle}}" />
@@ -129,8 +138,12 @@
                  HorizontalAlignment="Right"
                  Style="{DynamicResource {x:Static res:ScrollBarASB.ColumnHeaderGripperStyle}}" />
                         </Grid>
-                    
-                    
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="SortDirection" Value="Ascending">
+                            <Setter Property="Source" Value="/Resource;component/img/8674511_ic_fluent_chevron_up_regular_icon.png" TargetName="img"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -144,11 +157,20 @@
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="MinHeight" Value="32"/>
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
         <Setter Property="Validation.ErrorTemplate"
-          Value="{x:Null}" />
-        <Setter Property="ValidationErrorTemplate">
+          >
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderBrush="Red" BorderThickness="1">
+                        <AdornedElementPlaceholder/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
                     <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.Red}}"
@@ -157,7 +179,7 @@
                    VerticalAlignment="Center" />
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridRow}">
@@ -231,14 +253,7 @@
                                 <VisualState x:Name="Unfocused_EditingRow" />
                                 <VisualState x:Name="Normal_EditingRow" />
                                 <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="rowHeaderBorder"
-                                                Storyboard.TargetProperty="(Panel.Background).
-                      (GradientBrush.GradientStops)[1].(GradientStop.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource ControlMouseOverColor}" />
-                                        </ColorAnimationUsingKeyFrames>
-                                    </Storyboard>
+                                   
                                 </VisualState>
                                 <VisualState x:Name="MouseOver_CurrentRow" />
                                 <VisualState x:Name="MouseOver_Unfocused_EditingRow" />
@@ -282,20 +297,12 @@
     </Style>
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgvcell}" TargetType="{x:Type DataGridCell}">
-        <Setter Property="Padding" Value="8 8"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
         
-        <Setter Property="Validation.ErrorTemplate">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Border BorderBrush="Red">
-                        <AdornedElementPlaceholder/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -306,15 +313,18 @@
                 Background="Transparent"
                 SnapsToDevicePixels="True">
                        
-                        <ContentPresenter MaxWidth="140"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                        <ContentPresenter  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
                      
                         <Trigger Property="IsEditing" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.BD300}}" TargetName="border"/>
+                            
                             <Setter Property="Background" Value="White" TargetName="border"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="BorderBrush" Value="Red" TargetName="border"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                         

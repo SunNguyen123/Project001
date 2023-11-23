@@ -101,6 +101,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\AddKhoaServiceViewModel.cs" />
+    <Compile Include="ViewModels\AddSinhVien_AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminModuleCentre.cs" />
     <Compile Include="ViewModels\EditKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\Home_AdminViewModels.cs" />
@@ -108,6 +109,9 @@
     <Compile Include="ViewModels\qlSinhVien_AdminViewModel.cs" />
     <Compile Include="Views\AddKhoaServiceView.xaml.cs">
       <DependentUpon>AddKhoaServiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddSinhVien_AdminView.xaml.cs">
+      <DependentUpon>AddSinhVien_AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditKhoa_AdminView.xaml.cs">
       <DependentUpon>EditKhoa_AdminView.xaml</DependentUpon>
@@ -133,6 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AddKhoaServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddSinhVien_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

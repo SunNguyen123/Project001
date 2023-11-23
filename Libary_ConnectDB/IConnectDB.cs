@@ -14,7 +14,7 @@ namespace Libary_ConnectDB
         Task<ObservableCollection<T>> GetDataAsync<T>(string query);
         Task<int> CountRecordAsync(string query);
         void Execute(string query);
-       ObservableCollection<T> GetData<T>(string query);
+       IList<T> GetData<T>(string query);
         int CountRecord(string query);
     }
 }

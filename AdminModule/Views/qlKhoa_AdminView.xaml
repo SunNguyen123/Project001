@@ -16,6 +16,7 @@
              mc:Ignorable="d"
              Focusable="False" FocusVisualStyle="{x:Null}"
              x:Name="khoa" 
+                xmlns:val="clr-namespace:Resource.Validation;assembly=Resource"
              UseLayoutRounding="True"
              prism:ViewModelLocator.AutoWireViewModel="True"
              Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
@@ -67,7 +68,7 @@
                     </i:Interaction.Triggers>
 
                 </ComboBox>
-                <TextBox TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=300}" VerticalContentAlignment="Center" x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
+                <TextBox VerticalContentAlignment="Center" TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=300}"  x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
 
                 </TextBox>
             </StackPanel>
@@ -181,10 +182,13 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="36"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBox PreviewKeyDown="TextBox_PreviewKeyDown" VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime},NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
-                                <DatePicker Grid.Column="1" Foreground="White" Name="dt" Width="32" BorderThickness="0" VerticalAlignment="Center" Margin="4 0 0 0" HorizontalAlignment="Center" 
+                                <TextBox FontSize="12" Margin="8 0 8 0" HorizontalAlignment="Left" PreviewKeyDown="TextBox_PreviewKeyDown" VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" 
+                                         Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime},NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
+                                <DatePicker Grid.Column="1" Foreground="White" Name="dt"  BorderThickness="0" VerticalAlignment="Center" Margin="4 0 0 0" HorizontalAlignment="Center" 
                                         Style="{DynamicResource {x:Static res:DatepickerASB.datePickericonStyle}}" 
-                                        SelectedDate="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+                                      SelectedDate="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource convertdatetime}}" >
+                                   
+                                </DatePicker>
                             </Grid>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>

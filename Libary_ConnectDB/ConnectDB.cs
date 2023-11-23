@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Prism.Services.Dialogs;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Libary_ConnectDB
 {
@@ -151,28 +152,28 @@ namespace Libary_ConnectDB
             }
         }
 
-        public ObservableCollection<T> GetData<T>(string query)
+        public IList<T> GetData<T>(string query)
         {
-            ObservableCollection<T> list = null;
+            List<T> list = null;
             try
             {
                 if (connection.State != System.Data.ConnectionState.Open)  connection.Open();
-                list = new ObservableCollection<T>(connection.Query<T>(query));
+                list = new List<T>(connection.Query<T>(query));
 
 
             }
             catch (Exception e)
             {
 
-                //var ts1 = new DialogParameters();
-                //ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
-                //ts1.Add("message2", $"Vui lòng thử lại sau !");
+                var ts1 = new DialogParameters();
+                ts1.Add("message1", $"Lỗi kết nối tới cơ sở dữ liệu :({e.Message})");
+                ts1.Add("message2", $"Vui lòng thử lại sau !");
 
-                //dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
-                //{
+                dialogService.ShowDialog("DialogWindowView", ts1, (r) =>
+                {
 
 
-                //});
+                });
 
 
             }

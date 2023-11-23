@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              UseLayoutRounding="True"
+             Foreground="{DynamicResource {x:Static res:ColorASB.Grey800}}"
+             
              FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
              xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
              xmlns:prism="http://prismlibrary.com/"
@@ -51,7 +53,7 @@
             <DropShadowEffect BlurRadius="4" ShadowDepth="0" Direction="0" Opacity="0.7"/>
         </Border.Effect>
         <Grid>
-            <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thêm khoa</TextBlock>
+            <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thêm khoa</TextBlock>
             <Separator VerticalAlignment="Top" Margin="0 54 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
             <bt:Button2 TabIndex="5" Width="24" Height="24" CommandParameter="CANCEL" Command="{Binding ResultDialog}" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" Margin="16">
                 <Image Width="20" Margin="2" Height="20" Source="/Resource;component/img/8674683_ic_fluent_dismiss_regular_icon (1).png" />
@@ -61,7 +63,7 @@
 
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16 78 16 0" Orientation="Vertical">
 
-                <TextBlock  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên khoa(*)" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên khoa(*)" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
                 <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
@@ -77,7 +79,7 @@
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Năm bắt đầu" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                 </TextBlock>
-                <DatePicker TabIndex="1" SelectedDate="{Binding NgayThanhLap,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
+                <DatePicker  Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}" TabIndex="1" SelectedDate="{Binding NgayThanhLap,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"/>
 
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ghi chú" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
