@@ -20,14 +20,21 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(ComboboxASB), "tg");
             
         }
+        public static ComponentResourceKey TGNONE
+        {
+            get => new ComponentResourceKey(typeof(ComboboxASB), "tgnone");
 
+        }
 
         public static ComponentResourceKey CMB1
         {
             get => new ComponentResourceKey(typeof(ComboboxASB), "cmb1");
         }
 
-
+        public static ComponentResourceKey CMBTEXT
+        {
+            get => new ComponentResourceKey(typeof(ComboboxASB), "cmbtext");
+        }
 
         public static ComponentResourceKey TGNEW
         {

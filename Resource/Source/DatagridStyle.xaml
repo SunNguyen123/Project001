@@ -160,15 +160,9 @@
         <Setter Property="MinHeight" Value="32"/>
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
-        <Setter Property="Validation.ErrorTemplate"
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"
           >
-            <Setter.Value>
-                <ControlTemplate>
-                    <Border BorderBrush="Red" BorderThickness="1">
-                        <AdornedElementPlaceholder/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
+            
         </Setter>
         <!--<Setter Property="ValidationErrorTemplate">
             <Setter.Value>

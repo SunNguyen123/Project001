@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="AdminModule.Views.qlSinhVien_AdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdminModule.Views"
+             mc:Ignorable="d" 
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+             FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
+             Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
+             UseLayoutRounding="True"
+             xmlns:val="clr-namespace:Resource.Validation;assembly=Resource"
+             xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
+             xmlns:newcontrol="clr-namespace:Resource.NewControl;assembly=Resource"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:cvres="clr-namespace:Resource;assembly=Resource"
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <cvres:ConvertRecord x:Key="chuyendoislbanghi"/>
+    </UserControl.Resources>
+
+    <Border Padding="16">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition >
+
+                </RowDefinition>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"><Run Text="Sinh viên"/><Run FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" TextOptions.TextRenderingMode="ClearType" FontSize="11" Text="{Binding Count, Converter={StaticResource chuyendoislbanghi}}"/></TextBlock>
+
+            <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <ComboBox Width="80" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
+                    <TextBox VerticalContentAlignment="Center" Margin="8 0 0 0" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                    <bt:Button2 FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
+                            Width="88" Color="White" BorderThickness="0.6" 
+                            BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                            Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
+                            Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                            border_radius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Width="20" Height="20" Source="/Resource;component/img/8674406_ic_fluent_add_regular_icon (1).png" />
+                            <TextBlock Text="Lọc" Margin="2 2 0 0" FontSize="15"/>
+                        </StackPanel>
+                    </bt:Button2>
+                    <Separator   Margin="4 0 4 0"  BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Width="1"  Height="32"/>
+
+                    <bt:Button2  FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
+                            Width="88" Color="White" BorderThickness="0.6"  Command="{Binding ThemSVCommand}"
+                            BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                            Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
+                            Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                            border_radius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image  Width="20" Height="20" Source="/Resource;component/img/8674406_ic_fluent_add_regular_icon (1).png" />
+                            <TextBlock Text="Thêm" Margin="2 2 0 0" FontSize="15"/>
+                        </StackPanel>
+                    </bt:Button2>
+                </StackPanel>
+            </Grid>
+            <newcontrol:DatagridNew2  SelectionMode="Single"
+                                     
+                                     VirtualizingPanel.ScrollUnit="Item" 
+                                     VirtualizingPanel.IsVirtualizing="True" 
+                                     VirtualizingPanel.VirtualizationMode="Recycling" 
+                                     ScrollViewer.IsDeferredScrollingEnabled="True"  
+                                     ItemsSource="{Binding ListSV,IsAsync=True}" Margin="0 8 0 0"   Grid.Row="1" 
+                                      ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"
+                                         CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
+                                         RowStyle="{DynamicResource {x:Static res:DatagridASB.DGVROW}}"
+                                         CanUserResizeRows="True" CanUserAddRows="False"
+                                         AutoGenerateColumns="False"
+                                         GridLinesVisibility="All" 
+                                      HorizontalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
+                                            VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}"
+                                         Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}">
+                <newcontrol:DatagridNew2.Columns>
+                    <DataGridTextColumn  Header="Mã Sinh Viên" CanUserSort="False" IsReadOnly="True" Binding="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.MaSV}"/>
+                    <DataGridTemplateColumn Header="CMND" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.CMND,TargetNullValue=NULL}"/>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBox Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.CMND,TargetNullValue=NULL}"/>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <!--Cột sinh viên-->
+                    <DataGridTemplateColumn   Header="Tên sinh viên">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenSV,TargetNullValue=NULL}">
+                
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                            
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
+                                             Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenSV,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
+                                             >
+         
+                                    </TextBox>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                       
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    
+                    
+                    
+                    
+                </newcontrol:DatagridNew2.Columns>
+            </newcontrol:DatagridNew2>
+        </Grid>
+    </Border>
+</UserControl>

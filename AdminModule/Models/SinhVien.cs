@@ -1,0 +1,129 @@
+﻿using System;
+using Prism.Mvvm;
+using Resource;
+namespace AdminModule.Models
+{
+   public class SinhVien:BaseModel
+    {
+        private string _maSV;
+
+        public string MaSV
+        {
+            get 
+            { 
+                return _maSV;
+            }
+            set { _maSV = value; }
+        }
+        private byte[] _anhDaiDien;
+
+        public byte[] AnhDaiDien
+        {
+            get { return _anhDaiDien; }
+            set { _anhDaiDien = value; }
+        }
+
+        private string _cmnd;
+
+        public string CMND
+        {
+            get { return _cmnd; }
+            set { _cmnd = value; }
+        }
+        private string _tenSV;
+
+        public string TenSV
+        {
+            get { return _tenSV; }
+            set 
+            
+            {
+                if (value.Length > 5) { AddError(nameof(TenSV), "DAI QUA"); return; }
+                else { RemoveError(nameof(TenSV), "DAI QUA"); }
+                SetProperty(ref _tenSV,value);
+                
+            
+            }
+        }
+        private DateTime _ngaySinh;
+
+        public DateTime NgaySinh
+        {
+            get { return _ngaySinh; }
+            set { _ngaySinh = value; }
+        }
+
+        private bool _gt;
+
+        public bool GioiTinh
+        {
+            get { return _gt; }
+            set { _gt = value; }
+        }
+        private string _danToc;
+
+        public string DanToc
+        {
+            get { return _danToc; }
+            set { _danToc = value; }
+        }
+        private string _tonGiao;
+
+        public string TonGiao
+        {
+            get { return _tonGiao; }
+            set { _tonGiao = value; }
+        }
+        private string _diaChi;
+
+        public string DiaChi
+        {
+            get { return _diaChi; }
+            set { _diaChi = value; }
+        }
+        private string _queQuan;
+
+        public string QueQuan
+        {
+            get { return _queQuan; }
+            set { _queQuan = value; }
+        }
+        private string sdt;
+
+        public string SDT
+        {
+            get { return sdt; }
+            set { sdt = value; }
+        }
+        private DateTime _ngayNhapHoc;  
+
+        public DateTime NgayNhapHoc
+        {
+            get { return _ngayNhapHoc; }
+            set { _ngayNhapHoc = value; }
+        }
+        private string _maKhoaHoc;
+
+        public string MaKhoaHoc
+        {
+            get { return _maKhoaHoc; }
+            set { _maKhoaHoc = value; }
+        }
+
+        private string _maLop;
+
+        public string MaLop
+        {
+            get { return _maLop; }
+            set { _maLop = value; }
+        }
+        private string _ghiChu;
+
+        public string GhiChu
+        {
+            get { return _ghiChu; }
+            set { _ghiChu = value; }
+        }
+
+    }
+}

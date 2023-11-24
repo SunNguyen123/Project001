@@ -130,16 +130,8 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:TextBoxASB},ResourceId=nonetb1}" TargetType="TextBox">
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Validation.ErrorTemplate">
-            <Setter.Value>
-                <ControlTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Width="16" Height="16" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="HighQuality" Margin="0 0 4 0" Source="/Resource;component/img/8675707_ic_fluent_warning_regular_icon.png" />
-
-                        <AdornedElementPlaceholder/>
-                    </StackPanel>
-                </ControlTemplate>
-            </Setter.Value>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}">
+           
         </Setter>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">

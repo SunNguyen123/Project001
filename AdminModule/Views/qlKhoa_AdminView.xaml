@@ -149,31 +149,152 @@
 
             <newcontrol:DatagridNew2.Columns>
 
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding STT}" MinWidth="90" Header="STT">
+              
+              
+                <!-- cột stt-->
+                
+                <DataGridTemplateColumn   IsReadOnly="True"  MinWidth="90" Header="STT">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding STT,TargetNullValue=NULL}">
 
-                </DataGridTextColumn>
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
 
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding MaKhoa}" MinWidth="110" Header="MÃ KHOA">
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
+                                             Text="{Binding STT,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
+                                             >
 
-                </DataGridTextColumn>
+                                </TextBox>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
 
-                <DataGridTextColumn  Binding="{Binding TenKhoa,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MinWidth="200" Header="TÊN KHOA">
-           
-                </DataGridTextColumn>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!--Cột mã khoa-->
+                <DataGridTemplateColumn   IsReadOnly="True"  MinWidth="110" Header="MÃ KHOA">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding MaKhoa,TargetNullValue=NULL}">
 
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
+                                             Text="{Binding MaKhoa,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
+                                             >
+
+                                </TextBox>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!--Cột tên khoa-->
+                <DataGridTemplateColumn     MinWidth="200" Header="TÊN KHOA">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding TenKhoa,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
+                                             Text="{Binding TenKhoa,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
+                                             >
+
+                                </TextBox>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+               
+                
+                <!--Cột ngày thành lập-->
 
                 <DataGridTemplateColumn MinWidth="180" CanUserSort="False" Header="NGÀY THÀNH LẬP">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate >
                             <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
 
-                                <TextBlock HorizontalAlignment="Center" Text="{Binding NamBatDau,Converter={StaticResource convertdatetime}}" VerticalAlignment="Center" >
+                                <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                           HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding NamBatDau,Converter={StaticResource convertdatetime}}" VerticalAlignment="Center" >
 
                                 </TextBlock>
 
                             </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
-                        
+
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
@@ -182,43 +303,76 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="36"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBox FontSize="12" Margin="8 0 8 0" HorizontalAlignment="Left" PreviewKeyDown="TextBox_PreviewKeyDown" VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" 
+                                <Rectangle  x:Name="er" Grid.ColumnSpan="2" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+
+                                <TextBox x:Name="txt" FontSize="12" Margin="8 0 8 0" HorizontalAlignment="Stretch" PreviewKeyDown="TextBox_PreviewKeyDown" 
+                                         VerticalContentAlignment="Center" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}"  
                                          Text="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=LostFocus,Converter={StaticResource convertdatetime},NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True}"/>
                                 <DatePicker Grid.Column="1" Foreground="White" Name="dt"  BorderThickness="0" VerticalAlignment="Center" Margin="4 0 0 0" HorizontalAlignment="Center" 
                                         Style="{DynamicResource {x:Static res:DatepickerASB.datePickericonStyle}}" 
                                       SelectedDate="{Binding NamBatDau,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource convertdatetime}}" >
-                                   
+
                                 </DatePicker>
                             </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsEditing}" Value="True">
+                                    <Setter Property="FocusManager.FocusedElement" Value="{Binding ElementName=txt}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
 
-                <DataGridTextColumn  Binding="{Binding GhiChu,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  MinWidth="180"  Header="GHI CHÚ">
-
-                </DataGridTextColumn>
-
-                <!--<DataGridTemplateColumn MinWidth="100" Header="Hành động">
+                <!-- Cột ghi chú-->
+                <DataGridTemplateColumn   MinWidth="180"  Header="GHI CHÚ">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                                <bt:Button2 Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" Background="Transparent" BorderThickness="0"  Hover="{DynamicResource {x:Static res:ColorASB.Grey400}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Width="24" Height="24" border_radius="5">
-                                    <Image Width="16" Height="16" Source="/Resource;component/img/8675035_ic_fluent_edit_regular_icon.png" />
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding GhiChu,TargetNullValue=NULL}">
 
-                                </bt:Button2 >
-                                <bt:Button2 Command="{Binding DataContext.RemoveKhoa,RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType=UserControl}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" Background="Transparent" 
-                                            BorderThickness="0"  
-                                            Hover="{DynamicResource {x:Static res:ColorASB.Grey400}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" Margin="8 0 0 0" Width="24" Height="24" border_radius="5">
-                                    <Image Width="16" Height="16" Source="/Resource;component/img/8674741_ic_fluent_delete_regular_icon.png" />
-
-                                </bt:Button2>
-                            </StackPanel>
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
+
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
+                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
+                                             Text="{Binding GhiChu,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
+                                             >
 
+                                </TextBox>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
 
+                                </Trigger>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}, Path=IsEditing}" Value="True">
+                                    <Setter Property="FocusManager.FocusedElement" Value="{Binding ElementName=txt}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                
+                
+                
             </newcontrol:DatagridNew2.Columns>
         </newcontrol:DatagridNew2>
 

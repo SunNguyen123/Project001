@@ -8,22 +8,16 @@ using System.Windows.Data;
 
 namespace Resource
 {
-    public class ConvertDateTime : IValueConverter
+    public class ConvertRecord : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DateTime date;
-            if (DateTime.TryParse(value.ToString(),out date)) 
-            {
-                return date.ToString("d-MM-yyyy");
-            }
-            return null;
+            return $"({value.ToString()} bản ghi)";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
-
+            throw new NotImplementedException();
         }
     }
 }

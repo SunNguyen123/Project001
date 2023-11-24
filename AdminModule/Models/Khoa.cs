@@ -1,8 +1,9 @@
 ﻿using System;
 using Prism.Mvvm;
+using Resource;
 namespace AdminModule.Models
 {
-  public  class Khoa:BindableBase
+  public  class Khoa:BaseModel
     {
 
         private int _stt;
@@ -42,8 +43,15 @@ namespace AdminModule.Models
 
         public DateTime NamBatDau
         {
-            get { return _nambatdau; }
-            set { SetProperty<DateTime>(ref _nambatdau, value); }
+            get 
+            { 
+                return _nambatdau; 
+            }
+            set 
+            {
+
+                SetProperty<DateTime>(ref _nambatdau, value); 
+            }
         }
         private string _ghichu;
 
