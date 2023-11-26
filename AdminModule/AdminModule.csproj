@@ -82,9 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\BindingProxy.cs" />
+    <Compile Include="Models\ChuongTrinh.cs" />
     <Compile Include="Models\Chuyendoislbanghi.cs" />
     <Compile Include="Models\ConvertKhoa.cs" />
     <Compile Include="Models\Khoa.cs" />
+    <Compile Include="Models\KhoaHoc.cs" />
     <Compile Include="Models\Lop.cs" />
     <Compile Include="Models\MenuItemKhoa.cs" />
     <Compile Include="Models\Nganh.cs" />
@@ -108,8 +110,10 @@
     <Compile Include="ViewModels\AdminModuleCentre.cs" />
     <Compile Include="ViewModels\EditKhoaServiceViewModel.cs" />
     <Compile Include="ViewModels\Home_AdminViewModels.cs" />
+    <Compile Include="ViewModels\LopServiceViewModel.cs" />
     <Compile Include="ViewModels\NganhServiceViewModel.cs" />
     <Compile Include="ViewModels\qlKhoa_AdminViewModels.cs" />
+    <Compile Include="ViewModels\qlLop_AdminViewModel.cs" />
     <Compile Include="ViewModels\qlNganh_AdminViewModel.cs" />
     <Compile Include="ViewModels\qlSinhVien_AdminViewModel.cs" />
     <Compile Include="Views\AddKhoaServiceView.xaml.cs">
@@ -124,11 +128,17 @@
     <Compile Include="Views\Home_AdminView.xaml.cs">
       <DependentUpon>Home_AdminView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LopServiceView.xaml.cs">
+      <DependentUpon>LopServiceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NganhServiceView.xaml.cs">
       <DependentUpon>NganhServiceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\qlKhoa_AdminView.xaml.cs">
       <DependentUpon>qlKhoa_AdminView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\qlLop_AdminView.xaml.cs">
+      <DependentUpon>qlLop_AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\qlNganh_AdminView.xaml.cs">
       <DependentUpon>qlNganh_AdminView.xaml</DependentUpon>
@@ -163,11 +173,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LopServiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NganhServiceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\qlKhoa_AdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\qlLop_AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

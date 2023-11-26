@@ -60,7 +60,12 @@
             <StackPanel HorizontalAlignment="Left" Margin="16 8" VerticalAlignment="Bottom" Orientation="Horizontal" >
 
 
-                <ComboBox TabIndex="0" ItemsSource="{Binding ITEMS}" SelectedItem="{Binding DieuKienTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Width="80" Margin="0 0 8 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" >
+                <ComboBox TabIndex="0" 
+                          ItemsSource="{Binding ITEMS}" 
+                          SelectedItem="{Binding DieuKienTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                          HorizontalContentAlignment="Left" 
+                          ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Width="80" Margin="0 0 8 0" 
+                          Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" >
 
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">

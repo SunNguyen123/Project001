@@ -1,8 +1,9 @@
 ﻿using System;
-using Resource;
+
 namespace AdminModule.Models
 {
-   public class Lop:BaseModel
+  public  class KhoaHoc
+
     {
         private string _stt;
 
@@ -12,29 +13,13 @@ namespace AdminModule.Models
             set { _stt = value; }
         }
 
-        private string _maLop;
-
-        public string MaLop
-        {
-            get { return _maLop; }
-            set { _maLop = value; }
-        }
-        private string _tenLop;
-
-        public string TenLop
-        {
-            get { return _tenLop; }
-            set { _tenLop = value; }
-        }
-
         private string _maKhoaHoc;
 
-        public string  MaKhoaHoc
+        public string MaKhoaHoc
         {
             get { return _maKhoaHoc; }
             set { _maKhoaHoc = value; }
         }
-
         private string _tenKhoaHoc;
 
         public string TenKhoaHoc
@@ -42,19 +27,35 @@ namespace AdminModule.Models
             get { return _tenKhoaHoc; }
             set { _tenKhoaHoc = value; }
         }
-        private string _maNganh;
+        private DateTime _namBatDau;    
 
-        public string MaNganh
+        public DateTime NamBatDau
         {
-            get { return _maNganh; }
-            set { _maNganh = value; }
+            get { return _namBatDau; }
+            set { _namBatDau = value; }
         }
-        private string _tenNganh;
 
-        public string TenNganh
+        private DateTime _namKetThuc;
+
+        public DateTime NamKetThuc
         {
-            get { return _tenNganh; }
-            set { _tenNganh = value; }
+            get { return _namKetThuc; }
+            set { _namKetThuc = value; }
+        }
+
+        private string _maCT;
+
+        public string MaCT
+        {
+            get { return _maCT; }
+            set { _maCT = value; }
+        }
+        private string _tenCT;
+
+        public string TenCT
+        {
+            get { return _tenCT; }
+            set { _tenCT = value; }
         }
         private string _ghiChu;
 

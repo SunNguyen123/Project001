@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO.Compression;
 using System.IO;
-
+using Resource;
 namespace LoginModule.ViewModels
 {
    public class LoginViewModel2:BindableBase
@@ -45,23 +45,9 @@ namespace LoginModule.ViewModels
             this.ev = ev;
             this.dialogService = dialogService;
             LoginCommand = new DelegateCommand(LoginExecute,CanLoginExecute).ObservesProperty(()=> IsLoad);
-            string b = MD5Hash("admin");
-            string c = MD5Hash("123");
+
         }
-        private string MD5Hash(string exp) 
-        {
-                StringBuilder stringBuilder = new StringBuilder();
-            using (MD5 md5=MD5.Create()) 
-            {
-                byte[] sample = Encoding.UTF8.GetBytes(exp);
-                byte[] hash = md5.ComputeHash(sample);
-                foreach (var i in hash) 
-                {
-                    stringBuilder.Append(i.ToString());
-                }
-            }
-                return stringBuilder.ToString();
-        }
+
         private bool CanLoginExecute()
         {
             return !IsLoad;
@@ -72,7 +58,7 @@ namespace LoginModule.ViewModels
             IsLoad = true;
             try
             {
-                ObservableCollection<TAIKHOAN> list = await connect.GetDataAsync<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{MD5Hash(TaiKhoan)}' AND MatKhau='{MD5Hash(MatKhau)}'");
+                ObservableCollection<TAIKHOAN> list = await connect.GetDataAsync<TAIKHOAN>($"SELECT MaTk,PhanLoai FROM TAIKHOAN WHERE TaiKhoan='{Resource.MD5Hash.Hash(TaiKhoan)}' AND MatKhau='{MD5Hash.Hash(MatKhau)}'");
 
                 if (list == null) { 
                     

@@ -35,7 +35,11 @@
 
             <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <ComboBox SelectedItem="{Binding LoaiTK,Mode=OneWay}" ItemsSource="{Binding DieuKienTK}" Width="80" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
+                    <ComboBox SelectedItem="{Binding LoaiTK,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                              ItemsSource="{Binding DieuKienTK}" 
+                              Width="80" 
+                              Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" 
+                              ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
                     <TextBox VerticalContentAlignment="Center" Margin="8 0 0 0" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

@@ -4,9 +4,320 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdminModule.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:cv="clr-namespace:AdminModule.Models"
+             xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
+             xmlns:newcontrol="clr-namespace:Resource.NewControl;assembly=Resource"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:model="clr-namespace:AdminModule.Models"        
+             xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
+             xmlns:cvres="clr-namespace:Resource;assembly=Resource"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
             
+                xmlns:val="clr-namespace:Resource.Validation;assembly=Resource"
+             mc:Ignorable="d"
+             Focusable="False" FocusVisualStyle="{x:Null}"
+             x:Name="lop" 
+            FontSize="12"
+             UseLayoutRounding="True"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
+             FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" 
+             Background="White" MouseDown="lop_MouseDown"
+             d:DesignHeight="562" d:DesignWidth="770">
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding AddCommand}" Key="N" Modifiers="Ctrl"/>
+
+    </UserControl.InputBindings>
+
+    <UserControl.Resources>
+        <model:BindingProxy 
+  x:Key="DataContextProxy"
+  Data="{Binding}" />
+        <cvres:ConvertDateTime x:Key="convertdatetime"/>
+
+        <cvres:ConvertRecord x:Key="chuyendoislbanghi"/>
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle StrokeDashArray="1 2" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" Margin="2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16" FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"><Run Text="Lớp"/><Run FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" TextOptions.TextRenderingMode="ClearType" FontSize="11" Text="{Binding Count, Converter={StaticResource chuyendoislbanghi}}"/></TextBlock>
+            <StackPanel HorizontalAlignment="Left" Margin="16 8" VerticalAlignment="Bottom" Orientation="Horizontal" >
+
+
+                <ComboBox TabIndex="0" ItemsSource="{Binding ITEMS}" 
+                          SelectedItem="{Binding DieuKienTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                          HorizontalContentAlignment="Left" 
+                          ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" 
+                          Width="80" Margin="0 0 8 0" 
+                          Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" >
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding TimKiemCommand}" CommandParameter="{Binding Text, ElementName=tk}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </ComboBox>
+                <TextBox VerticalContentAlignment="Center" TabIndex="1" Text="{Binding GiaTriTimKiem,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=300}"  x:Name="tk" Tag="Tìm kiếm" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
+
+                </TextBox>
+            </StackPanel>
+
+
+
+            <StackPanel Margin="16 8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <bt:Button2 TabIndex="2" Command="{Binding AddCommand}" 
+                            FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
+                            Width="88" Color="White" BorderThickness="0.6" 
+                            BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                            Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" 
+                            Background="{DynamicResource {x:Static res:ColorASB.BD300}}" 
+                            Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
+                            border_radius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image  Width="20" Height="20" Source="/Resource;component/img/8674406_ic_fluent_add_regular_icon (1).png" />
+                        <TextBlock Text="Thêm" Margin="2 2 0 0" FontSize="15"/>
+                    </StackPanel>
+                </bt:Button2>
+            </StackPanel>
+
+        </Grid>
+
+        <newcontrol:DatagridNew2 TabIndex="3" CanUserResizeRows="True" IsReadOnly="True"
+                                 RowEditEnding="dgvLop_RowEditEnding"  
+                                 SelectionChanged="dgvLop_SelectionChanged" 
+                                 x:Name="dgvLop" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
+                                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
+                                 ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"  
+                                 AutoGenerateColumns="False"
+                                 CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
+                                 GridLinesVisibility="All" HorizontalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
+                                 VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
+                                 ItemsSource="{Binding ListData, IsAsync=True}" 
+                                 Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}" Grid.Row="1" >
+
+
+            <newcontrol:DatagridNew2.RowStyle>
+                <Style BasedOn="{StaticResource {x:Static res:DatagridASB.DGVROW}}" TargetType="DataGridRow">
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Mode=Self}}"
+                                         ItemContainerStyle="{DynamicResource {x:Static res:ContextMenuASB.MNITEM1}}" 
+                                         Style="{DynamicResource {x:Static res:ContextMenuASB.MN1}}">
+                                <MenuItem >
+                                    <MenuItem.Header>
+                                        <Grid>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">Thông tin</TextBlock>
+                                            <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.NL700}}" VerticalAlignment="Center" HorizontalAlignment="Right">Ctrl+I</TextBlock>
+                                        </Grid>
+                                    </MenuItem.Header>
+                                </MenuItem>
+                                <MenuItem Command="{Binding Data.Edit2,Source={StaticResource DataContextProxy}}" >
+                                    <MenuItem.Header >
+                                        <Grid>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">Sửa</TextBlock>
+                                            <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.NL700}}" VerticalAlignment="Center" HorizontalAlignment="Right">Ctrl+F</TextBlock>
+                                        </Grid>
+                                    </MenuItem.Header>
+                                </MenuItem>
+
+                                <MenuItem Command="{Binding Data.Remove,Source={StaticResource DataContextProxy}}">
+                                    <MenuItem.Header>
+                                        <Grid>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left">Xoá</TextBlock>
+                                            <TextBlock Foreground="{DynamicResource {x:Static res:ColorASB.NL700}}" VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Right">Ctrl+D/Del</TextBlock>
+                                        </Grid>
+                                    </MenuItem.Header>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </newcontrol:DatagridNew2.RowStyle>
+
+            <newcontrol:DatagridNew2.Columns>
+
+
+
+                <!-- cột stt-->
+
+                
+
+
+                <DataGridTemplateColumn   IsReadOnly="True"  MinWidth="90" Header="STT">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding STT,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--Cột mã khoa-->
+                <DataGridTemplateColumn   IsReadOnly="True" CanUserSort="True"  MinWidth="110" Header="MÃ NGÀNH">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  
+                                           x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding MaLop,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+                  
+                </DataGridTemplateColumn>
+                <!--Cột tên khoa-->
+                <DataGridTemplateColumn   IsReadOnly="True" CanUserSort="True"  MinWidth="110" Header="TÊN LỚP">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  
+                                           x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding TenLop,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn   IsReadOnly="True" CanUserSort="True"  MinWidth="110" Header="KHOÁ HỌC">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  
+                                           x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding TenKhoaHoc,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+                <!--mã khoa-->
+                <DataGridTemplateColumn   IsReadOnly="True" CanUserSort="True"  MinWidth="110" Header="NGÀNH">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  
+                                           x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding TenNganh,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+
+                <!--Cột ngày thành lập-->
+
+                <DataGridTemplateColumn   IsReadOnly="True" CanUserSort="True"  MinWidth="110" Header="Ghi chú">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                <TextBlock  
+                                           x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding GhiChu,TargetNullValue=NULL}">
+
+                                </TextBlock>
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                    <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    <Setter Property="ToolTip" TargetName="txt" Value="{Binding ElementName=txt,Path=(Validation.Errors)[0].ErrorContent}"/>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+
+                <!-- Cột ghi chú-->
+
+
+
+            </newcontrol:DatagridNew2.Columns>
+        </newcontrol:DatagridNew2>
+
     </Grid>
 </UserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              UseLayoutRounding="True"
-             Foreground="{DynamicResource {x:Static res:ColorASB.Grey800}}"
+             Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
              
              FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
              xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"

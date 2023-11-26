@@ -33,7 +33,16 @@ namespace AdminModule.ViewModels
             get { return _loaiTk; }
             set { _loaiTk = value; }
         }
+        private string _dk =  "Mã";
 
+        public string DieuKienTimKiem
+        {
+            get { return _dk; }
+            set
+            {
+                SetProperty(ref _dk, value, nameof(DieuKienTimKiem));
+            }
+        }
         public DelegateCommand ThemSVCommand { set; get; }
         public int CountRecord
         {

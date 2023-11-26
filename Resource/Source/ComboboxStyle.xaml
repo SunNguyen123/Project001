@@ -78,7 +78,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <ToggleButton x:Name="tg" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=SelectedItem}" IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IsDropDownOpen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource {x:Static local:ComboboxASB.TG}}">
+                        <ToggleButton x:Name="tg" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=SelectionBoxItem}" IsChecked="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=IsDropDownOpen,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource {x:Static local:ComboboxASB.TG}}">
                             
                         </ToggleButton>
                         <Popup StaysOpen="False" AllowsTransparency="True" Focusable="False" PlacementTarget="{Binding ElementName=tg}" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" PopupAnimation="Slide"  VerticalOffset="12">

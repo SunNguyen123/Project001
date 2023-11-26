@@ -37,19 +37,25 @@ namespace NavBarModule.ViewModels
          {
              if (result.Result == false)
              {
+                         var rgbody = manager.Regions["Body"];
                  switch (obj)
                  {
                      case "qlKhoa_AdminView":
-                         var rgbody = manager.Regions["Body"];
                          var qlKhoa = containerProvider.Resolve<qlKhoa_AdminView>();
                          rgbody.Add(qlKhoa);
                          rgbody.Activate(qlKhoa);
                          break;
                      case "qlNganh_AdminView":
-                         var rgbody1 = manager.Regions["Body"];
+                    
                          var qlNganh = containerProvider.Resolve<qlNganh_AdminView>();
-                         rgbody1.Add(qlNganh);
-                         rgbody1.Activate(qlNganh);
+                         rgbody.Add(qlNganh);
+                         rgbody.Activate(qlNganh);
+                         break;
+                     case "qlLop_AdminView":
+                         
+                         var qlLop = containerProvider.Resolve<qlLop_AdminView>();
+                         rgbody.Add(qlLop);
+                         rgbody.Activate(qlLop);
                          break;
                  }
              }

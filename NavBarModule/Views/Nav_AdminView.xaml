@@ -50,6 +50,20 @@
                 <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Khoa"/>
             </StackPanel>
         </RadioButton>
+
+        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
+            <bh:Interaction.Triggers>
+                <bh:EventTrigger EventName="Checked">
+                    <bh:InvokeCommandAction Command="{Binding navigateView}" CommandParameter="qlLop_AdminView" />
+                </bh:EventTrigger>
+            </bh:Interaction.Triggers>
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675172_ic_fluent_notepad_regular_icon.png" />
+                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Lớp"/>
+            </StackPanel>
+        </RadioButton>
+
+
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
 
@@ -86,20 +100,14 @@
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-
-
                 <Image Width="20" Height="20"  RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8674867_ic_fluent_hat_graduation_regular_icon.png" />
-
                 <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Giáo Viên"/>
             </StackPanel>
         </RadioButton>
 
         <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
             <StackPanel Orientation="Horizontal">
-
-
                 <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675172_ic_fluent_notepad_regular_icon.png" />
-
                 <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Phân công"/>
             </StackPanel>
         </RadioButton>
@@ -112,20 +120,11 @@
             </bh:Interaction.Triggers>
             <StackPanel Orientation="Horizontal">
                 <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675143_ic_fluent_person_regular_icon.png" />
-
                 <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Sinh Viên"/>
             </StackPanel>
         </RadioButton>
 
 
-        <RadioButton Style="{DynamicResource {x:Static res:RadioButtonASB.RD}}">
-            <StackPanel Orientation="Horizontal">
 
-
-                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality" Source="/NavBarModule;component/IMG/8675172_ic_fluent_notepad_regular_icon.png" />
-
-                <TextBlock VerticalAlignment="Center" Margin="12 1" Text="Lịch dạy"/>
-            </StackPanel>
-        </RadioButton>
     </StackPanel>
 </UserControl>

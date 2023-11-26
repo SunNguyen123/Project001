@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AsyncVirtualCollection.cs" />
     <Compile Include="BaseModel.cs" />
+    <Compile Include="MD5Hash.cs" />
     <Compile Include="Validation\DatetimeValidate.cs" />
     <Compile Include="Validation\NullorEmtyValidate.cs" />
     <Compile Include="VirtualizingCollection.cs" />

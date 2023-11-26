@@ -1,12 +1,10 @@
-﻿<UserControl
+﻿<UserControl x:Class="AdminModule.Views.LopServiceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AdminModule.Views" 
-             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-            x:Class="AdminModule.Views.NganhServiceView"
-             mc:Ignorable="d"
+             xmlns:local="clr-namespace:AdminModule.Views"
+             mc:Ignorable="d" 
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
              xmlns:prism="http://prismlibrary.com/"
@@ -15,9 +13,9 @@
              FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
              prism:ViewModelLocator.AutoWireViewModel="True"
              Background="Transparent"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <UserControl.Resources>
-        
+
     </UserControl.Resources>
     <prism:Dialog.WindowStyle>
         <Style TargetType="{x:Type Window}">
@@ -31,7 +29,7 @@
             <Setter Property="ShowInTaskbar" Value="False"/>
         </Style>
     </prism:Dialog.WindowStyle>
-    <Border Height="340"   Width="272" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
+    <Border Height="440"   Width="272" SnapsToDevicePixels="True" Margin="4" Background="White"  CornerRadius="5">
         <Border.RenderTransformOrigin>
             <Point X="0.5" Y="0.5"/>
         </Border.RenderTransformOrigin>
@@ -68,8 +66,8 @@
 
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16 78 16 0" Orientation="Vertical">
 
-                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên ngành(*)" TextWrapping="Wrap" HorizontalAlignment="Left"  />
-                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenNganh, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" 
+                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên lóp(*)" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenLop, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" 
                          Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
 
 
@@ -80,14 +78,21 @@
 
 
 
-                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Năm bắt đầu" TextWrapping="Wrap" HorizontalAlignment="Left"  />
-                <DatePicker  Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}" TabIndex="1" SelectedDate="{Binding NamBatDau, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Khoá học" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                <ComboBox  DisplayMemberPath="TenKhoaHoc" TabIndex="2"  VerticalContentAlignment="Top" 
+                           IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ListKH}" Width="240" 
+                           Margin="0 4 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" 
+                           ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" IsEditable="False" />
 
-                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ghi chú" TextWrapping="Wrap" HorizontalAlignment="Left"  />
-                <ComboBox  DisplayMemberPath="TenKhoa" TabIndex="2"  VerticalContentAlignment="Top" 
-                           IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ListKhoa}" Width="240" 
-                           Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" IsEditable="False" />
+                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ngành" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                <ComboBox  DisplayMemberPath="TenNganh" TabIndex="2"  VerticalContentAlignment="Top" 
+                           IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ListNganh}" Width="240" 
+                           Margin="0 4 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" 
+                           ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" IsEditable="False" />
 
+                <TextBlock Margin="0 16 0 0"  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ghi chú" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding GhiChu, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" 
+                         Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
                 <bt:Button2 TabIndex="3" Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" 

@@ -10,19 +10,34 @@ using Libary_ConnectDB;
 using Microsoft.Win32;
 using System.IO;
 using Resource;
+using System.Collections.ObjectModel;
+using System.Windows.Data;
+using AdminModule.Models;
+
 namespace AdminModule.ViewModels
 {
     public class AddSinhVien_AdminViewModel : BaseModel, IDialogAware
     {
-        
-            private string[] _gtSource = { "Nam", "Nữ" };
+        private string _title = "";
+        public string Title2
+        {
+            set
+            {
+                SetProperty(ref _title, value);
+            }
+            get
+            {
+                return _title;
+            }
+        }
+        private string[] _gtSource = { "Nam", "Nữ" };
 
         public string[] GtSource
         {
             get { return _gtSource; }
             set { _gtSource = value; }
         }
-        private string _gt;
+        private string _gt ="Nam";
 
         public string GioiTinh
         {
@@ -75,7 +90,13 @@ namespace AdminModule.ViewModels
             set { SetProperty<DateTime>(ref _ngayNhapHoc, value); }
         }
 
-
+        private ObservableCollection<Lop> _listLop;
+        public ListCollectionView _dsLop;
+        public ListCollectionView ListLop
+        {
+            get { return _dsLop; }
+            set { SetProperty<ListCollectionView>(ref _dsLop, value); }
+        }
         private Lazy<DelegateCommand<string>> _resultDialog;
         private Lazy<DelegateCommand> _opentDialog;
         private Uri _pathImg=null;
@@ -86,6 +107,13 @@ namespace AdminModule.ViewModels
             {
                 SetProperty<Uri>(ref _pathImg,value);
             }
+        }
+        private async Task LoadKhoa()
+        {
+
+            _listLop = await connectDB.GetDataAsync<Lop>("SELECT MaLop,TenLop FROM LOP");
+            ListLop = new ListCollectionView(_listLop);
+
         }
         public DelegateCommand OpenDialog
         {
@@ -98,7 +126,16 @@ namespace AdminModule.ViewModels
             get { return _cmnd; }
             set { SetProperty(ref _cmnd, value); }
         }
+        private string _maSV;
 
+        public string MaSV
+        {
+            get
+            {
+                return _maSV;
+            }
+            set { _maSV = value; }
+        }
 
         private string _tenSV;
 
@@ -133,7 +170,13 @@ namespace AdminModule.ViewModels
                 SetProperty<DateTime>(ref _ngaySinh,value); 
             }
         }
+        private string _ghiChu;
 
+        public string GhiChu
+        {
+            get { return _ghiChu; }
+            set { _ghiChu = value; }
+        }
 
         private string _filePath;
 
@@ -149,17 +192,19 @@ namespace AdminModule.ViewModels
             get { return _isLoading; }
             set { SetProperty<bool>(ref _isLoading,value) ; }
         }
-
+        private bool check;
         public DelegateCommand<string> ResultDialog 
         {
             get => _resultDialog.Value; 
         }
         public string Title => "Them sinh vien";
         private IConnectDB connectDB;
+        private IDialogService dialogService;
         public event Action<IDialogResult> RequestClose;
-        public AddSinhVien_AdminViewModel(IConnectDB connectDB)
+        public AddSinhVien_AdminViewModel(IConnectDB connectDB, IDialogService dialogService)
         {
             this.connectDB = connectDB;
+            this.dialogService = dialogService;
             _resultDialog = new Lazy<DelegateCommand<string>>(()=> new DelegateCommand<string>(ResultDialogMethod));
             _opentDialog = new Lazy<DelegateCommand>(()=> new DelegateCommand(OpenResultDialogMethod));
         }
@@ -177,16 +222,51 @@ namespace AdminModule.ViewModels
             }
         }
 
-        private void ResultDialogMethod(string obj)
+        private async void ResultDialogMethod(string obj)
         {
             if (obj=="OK") 
             {
-             
-           
-                    byte[] imageBytes = File.ReadAllBytes(_filePath);
-                    connectDB.Execute($"");
-              
-                RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
+
+                if (check)
+                {
+                    int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV=N'{TenSV}'");
+                    if (!string.IsNullOrWhiteSpace(TenSV) && count == 0)
+                    {
+                        byte[] imageBytes = File.ReadAllBytes(_filePath);
+                        bool gt = GioiTinh == "Nam" ? true : false;
+                        
+                        await connectDB.ExecuteAsync($"EXEC INSERTSV '{imageBytes}','{CMND}',N'{TenSV}','{NgaySinh}',{gt},N'{DanToc}',N'{TonGiao}',N'{DiaChi}',N'{QueQuan}','{SDT}','{NgayNhapHoc}','{((Lop)ListLop.CurrentItem).MaLop}',N'{GhiChu}'");
+
+                        RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
+                    }
+                    else
+                    {
+                        var ts1 = new DialogParameters();
+                        ts1.Add("message1", $"Thông tin bạn vừa nhập đã tồn tại hoặc chưa đầy đủ");
+                        ts1.Add("message2", $"Vui lòng thử lại sau !");
+                        dialogService.ShowDialog("DialogWindowView", ts1, (r) => { });
+                    }
+                }
+                else
+                {
+                    int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV=N'{TenSV}' AND NOT MaSV='{MaSV}'");
+                    if (!string.IsNullOrWhiteSpace(TenSV) && count == 0)
+                    {
+                        await connectDB.ExecuteAsync($"");
+                        var bt = ButtonResult.OK;
+                        var dialogresult = new DialogResult(bt);
+                        RequestClose?.Invoke(dialogresult);
+                    }
+                    else
+                    {
+                        var ts1 = new DialogParameters();
+                        ts1.Add("message1", $"Thông tin bạn vừa nhập đã tồn tại hoặc chưa đầy đủ");
+                        ts1.Add("message2", $"Vui lòng thử lại sau !");
+                        dialogService.ShowDialog("DialogWindowView", ts1, (r) => { });
+                    }
+                }
+
+
             }
             else
             {
@@ -204,9 +284,19 @@ namespace AdminModule.ViewModels
          
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        public async void OnDialogOpened(IDialogParameters parameters)
         {
-           
+           await LoadKhoa();
+            check = parameters.GetValue<bool>("flag");
+            if (check)
+            {
+                Title2 = "Thêm Sinh viên";
+            }
+            else
+            {
+                Title2 = "Sửa Sinh viên";
+
+            }
         }
     }
 }

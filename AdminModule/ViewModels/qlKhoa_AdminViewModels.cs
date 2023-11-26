@@ -5,7 +5,6 @@ using Libary_ConnectDB;
 using System.Collections.ObjectModel;
 using AdminModule.Models;
 using Prism.Commands;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System;
 using System.Collections.Generic;
@@ -33,7 +32,7 @@ namespace AdminModule.ViewModels
             set { SetProperty<string[]>(ref items,value); }
             get => items;
         }
-        private string _dk="Mã";
+        private string _dk= "Mã";
 
         public string DieuKienTimKiem
         {

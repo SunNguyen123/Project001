@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdminModule.Models;
+using AdminModule.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,23 @@ namespace AdminModule.Views
         public qlLop_AdminView()
         {
             InitializeComponent();
+        }
+
+        private void lop_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            FocusManager.SetFocusedElement(this, null);
+            Keyboard.ClearFocus();
+        }
+
+        private void dgvLop_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
+
+        private void dgvLop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var datacontext = (qlLop_AdminViewModel)this.DataContext;
+            datacontext.SelectedObject = dgvLop.SelectedItems.Cast<Lop>().ToList();
         }
     }
 }
