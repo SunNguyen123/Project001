@@ -18,6 +18,22 @@ namespace AdminModule.ViewModels
     {
         private int _countRecord;
         private SinhVienProvider _sinhViennProvider;
+       
+        private string[] _dkTimKiem = { "Mã","Tên"};
+
+        public string[] DieuKienTK
+        {
+            get { return _dkTimKiem ; }
+            set { _dkTimKiem = value; }
+        }
+        private string _loaiTk;
+
+        public string LoaiTK
+        {
+            get { return _loaiTk; }
+            set { _loaiTk = value; }
+        }
+
         public DelegateCommand ThemSVCommand { set; get; }
         public int CountRecord
         {
@@ -42,7 +58,9 @@ namespace AdminModule.ViewModels
             this.connect = connect;
             this._sinhViennProvider = new SinhVienProvider(connect);
             ListSV =new AsyncVirtualCollection<SinhVien>(_sinhViennProvider,50,2000);
+            CountRecord = ListSV.Count;
             ThemSVCommand = new DelegateCommand(ThemSVMethod);
+
         }
 
         private void ThemSVMethod()

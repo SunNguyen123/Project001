@@ -61,8 +61,8 @@
 
                 <StackPanel TextBlock.Foreground="{DynamicResource {x:Static res:ColorASB.NL700}}" TextBlock.FontSize="8" Margin="12" VerticalAlignment="Bottom" HorizontalAlignment="Left">
                     <TextBlock TextOptions.TextRenderingMode="Auto">@Đồ án tốt nghiệp</TextBlock>
-                    <TextBlock Margin="0 1" TextOptions.TextRenderingMode="Auto">Tác giả : Nguyễn Sun</TextBlock>
-                    <TextBlock TextOptions.TextRenderingMode="Auto">Ngày bắt đầu : 10/10/2023</TextBlock>
+                    <TextBlock Margin="0 2" TextOptions.TextRenderingMode="Auto">Phiên bản :0.0.1</TextBlock>
+                    
                 </StackPanel>
             </Grid>
             <ContentControl Focusable="False"  Grid.Column="1" prism:RegionManager.RegionName="log" >

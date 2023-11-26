@@ -41,10 +41,19 @@ namespace Resource.AssemblySource
             get => new ComponentResourceKey(typeof(ComboboxASB), "tgnew");
         }
 
+        public static ComponentResourceKey ComboBoxTextBox
+        {
+            get => new ComponentResourceKey(typeof(ComboboxASB), "ComboBoxTextBox");
+        }
         public static ComponentResourceKey CMBITEM1
         {
             get => new ComponentResourceKey(typeof(ComboboxASB), "cmbitem1");
         }
 
+
+        public static ComponentResourceKey ComboBoxEditableTemplate
+        {
+            get => new ComponentResourceKey(typeof(ComboboxASB), "ComboBoxEditableTemplate");
+        }
     }
 }

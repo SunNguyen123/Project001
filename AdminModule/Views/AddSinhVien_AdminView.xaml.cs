@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using AdminModule.ViewModels;
 
 namespace AdminModule.Views
 {
@@ -23,6 +14,45 @@ namespace AdminModule.Views
         public AddSinhVien_AdminView()
         {
             InitializeComponent();
+        }
+
+        private void dragimg(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                if (!CheckImg(file) || !CheckSize(file))
+                {
+                    e.Effects = DragDropEffects.None;
+                }
+
+            }
+        }
+        private bool CheckImg(string path) 
+        {
+            string[] extensions = { ".jpg",".png",".jpeg" };
+            string ex = System.IO.Path.GetExtension(path).ToLower();
+            return Array.IndexOf(extensions, ex) != -1;
+        }
+        private bool CheckSize(string path) 
+        {
+            long maxSize = 20 * 1024 * 1024;
+            FileInfo file = new FileInfo(path);
+            return file.Length < maxSize;
+        }
+
+        private void dropimg(object sender, DragEventArgs e)
+        {
+                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                if (CheckImg(file) && CheckSize(file))
+                {
+                AddSinhVien_AdminViewModel addSinhVien_ = (AddSinhVien_AdminViewModel)this.DataContext;
+                addSinhVien_.PathImg = new Uri(file);
+                 
+                }
+            }
         }
     }
 }

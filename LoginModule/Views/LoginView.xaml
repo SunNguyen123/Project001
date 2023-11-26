@@ -30,10 +30,10 @@
                 Chào mừng bạn đến với HNIVC
             </TextBlock>
             <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" >Tài khoản</TextBlock>
-            <TextBox BorderBrush="Transparent" Background="{DynamicResource {x:Static res:ColorASB.Grey100b}}" TabIndex="0" VerticalContentAlignment="Center" Margin="0 4 0 16" Width="240" Height="38"  Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=LostFocus,Mode=TwoWay}"/>
+            <TextBox FontSize="14" BorderBrush="Transparent" Background="{DynamicResource {x:Static res:ColorASB.Grey100b}}" TabIndex="0" VerticalContentAlignment="Center" Margin="0 4 0 16" Width="240" Height="38"  Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}" Text="{Binding TaiKhoan,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
             <StackPanel>
                 <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Mật khẩu</TextBlock>
-                <PasswordBox TabIndex="1" x:Name="ps" Width="240" Style="{DynamicResource {x:Static res:TextBoxASB.PS1}}" Margin="0 4 0 8" Tag="Mật Khẩu" Height="38" pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" >
+                <PasswordBox TabIndex="1" x:Name="ps" Width="240" Style="{DynamicResource {x:Static res:TextBoxASB.PS1}}" Margin="0 4 0 8" Tag="Mật Khẩu" Height="38" pass:BoundPasswordBox.Attach="True" pass:BoundPasswordBox.Password="{Binding MatKhau,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" >
 
                 </PasswordBox>
          
@@ -43,7 +43,7 @@
             <bt:Button2 TabIndex="3" Cursor="Hand"
                          border_radius="5" Width="240"
                          Height="34" Color="White" 
-                         FontSize="16"
+                         FontSize="16" IsDefault="True"
                          FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"
                          Name="bt1" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" 
                          Hover="{DynamicResource {x:Static res:ColorASB.BD200}}"

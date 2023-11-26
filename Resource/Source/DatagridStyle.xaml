@@ -126,7 +126,8 @@
                                 </Grid.ColumnDefinitions>
                                 <ContentPresenter Margin="8 0 8 0"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image VerticalAlignment="Center" Grid.Column="1" Margin="8" Width="16" Height="16" SnapsToDevicePixels="True" x:Name="img" Source="/Resource;component/img/8674526_ic_fluent_chevron_down_regular_icon.png" />
+                                <Image 
+                                       VerticalAlignment="Center" Grid.Column="1" Margin="8" Width="16" Height="16" SnapsToDevicePixels="True" x:Name="img" Source="/Resource;component/img/8674526_ic_fluent_chevron_down_regular_icon.png" />
 
 
                             </Grid>
@@ -142,6 +143,9 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="SortDirection" Value="Ascending">
                             <Setter Property="Source" Value="/Resource;component/img/8674511_ic_fluent_chevron_up_regular_icon.png" TargetName="img"/>
+                        </Trigger>
+                        <Trigger Property="CanUserSort" Value="False">
+                            <Setter Property="Visibility" Value="Hidden" TargetName="img"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

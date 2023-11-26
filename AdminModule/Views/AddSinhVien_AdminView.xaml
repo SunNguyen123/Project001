@@ -11,18 +11,19 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              UseLayoutRounding="True" FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"
              Foreground="{DynamicResource {x:Static res:ColorASB.BD700}}"
-             d:DesignHeight="480" d:DesignWidth="760">
+             d:DesignHeight="480" d:DesignWidth="802">
     <prism:Dialog.WindowStyle>
         <Style TargetType="Window">
             <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner"/>
             <Setter Property="AllowsTransparency" Value="True"></Setter>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="ShowInTaskbar" Value="False"/>
             <Setter Property="WindowStyle" Value="None"/>
         </Style>
     </prism:Dialog.WindowStyle>
     
-    <Border Height="480" Width="760" Margin="4" CornerRadius="5" Background="White">
+    <Border Height="480" Width="740" Margin="4" CornerRadius="5" Background="White">
         <Border.RenderTransformOrigin>
             <Point X="0.5" Y="0.5"/>
         </Border.RenderTransformOrigin>
@@ -80,11 +81,31 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Margin="16 32 16 0">
-                        <bt:Button2 border_radius="30" Width="142" Height="62"/>
-                        <TextBlock HorizontalAlignment="Center">Hoặc</TextBlock>
-                        <bt:Button2  border_radius="30" Width="142" Height="62"/>
 
+                    <StackPanel Margin="16 32 16 0">
+                        <Grid AllowDrop="True">
+
+                            <Image AllowDrop="True" Panel.ZIndex="10" Source="{Binding PathImg}" Stretch="Uniform" 
+                                   RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" UseLayoutRounding="True"  
+                                   Width="140" Height="140" DragEnter="dragimg" Drop="dropimg">
+                            
+      
+                            </Image>
+                        </Grid>
+                        <TextBlock Margin="0 8" HorizontalAlignment="Center">Hoặc</TextBlock>
+                        <bt:Button2 Cursor="Hand" Foreground="White" Command="{Binding OpenDialog}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
+                                    Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5" Width="142" Height="32">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="20" Height="20" RenderOptions.BitmapScalingMode="HighQuality"  VerticalAlignment="Center" Source="/Resource;component/img/8674875_ic_fluent_folder_open_regular_icon.png" />
+
+                                <TextBlock FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" FontSize="12" Margin="8 0 0 0" VerticalAlignment="Center" Foreground="White">Mở thư mục</TextBlock>
+                            </StackPanel>
+                        </bt:Button2>
+                        <StackPanel Margin="0 32 0 0" TextBlock.FontFamily="{DynamicResource {x:Static res:FontASB.Italic}}">
+                            <TextBlock Text="Lưu ý(*)"/>
+                            <TextBlock Text="-Định dạng : .jpg .jpeg .png"/>
+                            <TextBlock Text="-Kích thước: &lt;=20MB"/>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
@@ -121,7 +142,7 @@
                                 <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Giới tính" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                 </TextBlock>
-                                <ComboBox Margin="0 2 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
+                                <ComboBox ItemsSource="{Binding GtSource}" SelectedItem="{Binding GioiTinh}" IsReadOnly="True" Margin="0 2 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
                             </StackPanel>
                         </StackPanel>
 
@@ -185,7 +206,7 @@
                             <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Dân tộc" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                             </TextBlock>
-                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                            <ComboBox ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" TabIndex="0" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}"/>
                         </StackPanel>
 
 
@@ -207,6 +228,18 @@
                                 <ComboBox Margin="0 2 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
                             </StackPanel>
                         </StackPanel>
+
+                        <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
+
+                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" 
+                                         FontSize="13" Text="Ghi chú" 
+                                         TextWrapping="Wrap" HorizontalAlignment="Left"  >
+
+                            </TextBlock>
+                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
+                                     Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                        </StackPanel>
+
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">

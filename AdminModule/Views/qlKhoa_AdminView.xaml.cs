@@ -68,15 +68,15 @@ namespace AdminModule.Views
 
         private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key>=Key.D0 && e.Key<=Key.D9) 
-                ||(e.Key>=Key.NumPad0 && e.Key<=Key.NumPad9) 
-                || e.Key==Key.Back || e.Key==Key.Enter 
-                || e.Key == Key.Left || e.Key == Key.Right) { }
-            else
-            {
+            //if ((e.Key>=Key.D0 && e.Key<=Key.D9) 
+            //    ||(e.Key>=Key.NumPad0 && e.Key<=Key.NumPad9) 
+            //    || e.Key==Key.Back || e.Key==Key.Enter 
+            //    || e.Key == Key.Left || e.Key == Key.Right) { }
+            //else
+            //{
                 
-                e.Handled = true;
-            }
+            //    e.Handled = true;
+            //}
         }
     }
 }

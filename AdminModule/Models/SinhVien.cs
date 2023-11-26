@@ -5,6 +5,14 @@ namespace AdminModule.Models
 {
    public class SinhVien:BaseModel
     {
+        private string _stt;
+
+        public string STT
+        {
+            get { return _stt; }
+            set { _stt = value; }
+        }
+
         private string _maSV;
 
         public string MaSV
@@ -28,7 +36,7 @@ namespace AdminModule.Models
         public string CMND
         {
             get { return _cmnd; }
-            set { _cmnd = value; }
+            set { SetProperty(ref _cmnd, value); }
         }
         private string _tenSV;
 

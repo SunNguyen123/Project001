@@ -237,5 +237,8 @@
     <Resource Include="img\8674511_ic_fluent_chevron_up_regular_icon.png" />
     <Resource Include="img\8675229_ic_fluent_options_regular_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\8674875_ic_fluent_folder_open_regular_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

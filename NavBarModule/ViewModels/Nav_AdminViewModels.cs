@@ -45,6 +45,12 @@ namespace NavBarModule.ViewModels
                          rgbody.Add(qlKhoa);
                          rgbody.Activate(qlKhoa);
                          break;
+                     case "qlNganh_AdminView":
+                         var rgbody1 = manager.Regions["Body"];
+                         var qlNganh = containerProvider.Resolve<qlNganh_AdminView>();
+                         rgbody1.Add(qlNganh);
+                         rgbody1.Activate(qlNganh);
+                         break;
                  }
              }
          });

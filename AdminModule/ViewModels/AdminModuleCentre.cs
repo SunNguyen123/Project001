@@ -30,9 +30,12 @@ namespace AdminModule.ViewModels
             ViewModelLocationProvider.Register<EditKhoa_AdminView,EditKhoaServiceViewModel>();
             ViewModelLocationProvider.Register<qlSinhVien_AdminView,qlSinhVien_AdminViewModel>();
             ViewModelLocationProvider.Register<AddSinhVien_AdminView,AddSinhVien_AdminViewModel>();
+            ViewModelLocationProvider.Register<qlNganh_AdminView,qlNganh_AdminViewModel>();
+            ViewModelLocationProvider.Register<NganhServiceView,NganhServiceViewModel>();
             regionManager.RegisterViewWithRegion<Home_AdminView>("Body");
             regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
             regionManager.RegisterViewWithRegion<qlSinhVien_AdminView>("Body");
+            regionManager.RegisterViewWithRegion<qlNganh_AdminView>("Body");
             //containerRegistry.RegisterForNavigation<qlKhoa_AdminView, qlKhoa_AdminViewModels>();
             //regionManager.RegisterViewWithRegion<qlKhoa_AdminView>("Body");
             //var rgbody = regionManager.Regions["Body"];
@@ -46,6 +49,7 @@ namespace AdminModule.ViewModels
             containerRegistry.RegisterDialog<AddKhoaServiceView, AddKhoaServiceViewModel>();
             containerRegistry.RegisterDialog<EditKhoa_AdminView, EditKhoaServiceViewModel>();
             containerRegistry.RegisterDialog<AddSinhVien_AdminView, AddSinhVien_AdminViewModel>();
+            containerRegistry.RegisterDialog<NganhServiceView, NganhServiceViewModel>();
         }
     }
 }

@@ -31,11 +31,11 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"><Run Text="Sinh viên"/><Run FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" TextOptions.TextRenderingMode="ClearType" FontSize="11" Text="{Binding Count, Converter={StaticResource chuyendoislbanghi}}"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"><Run Text="Sinh viên"/><Run FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" TextOptions.TextRenderingMode="ClearType" FontSize="11" Text="{Binding CountRecord, Converter={StaticResource chuyendoislbanghi}}"/></TextBlock>
 
             <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <ComboBox Width="80" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
+                    <ComboBox SelectedItem="{Binding LoaiTK,Mode=OneWay}" ItemsSource="{Binding DieuKienTK}" Width="80" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
                     <TextBox VerticalContentAlignment="Center" Margin="8 0 0 0" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

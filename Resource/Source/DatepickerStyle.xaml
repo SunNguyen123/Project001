@@ -683,14 +683,14 @@
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:DatepickerASB},ResourceId=datePickerTextBoxStyle}" TargetType="DatePickerTextBox">
        
-        <Setter Property="FontFamily" Value="{DynamicResource {x:Static local:FontASB.Medium}}"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="{DynamicResource {x:Static local:FontASB.Regular}}"/>
+        <Setter Property="FontSize" Value="12"/>
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="DatePickerTextBox">
                     <Border>
-                        <ScrollViewer x:Name="PART_ContentHost" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Margin="8 2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" Margin="8 1" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -749,7 +749,8 @@
                     Style="{DynamicResource {x:Static local:DatepickerASB.DropDownButtonStyle}}"
                     VerticalAlignment="Center" />
                             <DatePickerTextBox x:Name="PART_TextBox"
-                               Grid.Column="0" Style="{DynamicResource {x:Static local:DatepickerASB.DatePickerTextBoxStyle}}"
+                               Grid.Column="0" 
+                                               Style="{DynamicResource {x:Static local:DatepickerASB.DatePickerTextBoxStyle}}"
                                Foreground="{TemplateBinding Foreground}"
                                Focusable="{TemplateBinding Focusable}"
                                HorizontalContentAlignment="Stretch"
@@ -761,10 +762,10 @@
                   IsHitTestVisible="False"
                   Opacity="0"
                   Grid.Row="0">
-                                <Grid.ColumnDefinitions>
+                                <!--<Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                                </Grid.ColumnDefinitions>-->
                           
                      
                                 <Popup x:Name="PART_Popup"

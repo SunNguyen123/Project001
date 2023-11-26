@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
-
-namespace Resource
+using Libary_ConnectDB;
+using Prism.Unity;
+namespace AdminModule.Models
 {
-    public class ConvertRecord : IValueConverter
+    public class ConvertKhoa : IValueConverter
     {
-        public ConvertRecord()
+        
+        public ConvertKhoa()
         {
-
+            
         }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return $"({value.ToString()} bản ghi)";
+            throw new NotImplementedException();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return value;
         }
     }
 }
