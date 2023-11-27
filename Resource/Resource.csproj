@@ -50,6 +50,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,8 @@
   <ItemGroup>
     <Compile Include="AsyncVirtualCollection.cs" />
     <Compile Include="BaseModel.cs" />
+    <Compile Include="ConvertGioiTinh.cs" />
+    <Compile Include="ConvertImg.cs" />
     <Compile Include="MD5Hash.cs" />
     <Compile Include="Validation\DatetimeValidate.cs" />
     <Compile Include="Validation\NullorEmtyValidate.cs" />

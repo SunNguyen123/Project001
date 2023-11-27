@@ -82,7 +82,7 @@ namespace AdminModule.ViewModels
             get { return sdt; }
             set { SetProperty(ref sdt, value); }
         }
-        private DateTime _ngayNhapHoc;
+        private DateTime _ngayNhapHoc=DateTime.Now;
 
         public DateTime NgayNhapHoc
         {
@@ -97,6 +97,7 @@ namespace AdminModule.ViewModels
             get { return _dsLop; }
             set { SetProperty<ListCollectionView>(ref _dsLop, value); }
         }
+
         private Lazy<DelegateCommand<string>> _resultDialog;
         private Lazy<DelegateCommand> _opentDialog;
         private Uri _pathImg=null;
@@ -160,7 +161,7 @@ namespace AdminModule.ViewModels
             }
         }
 
-        private DateTime _ngaySinh;
+        private DateTime _ngaySinh=DateTime.Now;
 
         public DateTime NgaySinh
         {
@@ -234,8 +235,11 @@ namespace AdminModule.ViewModels
                     {
                         byte[] imageBytes = File.ReadAllBytes(_filePath);
                         bool gt = GioiTinh == "Nam" ? true : false;
+
+
+
+                            await connectDB.ExecuteImg(ConvertImg.cvimg(_filePath),CMND,TenSV,NgaySinh,gt,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,((Lop)ListLop.CurrentItem).MaLop,GhiChu);
                         
-                        await connectDB.ExecuteAsync($"EXEC INSERTSV '{imageBytes}','{CMND}',N'{TenSV}','{NgaySinh}',{gt},N'{DanToc}',N'{TonGiao}',N'{DiaChi}',N'{QueQuan}','{SDT}','{NgayNhapHoc}','{((Lop)ListLop.CurrentItem).MaLop}',N'{GhiChu}'");
 
                         RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                     }
@@ -295,6 +299,21 @@ namespace AdminModule.ViewModels
             else
             {
                 Title2 = "Sửa Sinh viên";
+                SinhVien sinhVien = parameters.GetValue<SinhVien>("sv");
+                CMND = sinhVien.CMND;
+                TenSV = sinhVien.TenSV;
+                NgaySinh = sinhVien.NgaySinh;
+                GioiTinh = sinhVien.GioiTinh?"Nam":"Nữ";
+                DanToc = sinhVien.DanToc;
+                TonGiao = sinhVien.TonGiao;
+                DiaChi = sinhVien.DiaChi;
+                QueQuan = sinhVien.QueQuan;
+                GhiChu = sinhVien.GhiChu;
+                SDT = sinhVien.SDT;
+                NgayNhapHoc = sinhVien.NgayNhapHoc;
+                Lop lop = _listLop.FirstOrDefault(c=>c.MaLop==sinhVien.MaLop);
+                ListLop.MoveCurrentTo(lop);
+
 
             }
         }

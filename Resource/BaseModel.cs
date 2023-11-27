@@ -27,15 +27,19 @@ namespace Resource
 
         public void RemoveError(string propertyName, string mesageError) 
         {
+            if(_errors.ContainsKey(propertyName))
+            {
+
             if (string.IsNullOrEmpty(mesageError)) 
             {
                 _errors.Remove(propertyName);
             }
-            if (_errors[propertyName].Contains(mesageError))
+            if ( _errors[propertyName].Contains(mesageError))
             {
                 _errors[propertyName].Remove(mesageError);
             }
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            }
         }
     }
 }

@@ -20,6 +20,8 @@
 
     <UserControl.Resources>
         <cvres:ConvertRecord x:Key="chuyendoislbanghi"/>
+        <cvres:ConvertImg x:Key="cvimg"/>
+        <cvres:ConvertGioiTinh x:Key="svGt"/>
     </UserControl.Resources>
 
     <Border Padding="16">
@@ -35,12 +37,17 @@
 
             <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <ComboBox SelectedItem="{Binding LoaiTK,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                    <ComboBox SelectedItem="{Binding DieuKienTimKiem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                               ItemsSource="{Binding DieuKienTK}" 
                               Width="80" 
                               Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" 
-                              ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"/>
-                    <TextBox VerticalContentAlignment="Center" Margin="8 0 0 0" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}"/>
+                              ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}">
+                        
+                    </ComboBox>
+                    <TextBox Text="{Binding GiatriTK,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged,Delay=200}" VerticalContentAlignment="Center" 
+                             Margin="8 0 0 0" Width="210" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TBTK}}">
+                        
+                    </TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
@@ -75,7 +82,7 @@
                 </StackPanel>
             </Grid>
             <newcontrol:DatagridNew2  SelectionMode="Single"
-                                     
+                                     IsReadOnly="True"
                                      VirtualizingPanel.ScrollUnit="Item" 
                                      VirtualizingPanel.IsVirtualizing="True" 
                                      VirtualizingPanel.VirtualizationMode="Recycling" 
@@ -91,7 +98,63 @@
                                             VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}"
                                          Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}">
                 <newcontrol:DatagridNew2.Columns>
-                    <DataGridTextColumn  Header="Mã Sinh Viên" CanUserSort="False" IsReadOnly="True" Binding="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.MaSV}"/>
+                    <DataGridTemplateColumn Header="STT" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.STT,TargetNullValue=NULL}"/>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="MÃ SINH VIÊN" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.MaSV,TargetNullValue=NULL}"/>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="ẢNH NEÊ" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <Image Height="32" Margin="0 2"   Width="32" Source="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.AnhDaiDien,Converter={StaticResource cvimg}}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"/>
+                                        </Image.Clip>
+                                    </Image>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                    
+                    
                     <DataGridTemplateColumn Header="CMND" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -106,30 +169,20 @@
                                 </DataTemplate.Triggers>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <TextBox Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.CMND,TargetNullValue=NULL}"/>
-                                </Grid>
-                                <DataTemplate.Triggers>
-                                    <Trigger Property="Validation.HasError" Value="True">
-                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
-                                    </Trigger>
-                                </DataTemplate.Triggers>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
+       
                     </DataGridTemplateColumn>
                     <!--Cột sinh viên-->
-                    <DataGridTemplateColumn   Header="Tên sinh viên">
+
+                    <!--ten sv-->
+                    <DataGridTemplateColumn   Header="TÊN SINH VIÊN">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <TextBlock ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}" x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
                                                Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenSV,TargetNullValue=NULL}">
-                
+
                                     </TextBlock>
                                 </Grid>
                                 <DataTemplate.Triggers>
@@ -138,33 +191,231 @@
                                     </Trigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>
-                            
+
                         </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="NGÀY SINH">
+                        <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <TextBox x:Name="txt" Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" VerticalAlignment="Center" 
-                                             HorizontalAlignment="Left" Margin="8 0 0 0" ToolTip="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"
-                                             Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenSV,Mode=TwoWay,UpdateSourceTrigger=LostFocus,TargetNullValue=NULL,ValidatesOnNotifyDataErrors=True,NotifyOnValidationError=True}"
-                                             >
-         
-                                    </TextBox>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.NgaySinh,TargetNullValue=NULL}">
+
+                                    </TextBlock>
                                 </Grid>
                                 <DataTemplate.Triggers>
                                     <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
                                         <Setter Property="Visibility" Value="Visible" TargetName="er"/>
-                                       
                                     </Trigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    
-                    
-                    
-                    
+
+
+
+                    <DataGridTemplateColumn   Header="GIỚI TÍNH">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.GioiTinh,TargetNullValue=NULL,Converter={StaticResource svGt}}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="DÂN TỘC">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.DanToc,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="TÔN GIÁO">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TonGiao,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="Địa chỉ">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.DiaChi,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="QUÊ QUÁN">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.QueQuan,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+
+                    <DataGridTemplateColumn   Header="SDT">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.SDT,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn   Header="NGÀY NHẬP HỌC">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.NgayNhapHoc,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn   Header="TÊN LỚP">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenLop,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn   Header="GHI CHÚ">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
+                                    <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
+                                               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
+                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.GhiChu,TargetNullValue=NULL}">
+
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="Validation.HasError" Value="True" SourceName="txt">
+                                        <Setter Property="Visibility" Value="Visible" TargetName="er"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
                 </newcontrol:DatagridNew2.Columns>
             </newcontrol:DatagridNew2>
         </Grid>

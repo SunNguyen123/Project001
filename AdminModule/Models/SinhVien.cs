@@ -110,13 +110,7 @@ namespace AdminModule.Models
             get { return _ngayNhapHoc; }
             set { _ngayNhapHoc = value; }
         }
-        private string _maKhoaHoc;
 
-        public string MaKhoaHoc
-        {
-            get { return _maKhoaHoc; }
-            set { _maKhoaHoc = value; }
-        }
 
         private string _maLop;
 
@@ -124,6 +118,15 @@ namespace AdminModule.Models
         {
             get { return _maLop; }
             set { _maLop = value; }
+        }
+
+
+        private string _tenLop;
+
+        public string TenLop
+        {
+            get { return _tenLop; }
+            set { _tenLop = value; }
         }
         private string _ghiChu;
 

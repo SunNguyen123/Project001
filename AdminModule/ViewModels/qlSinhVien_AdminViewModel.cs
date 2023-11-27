@@ -26,24 +26,26 @@ namespace AdminModule.ViewModels
             get { return _dkTimKiem ; }
             set { _dkTimKiem = value; }
         }
-        private string _loaiTk;
+        private string _gtTk;
 
-        public string LoaiTK
+        public string GiatriTK
         {
-            get { return _loaiTk; }
-            set { _loaiTk = value; }
+            get { return _gtTk; }
+            set { _gtTk = value; }
         }
-        private string _dk =  "Mã";
+        private string _dk = "Mã";
 
         public string DieuKienTimKiem
         {
             get { return _dk; }
             set
             {
-                SetProperty(ref _dk, value, nameof(DieuKienTimKiem));
+                SetProperty(ref _dk, value);
             }
         }
+        private string sqlLoadFull = "SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa";
         public DelegateCommand ThemSVCommand { set; get; }
+        public DelegateCommand<string> TimKiemCommand { get; set; }
         public int CountRecord
         {
             get { return _countRecord; }
@@ -65,20 +67,55 @@ namespace AdminModule.ViewModels
         {
             this.dialogService = dialogService;
             this.connect = connect;
-            this._sinhViennProvider = new SinhVienProvider(connect);
-            ListSV =new AsyncVirtualCollection<SinhVien>(_sinhViennProvider,50,2000);
+            
+            LoadData("D");
             CountRecord = ListSV.Count;
             ThemSVCommand = new DelegateCommand(ThemSVMethod);
+            TimKiemCommand = new DelegateCommand<string>(TimKiemCommandMethod);
 
+        }
+
+        private void TimKiemCommandMethod(string obj)
+        {
+            if (string.IsNullOrWhiteSpace(obj.Trim()) || obj == "")
+            {
+                LoadData(sqlLoadFull);
+
+            }
+            else
+            {
+
+                if (DieuKienTimKiem.Trim() == "Mã")
+                {
+                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa WHERE MaNganh LIKE '{obj}%'");
+                }
+                else
+                {
+
+                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa WHERE TenNganh LIKE N'{obj}%'");
+                }
+            }
+        }
+
+        private void LoadData(string sqlLoadFull)
+        {
+            _sinhViennProvider = new SinhVienProvider(connect);
+            ListSV = new AsyncVirtualCollection<SinhVien>(_sinhViennProvider, 50, 2000);
         }
 
         private void ThemSVMethod()
         {
-            dialogService.ShowDialog("AddSinhVien_AdminView");
+            var result = new DialogParameters();
+            result.Add("flag",true);
+            dialogService.ShowDialog("AddSinhVien_AdminView",result,(p)=> 
+            {
+                LoadData("d");            
+            });
         }
 
         private async Task<ObservableCollection<SinhVien>> GetListSV()
         {
+            
           return  await connect.GetDataAsync<SinhVien>("SELECT * FROM SINHVIEN");
         }
     }

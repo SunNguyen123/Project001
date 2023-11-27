@@ -83,15 +83,15 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Margin="16 32 16 0">
-                        <Grid AllowDrop="True">
+                        <Border>
 
-                            <Image AllowDrop="True" Panel.ZIndex="10" Source="{Binding PathImg}" Stretch="Uniform" 
+                            <Image AllowDrop="True" Panel.ZIndex="10" Source="{Binding PathImg}" Stretch="Fill" 
                                    RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" UseLayoutRounding="True"  
                                    Width="140" Height="140" DragEnter="dragimg" Drop="dropimg">
                             
       
                             </Image>
-                        </Grid>
+                        </Border>
                         <TextBlock Margin="0 8" HorizontalAlignment="Center">Hoặc</TextBlock>
                         <bt:Button2 Cursor="Hand" Foreground="White" Command="{Binding OpenDialog}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
                                     Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5" Width="142" Height="32">
@@ -107,22 +107,29 @@
                             <TextBlock Text="-Kích thước: &lt;=20MB"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Grid.Column="1">
+                    <StackPanel  Grid.Column="1">
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
                             
                         <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="CMND" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                         </TextBlock>
-                        <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                        <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
+                                 Text="{Binding CMND,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
 
-                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên sinh viên" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                                         VerticalAlignment="Center" FontSize="13" 
+                                         Text="Tên sinh viên" 
+                                         TextWrapping="Wrap" 
+                                         HorizontalAlignment="Left"  >
 
                             </TextBlock>
-                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                            <TextBox TabIndex="0" Padding="4 0" 
+                                     VerticalContentAlignment="Center" 
+                                     Text="{Binding TenSV,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
                         
@@ -135,24 +142,26 @@
                                     <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ngày sinh" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                     </TextBlock>
-                                <DatePicker Height="32" Margin="0 2 0 0" Width="140" Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}"/>
+                                <DatePicker Height="32" Margin="0 4 0 0" Width="140" SelectedDate="{Binding NgaySinh,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                            Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}"/>
                             </StackPanel>
                       
                             <StackPanel Margin="10 0 0 0">
                                 <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Giới tính" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                 </TextBlock>
-                                <ComboBox ItemsSource="{Binding GtSource}" SelectedItem="{Binding GioiTinh}" IsReadOnly="True" Margin="0 2 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
+                                <ComboBox ItemsSource="{Binding GtSource}" SelectedItem="{Binding GioiTinh,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Margin="0 4 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
                             </StackPanel>
                         </StackPanel>
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
 
-                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Địa chỉ" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                                         VerticalAlignment="Center" FontSize="13" Text="Địa chỉ" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                             </TextBlock>
                             <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
-                                     Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" 
+                                     Text="{Binding DiaChi,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" Margin="0 2 0 0" Height="32" 
                                      Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
@@ -164,7 +173,7 @@
 
                             </TextBlock>
                             <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
-                                     Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                                     Text="{Binding QueQuan,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
 
@@ -178,7 +187,8 @@
                                 <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tôn giáo" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                 </TextBlock>
-                                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="116" Margin="0 2 0 0" Height="32" 
+                                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
+                                         Text="{Binding TonGiao,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="116" Margin="0 2 0 0" Height="32" 
                                      Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                             </StackPanel>
                             <StackPanel Margin="8 0 0 0"  HorizontalAlignment="Center">
@@ -186,7 +196,8 @@
                                 <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Dân tộc" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                 </TextBlock>
-                                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="116" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                                <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
+                                         Text="{Binding DanToc,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="116" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                             </StackPanel>
                         </StackPanel>
 
@@ -195,18 +206,25 @@
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
 
-                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Số điện thoại" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                                         VerticalAlignment="Center" FontSize="13" Text="Số điện thoại" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                             </TextBlock>
-                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
+                                     Text="{Binding SDT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
 
-                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Dân tộc" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                                         VerticalAlignment="Center" FontSize="13" Text="Lớp" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                             </TextBlock>
-                            <ComboBox ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" TabIndex="0" Padding="4 0" VerticalContentAlignment="Center"  Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}"/>
+                            <ComboBox ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}"  
+                                      DisplayMemberPath="TenLop"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      TabIndex="0" Padding="4 0" VerticalContentAlignment="Center"  ItemsSource="{Binding ListLop}"
+                                      Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}"/>
                         </StackPanel>
 
 
@@ -215,18 +233,16 @@
 
                             <StackPanel  HorizontalAlignment="Center">
 
-                                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ngày nhập học" TextWrapping="Wrap" HorizontalAlignment="Left"  >
+                                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                                             VerticalAlignment="Center" FontSize="13" Text="Ngày nhập học"
+                                             TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                                 </TextBlock>
-                                <DatePicker Height="32" Margin="0 2 0 0" Width="140" Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}"/>
+                                <DatePicker Height="32" Margin="0 4 0 0" Width="240" SelectedDate="{Binding NgayNhapHoc}"
+                                            Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="10 0 0 0">
-                                <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Khoá" TextWrapping="Wrap" HorizontalAlignment="Left"  >
-
-                                </TextBlock>
-                                <ComboBox Margin="0 2 0 0" Style="{DynamicResource {x:Static res:ComboboxASB.CMB1}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" Height="32" Width="90" ></ComboBox>
-                            </StackPanel>
+                            
                         </StackPanel>
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
@@ -237,7 +253,7 @@
 
                             </TextBlock>
                             <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
-                                     Text="{Binding TenKhoa,Mode=OneWayToSource,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                                     Text="{Binding GhiChu,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
                     </StackPanel>
