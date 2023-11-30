@@ -30,7 +30,7 @@
     </UserControl.InputBindings>
     
     <UserControl.Resources>
-        <model:BindingProxy 
+        <cvres:BindingProxy 
   x:Key="DataContextProxy"
   Data="{Binding}" />
         <cvres:ConvertDateTime x:Key="convertdatetime"/>

@@ -14,7 +14,7 @@
              xmlns:cvres="clr-namespace:Resource;assembly=Resource"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
             
-                xmlns:val="clr-namespace:Resource.Validation;assembly=Resource"
+              xmlns:val="clr-namespace:Resource.Validation;assembly=Resource"
              mc:Ignorable="d"
              Focusable="False" FocusVisualStyle="{x:Null}"
              x:Name="nganh" 
@@ -31,7 +31,7 @@
     </UserControl.InputBindings>
 
     <UserControl.Resources>
-        <model:BindingProxy 
+        <cvres:BindingProxy 
   x:Key="DataContextProxy"
   Data="{Binding}" />
         <cvres:ConvertDateTime x:Key="convertdatetime"/>

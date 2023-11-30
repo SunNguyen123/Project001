@@ -13,6 +13,8 @@ using Resource;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using AdminModule.Models;
+using AlphaChiTech.Virtualization;
+using System.Windows.Media.Imaging;
 
 namespace AdminModule.ViewModels
 {
@@ -50,14 +52,35 @@ namespace AdminModule.ViewModels
         public string DanToc
         {
             get { return _danToc; }
-            set { SetProperty(ref _danToc, value); }
+            set
+            {
+                if (value.Length == 0)
+                {
+                    AddError(nameof(DanToc), "Không được bỏ trống !");
+                    
+                }
+                else
+                {
+                    RemoveError(nameof(DanToc), "Không được bỏ trống !");
+                }
+                SetProperty(ref _danToc, value);
+            }
         }
         private string _tonGiao;
 
         public string TonGiao
         {
             get { return _tonGiao; }
-            set { 
+            set {
+                if (value.Length == 0)
+                {
+                    AddError(nameof(TonGiao), "Không được bỏ trống !");
+                    
+                }
+                else
+                {
+                    RemoveError(nameof(TonGiao), "Không được bỏ trống !");
+                }
                 SetProperty(ref _tonGiao, value);
             }
         }
@@ -66,14 +89,37 @@ namespace AdminModule.ViewModels
         public string DiaChi
         {
             get { return _diaChi; }
-            set { SetProperty(ref _diaChi, value); }
+            set
+            {
+                if (value.Length == 0)
+                {
+                    AddError(nameof(DiaChi), "Không được bỏ trống !");
+                    
+                }
+                else
+                {
+                    RemoveError(nameof(DiaChi), "Không được bỏ trống !");
+                }
+                SetProperty(ref _diaChi, value);
+            }
         }
         private string _queQuan;
 
         public string QueQuan
         {
             get { return _queQuan; }
-            set { SetProperty(ref _queQuan, value); }
+            set {
+                if (value.Length == 0)
+                {
+                    AddError(nameof(QueQuan), "Không được bỏ trống !");
+                  
+                }
+                else
+                {
+                    RemoveError(nameof(QueQuan), "Không được bỏ trống !");
+                }
+                SetProperty(ref _queQuan, value);
+            }
         }
         private string sdt;
 
@@ -100,13 +146,13 @@ namespace AdminModule.ViewModels
 
         private Lazy<DelegateCommand<string>> _resultDialog;
         private Lazy<DelegateCommand> _opentDialog;
-        private Uri _pathImg=null;
-        public Uri PathImg
+        private byte[] _pathImg;
+        public byte[] PathImg
         {
             get => _pathImg;
             set
             {
-                SetProperty<Uri>(ref _pathImg,value);
+                SetProperty<byte[]>(ref _pathImg,value,nameof(PathImg));
             }
         }
         private async Task LoadKhoa()
@@ -125,7 +171,19 @@ namespace AdminModule.ViewModels
         public string CMND
         {
             get { return _cmnd; }
-            set { SetProperty(ref _cmnd, value); }
+            set 
+            {
+                if (value.Length == 0)
+                {
+                    AddError(nameof(CMND), "Không được bỏ trống !");
+                  
+                }
+                else
+                {
+                    RemoveError(nameof(CMND), "Không được bỏ trống !");
+                }
+                SetProperty(ref _cmnd, value);
+            }
         }
         private string _maSV;
 
@@ -149,7 +207,7 @@ namespace AdminModule.ViewModels
                 if (value.Length ==0) 
                 { 
                     AddError(nameof(TenSV), "Không được bỏ trống !"); 
-                    return; 
+                  
                 }
                 else 
                 { 
@@ -185,7 +243,7 @@ namespace AdminModule.ViewModels
         public string FilePath
         {
             get { return _filePath; }
-            set { _filePath = value; }
+            set { SetProperty(ref _filePath,value); }
         }
 
         public bool Loading
@@ -206,8 +264,18 @@ namespace AdminModule.ViewModels
         {
             this.connectDB = connectDB;
             this.dialogService = dialogService;
-            _resultDialog = new Lazy<DelegateCommand<string>>(()=> new DelegateCommand<string>(ResultDialogMethod));
-            _opentDialog = new Lazy<DelegateCommand>(()=> new DelegateCommand(OpenResultDialogMethod));
+            _resultDialog = new Lazy<DelegateCommand<string>>(()=> new DelegateCommand<string>(ResultDialogMethod, CanResultDialogMethod).ObservesProperty(()=>Loading));
+            _opentDialog = new Lazy<DelegateCommand>(()=> new DelegateCommand(OpenResultDialogMethod, CanopentDialogMethod).ObservesProperty(() => Loading));
+        }
+
+        private bool CanopentDialogMethod()
+        {
+            return true;
+        }
+
+        private bool CanResultDialogMethod(string arg)
+        {
+            return true;
         }
 
         private void OpenResultDialogMethod()
@@ -218,7 +286,8 @@ namespace AdminModule.ViewModels
             if (openFileDialog.ShowDialog()==true) 
             {
                 _filePath = openFileDialog.FileName;
-                PathImg = new Uri(_filePath);
+                PathImg=ConvertImg.cvimg(_filePath);
+               
                 
             }
         }
@@ -227,28 +296,42 @@ namespace AdminModule.ViewModels
         {
             if (obj=="OK") 
             {
-
+                Loading = true;
                 if (check)
                 {
-                    int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV=N'{TenSV}'");
-                    if (!string.IsNullOrWhiteSpace(TenSV) && count == 0)
-                    {
-                        byte[] imageBytes = File.ReadAllBytes(_filePath);
+                    
+                    if (!string.IsNullOrWhiteSpace(TenSV))
+                    {                        
                         bool gt = GioiTinh == "Nam" ? true : false;
 
+                        list.Add(new SinhVien()
+                        {
+                            TenSV = TenSV,
+                            STT = (list.Count + 1).ToString(),
+                            CMND = CMND,
+                            GioiTinh = gt,
+                            NgayNhapHoc=NgayNhapHoc,
+                            NgaySinh=NgaySinh,
+                            DiaChi=DiaChi,
+                            QueQuan=QueQuan,
+                            AnhDaiDien=PathImg,
+                            GhiChu=GhiChu,TonGiao=TonGiao,DanToc=DanToc,TenLop= ((Lop)ListLop.CurrentItem).TenLop
 
-
-                            await connectDB.ExecuteImg(ConvertImg.cvimg(_filePath),CMND,TenSV,NgaySinh,gt,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,((Lop)ListLop.CurrentItem).MaLop,GhiChu);
+                        }) ;
                         
-
+                        await connectDB.ExecuteImg(ConvertImg.cvimg(_filePath),CMND,TenSV,NgaySinh,gt,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,((Lop)ListLop.CurrentItem).MaLop,GhiChu);                       
                         RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                     }
                     else
                     {
+                        Loading = false;
                         var ts1 = new DialogParameters();
                         ts1.Add("message1", $"Thông tin bạn vừa nhập đã tồn tại hoặc chưa đầy đủ");
                         ts1.Add("message2", $"Vui lòng thử lại sau !");
-                        dialogService.ShowDialog("DialogWindowView", ts1, (r) => { });
+                        dialogService.ShowDialog("DialogWindowView", ts1, (r) => 
+                        { 
+                        
+                        });
                     }
                 }
                 else
@@ -263,6 +346,7 @@ namespace AdminModule.ViewModels
                     }
                     else
                     {
+                        Loading = false;
                         var ts1 = new DialogParameters();
                         ts1.Add("message1", $"Thông tin bạn vừa nhập đã tồn tại hoặc chưa đầy đủ");
                         ts1.Add("message2", $"Vui lòng thử lại sau !");
@@ -287,7 +371,7 @@ namespace AdminModule.ViewModels
         {
          
         }
-
+        private VirtualizingObservableCollection<SinhVien> list;
         public async void OnDialogOpened(IDialogParameters parameters)
         {
            await LoadKhoa();
@@ -295,6 +379,7 @@ namespace AdminModule.ViewModels
             if (check)
             {
                 Title2 = "Thêm Sinh viên";
+                list = parameters.GetValue<VirtualizingObservableCollection<SinhVien>>("list");
             }
             else
             {
@@ -313,7 +398,8 @@ namespace AdminModule.ViewModels
                 NgayNhapHoc = sinhVien.NgayNhapHoc;
                 Lop lop = _listLop.FirstOrDefault(c=>c.MaLop==sinhVien.MaLop);
                 ListLop.MoveCurrentTo(lop);
-
+                list = parameters.GetValue<VirtualizingObservableCollection<SinhVien>>("list");
+                PathImg = sinhVien.AnhDaiDien;
 
             }
         }

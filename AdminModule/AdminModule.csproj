@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlphaChiTech.Virtualization, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualizingObservableCollection.1.2.0\lib\AlphaChiTech.Virtualization.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
     </Reference>
@@ -82,17 +85,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BindingProxy.cs" />
     <Compile Include="Models\ChuongTrinh.cs" />
-    <Compile Include="Models\Chuyendoislbanghi.cs" />
-    <Compile Include="Models\ConvertKhoa.cs" />
-    <Compile Include="Models\Khoa.cs" />
+    <Compile Include="Models\fd_Khoa\Khoa.cs" />
     <Compile Include="Models\KhoaHoc.cs" />
-    <Compile Include="Models\Lop.cs" />
-    <Compile Include="Models\MenuItemKhoa.cs" />
-    <Compile Include="Models\Nganh.cs" />
-    <Compile Include="Models\SinhVien.cs" />
-    <Compile Include="Models\SinhVienProvider.cs" />
+    <Compile Include="Models\fd_Lop\Lop.cs" />
+    <Compile Include="Models\fd_Nganh\Nganh.cs" />
+    <Compile Include="Models\fd_SinhVien\SinhVien.cs" />
+    <Compile Include="Models\fd_SinhVien\SinhVienProvider.cs" />
+    <Compile Include="Models\fd_SinhVien\SinhVienSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

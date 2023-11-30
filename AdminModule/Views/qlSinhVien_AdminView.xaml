@@ -22,6 +22,8 @@
         <cvres:ConvertRecord x:Key="chuyendoislbanghi"/>
         <cvres:ConvertImg x:Key="cvimg"/>
         <cvres:ConvertGioiTinh x:Key="svGt"/>
+        <cvres:BindingProxy x:Key="datacontext" Data="{Binding}"/>
+        <cvres:ConvertDateTime x:Key="convertdatetime"/>
     </UserControl.Resources>
 
     <Border Padding="16">
@@ -65,7 +67,6 @@
                         </StackPanel>
                     </bt:Button2>
                     <Separator   Margin="4 0 4 0"  BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Width="1"  Height="32"/>
-
                     <bt:Button2  FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}"  FontSize="15" 
                             Width="88" Color="White" BorderThickness="0.6"  Command="{Binding ThemSVCommand}"
                             BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" 
@@ -82,21 +83,58 @@
                 </StackPanel>
             </Grid>
             <newcontrol:DatagridNew2  SelectionMode="Single"
-                                     IsReadOnly="True"
+                                     IsReadOnly="True" IsSynchronizedWithCurrentItem="True"
                                      VirtualizingPanel.ScrollUnit="Item" 
-                                     VirtualizingPanel.IsVirtualizing="True" 
+                                     VirtualizingPanel.IsVirtualizing="True"  ItemsSource="{Binding ListSV2,IsAsync=True}"
                                      VirtualizingPanel.VirtualizationMode="Recycling" 
                                      ScrollViewer.IsDeferredScrollingEnabled="True"  
-                                     ItemsSource="{Binding ListSV,IsAsync=True}" Margin="0 8 0 0"   Grid.Row="1" 
+                                      Margin="0 8 0 0"   Grid.Row="1" 
                                       ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"
                                          CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
-                                         RowStyle="{DynamicResource {x:Static res:DatagridASB.DGVROW}}"
+                                         
                                          CanUserResizeRows="True" CanUserAddRows="False"
                                          AutoGenerateColumns="False"
                                          GridLinesVisibility="All" 
                                       HorizontalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
                                             VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}"
                                          Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}">
+
+                <newcontrol:DatagridNew2.RowStyle>
+                    <Style BasedOn="{StaticResource {x:Static res:DatagridASB.DGVROW}}" TargetType="DataGridRow">
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu DataContext="{Binding PlacementTarget,RelativeSource={RelativeSource Mode=Self}}"
+                                         ItemContainerStyle="{DynamicResource {x:Static res:ContextMenuASB.MNITEM1}}" 
+                                         Style="{DynamicResource {x:Static res:ContextMenuASB.MN1}}">
+
+                                    <MenuItem Command="{Binding Data.Edit2,Source={StaticResource datacontext}}" >
+                                        <MenuItem.Header >
+                                            <StackPanel Orientation="Horizontal">
+
+                                                <Image  Width="16" Height="16" VerticalAlignment="Center" Margin="0 0 8 0" Source="/Resource;component/img/8675035_ic_fluent_edit_regular_icon.png" />
+
+                                                <TextBlock VerticalAlignment="Center" Margin="0 1 0 0" HorizontalAlignment="Left">Sửa</TextBlock>
+                                               
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+
+                                    <MenuItem Command="{Binding Data.Remove,Source={StaticResource datacontext}}">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Width="16" Height="16" VerticalAlignment="Center" Margin="0 0 8 0" Source="/Resource;component/img/8674741_ic_fluent_delete_regular_icon.png" />
+
+                                                <TextBlock VerticalAlignment="Center" Margin="0 1 0 0" HorizontalAlignment="Left">Xoá</TextBlock>
+                                                
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </newcontrol:DatagridNew2.RowStyle>
+
                 <newcontrol:DatagridNew2.Columns>
                     <DataGridTemplateColumn Header="STT" >
                         <DataGridTemplateColumn.CellTemplate>
@@ -104,7 +142,7 @@
                                 <Grid>
                                     <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.STT,TargetNullValue=NULL}"/>
+                                               Text="{Binding STT,TargetNullValue=NULL}"/>
                                 </Grid>
                                 <DataTemplate.Triggers>
                                     <Trigger Property="Validation.HasError" Value="True">
@@ -121,7 +159,7 @@
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.MaSV,TargetNullValue=NULL}"/>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding MaSV,TargetNullValue=NULL}"/>
                                 </Grid>
                                 <DataTemplate.Triggers>
                                     <Trigger Property="Validation.HasError" Value="True">
@@ -133,12 +171,12 @@
 
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="ẢNH NEÊ" >
+                    <!--<DataGridTemplateColumn Header="ẢNH ĐẠI DIỆN" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <Image Height="32" Margin="0 2"   Width="32" Source="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.AnhDaiDien,Converter={StaticResource cvimg}}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality">
+                                    <Image Height="32" Margin="0 2"   Width="32" Source="{Binding AnhDaiDien,Converter={StaticResource cvimg}}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality">
                                         <Image.Clip>
                                             <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"/>
                                         </Image.Clip>
@@ -152,7 +190,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
 
-                    </DataGridTemplateColumn>
+                    </DataGridTemplateColumn>-->
                     
                     
                     <DataGridTemplateColumn Header="CMND" >
@@ -160,7 +198,7 @@
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.CMND,TargetNullValue=NULL}"/>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" Text="{Binding CMND,TargetNullValue=NULL}"/>
                                 </Grid>
                                 <DataTemplate.Triggers>
                                     <Trigger Property="Validation.HasError" Value="True">
@@ -181,7 +219,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenSV,TargetNullValue=NULL}">
+                                               Text="{Binding TenSV}">
 
                                     </TextBlock>
                                 </Grid>
@@ -203,7 +241,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.NgaySinh,TargetNullValue=NULL}">
+                                               Text="{Binding NgaySinh,TargetNullValue=NULL,Converter={StaticResource convertdatetime}}">
 
                                     </TextBlock>
                                 </Grid>
@@ -227,7 +265,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.GioiTinh,TargetNullValue=NULL,Converter={StaticResource svGt}}">
+                                               Text="{Binding GioiTinh,TargetNullValue=NULL,Converter={StaticResource svGt}}">
 
                                     </TextBlock>
                                 </Grid>
@@ -249,7 +287,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.DanToc,TargetNullValue=NULL}">
+                                               Text="{Binding DanToc,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -264,14 +302,14 @@
                     </DataGridTemplateColumn>
 
 
-                    <DataGridTemplateColumn   Header="TÔN GIÁO">
+                    <DataGridTemplateColumn Header="TÔN GIÁO">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TonGiao,TargetNullValue=NULL}">
+                                               Text="{Binding TonGiao,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -293,7 +331,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.DiaChi,TargetNullValue=NULL}">
+                                               Text="{Binding DiaChi,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -315,7 +353,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.QueQuan,TargetNullValue=NULL}">
+                                               Text="{Binding QueQuan,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -338,7 +376,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.SDT,TargetNullValue=NULL}">
+                                               Text="{Binding SDT,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -359,7 +397,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.NgayNhapHoc,TargetNullValue=NULL}">
+                                               Text="{Binding NgayNhapHoc,TargetNullValue=NULL,Converter={StaticResource convertdatetime}}">
 
                                     </TextBlock>
                                 </Grid>
@@ -381,7 +419,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.TenLop,TargetNullValue=NULL}">
+                                               Text="{Binding TenLop,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>
@@ -402,7 +440,7 @@
                                     <Rectangle  x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
                                     <TextBlock  x:Name="txt" Validation.ErrorTemplate="{x:Null}" 
                                                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8 0 0 0" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=Self},Path=DataContext.Data.GhiChu,TargetNullValue=NULL}">
+                                               Text="{Binding GhiChu,TargetNullValue=NULL}">
 
                                     </TextBlock>
                                 </Grid>

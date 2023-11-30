@@ -13,12 +13,13 @@ namespace AdminModule.Models
         private string dk="";
         public int FetchCount()
         {
+            _count = connectDB.CountRecord("SELECT COUNT(*) FROM SINHVIEN");
             return _count;
         }
         public SinhVienProvider(IConnectDB connectDB)
         {
             this.connectDB = connectDB;
-            _count = connectDB.CountRecord("SELECT COUNT(*) FROM SINHVIEN");
+            
         }
         public IList<SinhVien> FetchRange(int startIndex, int pageCount, out int overallCount)
         {
@@ -31,6 +32,10 @@ namespace AdminModule.Models
         public void Remove() 
         { 
         
+        }
+        public void UpdateCount()
+        {
+           
         }
         public void UpdateDk(string dk)
         {

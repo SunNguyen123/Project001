@@ -12,7 +12,7 @@
         AllowsTransparency="True" UseLayoutRounding="True"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
-        WindowStyle="None" Activated="Window_Activated" Deactivated="Window_Deactivated"
+        WindowStyle="None" 
         WindowStartupLocation="CenterScreen"
         Title="SellApp" Height="590" Width="940">
     <Grid x:Name="shell"  MouseDown="Grid_MouseDown_1" Margin="8" Background="White">

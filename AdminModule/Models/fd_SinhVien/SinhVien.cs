@@ -46,8 +46,7 @@ namespace AdminModule.Models
             set 
             
             {
-                if (value.Length > 5) { AddError(nameof(TenSV), "DAI QUA"); return; }
-                else { RemoveError(nameof(TenSV), "DAI QUA"); }
+
                 SetProperty(ref _tenSV,value);
                 
             

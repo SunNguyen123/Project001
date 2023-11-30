@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
-namespace AdminModule.Models
+namespace Resource
 {
     public class BindingProxy : Freezable
     {
-        #region Overrides of Freezable
-
         protected override Freezable CreateInstanceCore()
         {
             return new BindingProxy();
         }
-
-        #endregion
-
         public object Data
         {
             get { return (object)GetValue(DataProperty); }

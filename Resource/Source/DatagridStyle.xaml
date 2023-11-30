@@ -224,7 +224,7 @@
                         </Trigger>
                        
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource {x:Static res:ColorASB.BD200}}" TargetName="DGR_Border"/>
+                            <Setter Property="Background" Value="#1E90FF" TargetName="DGR_Border"/>
                    
 
                         </Trigger>

@@ -6,25 +6,33 @@
         <Setter Property="Padding" Value="8 0"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey500}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
         <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="0.7" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
+                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="0.7" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="5" SnapsToDevicePixels="True" >
                         <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
-                                      HorizontalScrollBarVisibility="Auto" 
-                                      VerticalScrollBarVisibility="Disabled">
+                            <ScrollViewer x:Name="PART_ContentHost"  
+                                          HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
+                                          HorizontalScrollBarVisibility="Auto" 
+                                          VerticalScrollBarVisibility="Disabled">
                                 
                             </ScrollViewer>
-                            <Label x:Name="lb" Padding="{TemplateBinding Padding}" 
-                                   Margin="2 1 0 0" FontFamily="{TemplateBinding FontFamily}" 
+                            <Label x:Name="lb" 
+                                   Margin="{TemplateBinding Padding}" FontFamily="{TemplateBinding FontFamily}" 
                                    Visibility="Collapsed" FontSize="{TemplateBinding FontSize}" 
                                    Foreground="{DynamicResource {x:Static res:ColorASB.BD600}}" 
                                    HorizontalAlignment="Left" VerticalAlignment="Center"  
                                    Content="{TemplateBinding Tag}"
                                    IsHitTestVisible="False"
-                                   ></Label>
+                                   >
+                                
+                            </Label>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -33,6 +41,10 @@
                         </Trigger>
                         <Trigger Property="Text" Value="">
                             <Setter Property="Visibility" Value="Visible" TargetName="lb"/>
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="BorderBrush" Value="Red" TargetName="br"/>
+                            <Setter Property="Padding" Value="8 0 24 0" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -49,7 +61,10 @@
         <Setter Property="Padding" Value="8 0"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey100b}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
@@ -75,11 +90,13 @@
 
 
     <Style  x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:TextBoxASB},ResourceId=tbTK}" TargetType="TextBox">
-
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
         <Setter Property="Padding" Value="8 0"/>
         <Setter Property="Background" Value="{DynamicResource {x:Static local:ColorASB.Grey100b}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey200}}"/>
         <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
@@ -130,8 +147,8 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:TextBoxASB},ResourceId=nonetb1}" TargetType="TextBox">
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}">
-           
         </Setter>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Template">

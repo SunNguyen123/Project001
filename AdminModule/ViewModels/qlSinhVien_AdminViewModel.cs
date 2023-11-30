@@ -10,6 +10,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Prism.Commands;
 using Resource;
+using System.Windows.Data;
+using AlphaChiTech.Virtualization;
 namespace AdminModule.ViewModels
 {
 
@@ -17,9 +19,25 @@ namespace AdminModule.ViewModels
     public class qlSinhVien_AdminViewModel : BindableBase, IRegionMemberLifetime
     {
         private int _countRecord;
-        private SinhVienProvider _sinhViennProvider;
-       
+             
         private string[] _dkTimKiem = { "Mã","Tên"};
+        private VirtualizingObservableCollection<SinhVien> _listSV2=null;    
+
+        public VirtualizingObservableCollection<SinhVien> ListSV2
+        {
+            get 
+            {
+                if (_listSV2 == null)
+                {
+                    _listSV2 = new VirtualizingObservableCollection<SinhVien>(new PaginationManager<SinhVien>(new SinhVienSource(connect)));
+                }
+                return _listSV2; 
+            }
+            set 
+            {
+                SetProperty<VirtualizingObservableCollection<SinhVien>>(ref _listSV2,value);
+            }
+        }
 
         public string[] DieuKienTK
         {
@@ -43,7 +61,6 @@ namespace AdminModule.ViewModels
                 SetProperty(ref _dk, value);
             }
         }
-        private string sqlLoadFull = "SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa";
         public DelegateCommand ThemSVCommand { set; get; }
         public DelegateCommand<string> TimKiemCommand { get; set; }
         public int CountRecord
@@ -51,15 +68,9 @@ namespace AdminModule.ViewModels
             get { return _countRecord; }
             set { SetProperty<int>(ref _countRecord, value); }
         }
-        private AsyncVirtualCollection<SinhVien> _listSV;
-        public AsyncVirtualCollection<SinhVien> ListSV 
-        {
-            get
-            {
-                return _listSV;
-            }
-            set => SetProperty<AsyncVirtualCollection<SinhVien>>(ref _listSV,value);
-        }
+ 
+ 
+
         public bool KeepAlive => true;
         private IConnectDB connect;
         private IDialogService dialogService;
@@ -67,9 +78,6 @@ namespace AdminModule.ViewModels
         {
             this.dialogService = dialogService;
             this.connect = connect;
-            
-            LoadData("D");
-            CountRecord = ListSV.Count;
             ThemSVCommand = new DelegateCommand(ThemSVMethod);
             TimKiemCommand = new DelegateCommand<string>(TimKiemCommandMethod);
 
@@ -77,46 +85,24 @@ namespace AdminModule.ViewModels
 
         private void TimKiemCommandMethod(string obj)
         {
-            if (string.IsNullOrWhiteSpace(obj.Trim()) || obj == "")
-            {
-                LoadData(sqlLoadFull);
-
-            }
-            else
-            {
-
-                if (DieuKienTimKiem.Trim() == "Mã")
-                {
-                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa WHERE MaNganh LIKE '{obj}%'");
-                }
-                else
-                {
-
-                    LoadData($"SELECT ROW_NUMBER() OVER( ORDER BY MaNganh) AS STT,MaNganh,TenNganh,KHOA.MaKhoa,KHOA.TenKhoa,NGANH.NamBatDau FROM NGANH LEFT JOIN KHOA ON NGANH.MaKhoa=KHOA.MaKhoa WHERE TenNganh LIKE N'{obj}%'");
-                }
-            }
+            
         }
 
-        private void LoadData(string sqlLoadFull)
-        {
-            _sinhViennProvider = new SinhVienProvider(connect);
-            ListSV = new AsyncVirtualCollection<SinhVien>(_sinhViennProvider, 50, 2000);
-        }
+ 
 
         private void ThemSVMethod()
         {
             var result = new DialogParameters();
             result.Add("flag",true);
+            result.Add("list", ListSV2);
+
             dialogService.ShowDialog("AddSinhVien_AdminView",result,(p)=> 
             {
-                LoadData("d");            
+
+              
             });
         }
 
-        private async Task<ObservableCollection<SinhVien>> GetListSV()
-        {
-            
-          return  await connect.GetDataAsync<SinhVien>("SELECT * FROM SINHVIEN");
-        }
+ 
     }
 }

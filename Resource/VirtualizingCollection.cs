@@ -57,7 +57,7 @@ namespace Resource
         {
             return _itemsProvider.FetchCount(); 
         }
-        protected virtual void LoadCount()
+        public virtual void LoadCount()
         {
             this.Count = FetchCount();
         }

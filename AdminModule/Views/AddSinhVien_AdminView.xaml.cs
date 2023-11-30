@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using AdminModule.ViewModels;
-
+using Resource;
 namespace AdminModule.Views
 {
     /// <summary>
@@ -43,13 +44,14 @@ namespace AdminModule.Views
 
         private void dropimg(object sender, DragEventArgs e)
         {
-                string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            string file = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 if (CheckImg(file) && CheckSize(file))
                 {
                 AddSinhVien_AdminViewModel addSinhVien_ = (AddSinhVien_AdminViewModel)this.DataContext;
-                addSinhVien_.PathImg = new Uri(file);
+                   
+                    addSinhVien_.PathImg = ConvertImg.cvimg(file);
                  
                 }
             }

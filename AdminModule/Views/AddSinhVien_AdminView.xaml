@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdminModule.Views"
              mc:Ignorable="d" 
+             xmlns:r="clr-namespace:Resource;assembly=Resource"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:res="clr-namespace:Resource.AssemblySource;assembly=Resource"
              xmlns:bt="clr-namespace:Resource.ButtonNew;assembly=Resource"
@@ -22,7 +23,10 @@
             <Setter Property="WindowStyle" Value="None"/>
         </Style>
     </prism:Dialog.WindowStyle>
-    
+    <UserControl.Resources>
+        <r:ConvertImg x:Key="convertimg"/>
+        
+    </UserControl.Resources>
     <Border Height="480" Width="740" Margin="4" CornerRadius="5" Background="White">
         <Border.RenderTransformOrigin>
             <Point X="0.5" Y="0.5"/>
@@ -61,6 +65,21 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Panel.ZIndex="10" Background="White" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock FontSize="20" Text="Đang xử lý !"/>
+                </StackPanel>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType=UserControl},Path=DataContext.Loading}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
             <Grid>
                 <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thêm Sinh Viên</TextBlock>
                 <Separator VerticalAlignment="Top" Margin="0 54 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
@@ -75,6 +94,7 @@
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -83,15 +103,13 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Margin="16 32 16 0">
-                        <Border>
 
-                            <Image AllowDrop="True" Panel.ZIndex="10" Source="{Binding PathImg}" Stretch="Fill" 
-                                   RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" UseLayoutRounding="True"  
-                                   Width="140" Height="140" DragEnter="dragimg" Drop="dropimg">
+
+
+                        <Image Width="140" Height="140" Stretch="Fill" Source="{Binding PathImg,Mode=OneWay,Converter={StaticResource convertimg}}">
                             
-      
-                            </Image>
-                        </Border>
+                        </Image>
+                        
                         <TextBlock Margin="0 8" HorizontalAlignment="Center">Hoặc</TextBlock>
                         <bt:Button2 Cursor="Hand" Foreground="White" Command="{Binding OpenDialog}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" 
                                     Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" border_radius="5" Width="142" Height="32">
@@ -259,12 +277,12 @@
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
-                    <bt:Button2 TabIndex="3" Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
+                    <bt:Button2  TabIndex="3" Command="{Binding ResultDialog}" CommandParameter="CANCEL" Color="{DynamicResource {x:Static res:ColorASB.BD700}}" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.Grey300}}" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
                         <TextBlock FontSize="14">Huỷ</TextBlock>
 
                     </bt:Button2>
-                    <bt:Button2 TabIndex="4" Command="{Binding ResultDialog}" CommandParameter="OK" Margin="8 0 0 0" Color="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
+                    <bt:Button2  TabIndex="4" Command="{Binding ResultDialog}" CommandParameter="OK" Margin="8 0 0 0" Color="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
                         <TextBlock FontSize="14">Thêm</TextBlock>
 

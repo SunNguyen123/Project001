@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34031.279
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33423.256
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sell", "Sell\Sell.csproj", "{E545A205-E709-451D-81AC-52CFFE206469}"
 EndProject
@@ -26,8 +26,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library_Dialog", "Library_Dialog\Library_Dialog.csproj", "{6F5B8882-0E61-4568-B5C8-AB27C01A3CE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiemDanhModule", "DiemDanhModule\DiemDanhModule.csproj", "{E63685DB-7209-4146-91FA-12EAC74F8847}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCustomControlLibrary1", "WpfCustomControlLibrary1\WpfCustomControlLibrary1.csproj", "{51F19C93-065B-47FC-A98E-40E40FCF8B4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +77,6 @@ Global
 		{E63685DB-7209-4146-91FA-12EAC74F8847}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E63685DB-7209-4146-91FA-12EAC74F8847}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E63685DB-7209-4146-91FA-12EAC74F8847}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51F19C93-065B-47FC-A98E-40E40FCF8B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51F19C93-065B-47FC-A98E-40E40FCF8B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51F19C93-065B-47FC-A98E-40E40FCF8B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51F19C93-065B-47FC-A98E-40E40FCF8B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,7 +89,6 @@ Global
 		{D84BBC18-41EA-49A5-80EC-E34B0378879A} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
 		{8680EDBA-3CA5-4748-A324-2FA8AA7CAE9F} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
 		{E63685DB-7209-4146-91FA-12EAC74F8847} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
-		{51F19C93-065B-47FC-A98E-40E40FCF8B4B} = {43F937DC-D933-4D5C-A888-C8D31FFCBB27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {463ABA7B-E625-4CB2-9793-D0D011992BAC}

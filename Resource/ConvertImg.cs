@@ -30,21 +30,26 @@ namespace Resource
         {
             byte[] imgsrc = (byte[])value;
 
-            var image = new BitmapImage();
-            using (var mem = new MemoryStream(imgsrc))
+            if (imgsrc==null) 
             {
-                mem.Position = 0;
-                image.BeginInit();
-                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.UriSource = null;
-                image.StreamSource = mem;
-                image.EndInit();
+                return null;
             }
-            image.Freeze();
-            return image;
+                var image = new BitmapImage();
+                using (var mem = new MemoryStream(imgsrc))
+                {
+                    mem.Position = 0;
+                    image.BeginInit();
+                    
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = null;
+                    image.StreamSource = mem;
+                
+                    image.EndInit();
+                }
+                image.Freeze();
+                return image;
 
-
+            
 
         }
 

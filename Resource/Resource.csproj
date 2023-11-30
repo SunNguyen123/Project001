@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="AsyncVirtualCollection.cs" />
     <Compile Include="BaseModel.cs" />
+    <Compile Include="BindingProxy.cs" />
     <Compile Include="ConvertGioiTinh.cs" />
     <Compile Include="ConvertImg.cs" />
     <Compile Include="MD5Hash.cs" />

@@ -71,7 +71,7 @@ namespace Resource
             }
         }
 
-        protected override void LoadCount()
+        public override void LoadCount()
         {
             if (Count == 0)
             {
