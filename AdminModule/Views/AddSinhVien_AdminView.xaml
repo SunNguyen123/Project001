@@ -81,7 +81,7 @@
                 </Grid.Style>
             </Grid>
             <Grid>
-                <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}">Thêm Sinh Viên</TextBlock>
+                <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="16" FontSize="20" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" Text="{ Binding Title2}"></TextBlock>
                 <Separator VerticalAlignment="Top" Margin="0 54 0 0" Background="{DynamicResource {x:Static res:ColorASB.Grey200}}"/>
                 <bt:Button2 TabIndex="5" Width="24" Height="24" CommandParameter="CANCEL" Command="{Binding ResultDialog}" Background="White" Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" Margin="16">
                     <Image Width="20" Margin="2" Height="20" Source="/Resource;component/img/8674683_ic_fluent_dismiss_regular_icon (1).png" />
@@ -106,7 +106,9 @@
 
 
 
-                        <Image Width="140" Height="140" Stretch="Fill" Source="{Binding PathImg,Mode=OneWay,Converter={StaticResource convertimg}}">
+                        <Image Width="140" Height="140" 
+                               Stretch="Fill" 
+                               Source="{Binding PathImg,Mode=OneWay,Converter={StaticResource convertimg}}">
                             
                         </Image>
                         
@@ -146,8 +148,10 @@
 
                             </TextBlock>
                             <TextBox TabIndex="0" Padding="4 0" 
-                                     VerticalContentAlignment="Center" 
-                                     Text="{Binding TenSV,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                                     VerticalContentAlignment="Center"                                      
+                                     Text="{Binding TenSV,Mode=TwoWay,UpdateSourceTrigger=LostFocus}" 
+                                     Width="240" Margin="0 2 0 0" Height="32" 
+                                     Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
                         </StackPanel>
 
                         
@@ -224,12 +228,18 @@
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
 
-                            <TextBlock   FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
+                            <TextBlock  FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" 
                                          VerticalAlignment="Center" FontSize="13" Text="Số điện thoại" TextWrapping="Wrap" HorizontalAlignment="Left"  >
 
                             </TextBlock>
-                            <TextBox TabIndex="0" Padding="4 0" VerticalContentAlignment="Center" 
-                                     Text="{Binding SDT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                            <Grid>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 2 0 0" Text="+84"/>
+                                <Line VerticalAlignment="Center" X1="0" Y1="0" X2="0" Y2="31" UseLayoutRounding="True" StrokeThickness="0.2" Stroke="{DynamicResource {x:Static res:ColorASB.BD700}}" 
+                                      HorizontalAlignment="Left" Margin="42 0"/>
+                                <TextBox TabIndex="0" Padding="24 0" VerticalContentAlignment="Center" 
+                                     Text="{Binding SDT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="240" 
+                                         Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:TextBoxASB.TB1}}"/>
+                            </Grid>
                         </StackPanel>
 
                         <StackPanel Margin="0 16 0 0" HorizontalAlignment="Center">
@@ -284,7 +294,7 @@
                     </bt:Button2>
                     <bt:Button2  TabIndex="4" Command="{Binding ResultDialog}" CommandParameter="OK" Margin="8 0 0 0" Color="White" BorderThickness="1" BorderBrush="{DynamicResource {x:Static res:ColorASB.BD400}}" Background="{DynamicResource {x:Static res:ColorASB.BD300}}" Width="80" Height="32"  Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
-                        <TextBlock FontSize="14">Thêm</TextBlock>
+                        <TextBlock FontSize="14" Text="{Binding TitleBT}"></TextBlock>
 
                     </bt:Button2>
                 </StackPanel>

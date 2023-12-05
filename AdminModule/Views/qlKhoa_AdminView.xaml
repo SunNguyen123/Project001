@@ -101,9 +101,11 @@
         </Grid>
 
         <newcontrol:DatagridNew2 TabIndex="3" CanUserResizeRows="True"
-                                 RowEditEnding="dgvKhoa_RowEditEnding"  
+                                 
                                  SelectionChanged="dgvKhoa_SelectionChanged" 
-                                 x:Name="dgvKhoa" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" 
+                                 x:Name="dgvKhoa" IsReadOnly="True"
+                                 IsSynchronizedWithCurrentItem="True"  
+                                 CanUserAddRows="False" 
                                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Margin="16 0 16 16" 
                                  ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"  
                                  AutoGenerateColumns="False"

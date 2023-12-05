@@ -2,6 +2,7 @@
 using Libary_ConnectDB;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.Collections.ObjectModel;
 using Prism.Services.Dialogs;
 using AdminModule.Models;
 namespace AdminModule.ViewModels
@@ -9,26 +10,26 @@ namespace AdminModule.ViewModels
     public class AddKhoaServiceViewModel : BindableBase, IDialogAware
     {
 
-        private float _width;
 
-        public float Width
+        private string _tenKhoa;
+        public string TenKhoa 
         {
-            get { return _width; }
-            set { SetProperty<float>(ref _width,value); }
+            set => SetProperty(ref _tenKhoa,value);
+            get => _tenKhoa; 
         }
+        private string _ghichu="";
 
-
-        private float _height;
-
-        public float Height
+        public string GhiChu 
         {
-            get { return _height; }
-            set { SetProperty<float>(ref _height, value); }
+            set => SetProperty(ref _ghichu, value);
+            get => _ghichu;
         }
-
-        public string TenKhoa { set; get; }
-        public string GhiChu { set; get; }
-        public DateTime NgayThanhLap { set; get; } = DateTime.Now;
+        private DateTime _ngayTl = DateTime.Now;
+        public DateTime NgayThanhLap 
+        {
+            set => SetProperty<DateTime>(ref _ngayTl, value);
+            get => _ngayTl;
+        } 
 
         private IConnectDB connectDB;
         public DelegateCommand<string> ResultDialog { set; get; }
@@ -46,11 +47,20 @@ namespace AdminModule.ViewModels
             if (obj == "OK")
             {
                 int count = await connectDB.CountRecordAsync($"SELECT COUNT(TenKhoa) FROM KHOA WHERE TenKhoa=N'{TenKhoa}'");
-                if (!string.IsNullOrWhiteSpace(TenKhoa) && count==0)
+                if (!string.IsNullOrWhiteSpace(TenKhoa) && count == 0)
                 {
-                    var khoanew = new Khoa();
+                    Random rd = new Random();
+                    string maKhoa = "KH" + (rd.Next(1,100)+rd.Next(10,80)/2 + 1+rd.Next(1,100)).ToString();
+                    _dsKhoa.Add(new Khoa()
+                    {
+                        STT = _dsKhoa.Count + 1,
+                        MaKhoa = maKhoa,
+                        TenKhoa = TenKhoa,
+                        NamBatDau = NgayThanhLap,
+                        GhiChu = GhiChu,
+                    }) ;
                     
-               await connectDB.ExecuteAsync($"INSERT INTO KHOA VALUES('KH'+CAST(NEXT VALUE FOR SE_MAKHOA AS CHAR(10)),N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-d")}',N'{GhiChu}')");
+               await connectDB.ExecuteAsync($"INSERT INTO KHOA VALUES('{maKhoa}',N'{TenKhoa}','{NgayThanhLap.ToString("yyyy-MM-d")}',N'{GhiChu}')");
                     RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                 }
                 else 
@@ -90,10 +100,10 @@ namespace AdminModule.ViewModels
         {
            
         }
-
+        private ObservableCollection<Khoa> _dsKhoa;
         public void OnDialogOpened(IDialogParameters parameters)
         {
-          
+            _dsKhoa = parameters.GetValue<ObservableCollection<Khoa>>("objs");
         }
     }
 }

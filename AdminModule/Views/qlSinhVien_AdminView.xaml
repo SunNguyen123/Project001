@@ -24,15 +24,21 @@
         <cvres:ConvertGioiTinh x:Key="svGt"/>
         <cvres:BindingProxy x:Key="datacontext" Data="{Binding}"/>
         <cvres:ConvertDateTime x:Key="convertdatetime"/>
+        
+
+
     </UserControl.Resources>
 
     <Border Padding="16">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition >
+                <RowDefinition Height="90" >
 
                 </RowDefinition>
                 <RowDefinition Height="3*"/>
+                <!--<RowDefinition Height="32" >
+
+                </RowDefinition>-->
             </Grid.RowDefinitions>
 
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"  FontSize="24" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}"><Run Text="Sinh viên"/><Run FontFamily="{DynamicResource {x:Static res:FontASB.Regular}}" TextOptions.TextRenderingMode="ClearType" FontSize="11" Text="{Binding CountRecord, Converter={StaticResource chuyendoislbanghi}}"/></TextBlock>
@@ -82,21 +88,23 @@
                     </bt:Button2>
                 </StackPanel>
             </Grid>
-            <newcontrol:DatagridNew2  SelectionMode="Single"
-                                     IsReadOnly="True" IsSynchronizedWithCurrentItem="True"
-                                     VirtualizingPanel.ScrollUnit="Item" 
-                                     VirtualizingPanel.IsVirtualizing="True"  ItemsSource="{Binding ListSV2,IsAsync=True}"
-                                     VirtualizingPanel.VirtualizationMode="Recycling" 
-                                     ScrollViewer.IsDeferredScrollingEnabled="True"  
-                                      Margin="0 8 0 0"   Grid.Row="1" 
+            <newcontrol:DatagridNew2  SelectionMode="Single"  x:Name="dgvSV"
+                                      IsReadOnly="True" 
+                                      VirtualizingPanel.ScrollUnit="Item" 
+                                      VirtualizingPanel.IsVirtualizing="True"  
+                                      ItemsSource="{Binding ListCollectionViewSV,IsAsync=True}"
+                                      VirtualizingPanel.VirtualizationMode="Recycling" 
+                                      IsSynchronizedWithCurrentItem="True"
+                                      ScrollViewer.IsDeferredScrollingEnabled="True"  
+                                      Margin="0 8 0 8"   Grid.Row="1" 
                                       ColumnHeaderStyle="{DynamicResource {x:Static res:DatagridASB.DGVHEADER}}"
-                                         CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
-                                         
-                                         CanUserResizeRows="True" CanUserAddRows="False"
-                                         AutoGenerateColumns="False"
-                                         GridLinesVisibility="All" 
+                                      CellStyle="{DynamicResource {x:Static res:DatagridASB.DGVCELL}}"
+                                      SelectionChanged="DatagridNew2_SelectionChanged"
+                                      CanUserResizeRows="True" CanUserAddRows="False"
+                                      AutoGenerateColumns="False"
+                                      GridLinesVisibility="All" 
                                       HorizontalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}" 
-                                            VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}"
+                                       VerticalGridLinesBrush="{DynamicResource {x:Static res:ColorASB.Grey400}}"
                                          Style="{DynamicResource {x:Static res:DatagridASB.DGV1}}">
 
                 <newcontrol:DatagridNew2.RowStyle>
@@ -107,7 +115,7 @@
                                          ItemContainerStyle="{DynamicResource {x:Static res:ContextMenuASB.MNITEM1}}" 
                                          Style="{DynamicResource {x:Static res:ContextMenuASB.MN1}}">
 
-                                    <MenuItem Command="{Binding Data.Edit2,Source={StaticResource datacontext}}" >
+                                    <MenuItem  Command="{Binding Data.SuaSVCommand,Source={StaticResource datacontext}}" >
                                         <MenuItem.Header >
                                             <StackPanel Orientation="Horizontal">
 
@@ -119,7 +127,7 @@
                                         </MenuItem.Header>
                                     </MenuItem>
 
-                                    <MenuItem Command="{Binding Data.Remove,Source={StaticResource datacontext}}">
+                                    <MenuItem Command="{Binding Data.XoaSVCommand,Source={StaticResource datacontext}}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Width="16" Height="16" VerticalAlignment="Center" Margin="0 0 8 0" Source="/Resource;component/img/8674741_ic_fluent_delete_regular_icon.png" />
@@ -171,12 +179,15 @@
 
                     </DataGridTemplateColumn>
 
-                    <!--<DataGridTemplateColumn Header="ẢNH ĐẠI DIỆN" >
+                    <DataGridTemplateColumn Header="ẢNH ĐẠI DIỆN" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Rectangle x:Name="er" IsHitTestVisible="False" Visibility="Collapsed" Stroke="Red"></Rectangle>
-                                    <Image Height="32" Margin="0 2"   Width="32" Source="{Binding AnhDaiDien,Converter={StaticResource cvimg}}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality">
+                                    <Image Height="32" Margin="0 2"   Width="32" 
+                                           Source="{Binding AnhDaiDien,Converter={StaticResource cvimg}}" 
+                                           Stretch="UniformToFill" 
+                                           RenderOptions.BitmapScalingMode="HighQuality">
                                         <Image.Clip>
                                             <EllipseGeometry Center="16,16" RadiusX="16" RadiusY="16"/>
                                         </Image.Clip>
@@ -190,7 +201,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
 
-                    </DataGridTemplateColumn>-->
+                    </DataGridTemplateColumn>
                     
                     
                     <DataGridTemplateColumn Header="CMND" >
@@ -209,9 +220,7 @@
                         </DataGridTemplateColumn.CellTemplate>
        
                     </DataGridTemplateColumn>
-                    <!--Cột sinh viên-->
-
-                    <!--ten sv-->
+          
                     <DataGridTemplateColumn   Header="TÊN SINH VIÊN">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -456,6 +465,32 @@
 
                 </newcontrol:DatagridNew2.Columns>
             </newcontrol:DatagridNew2>
+
+  
+            <!--<Grid  Grid.Row="2">
+       
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <bt:Button2 Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" 
+                                Press="{DynamicResource {x:Static res:ColorASB.Grey300}}"  
+                                BorderThickness="0" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}"
+                                Background="White" Width="32" Height="32" border_radius="5 0 0 5">
+                        &lt;
+                    </bt:Button2>
+                    <TextBox HorizontalContentAlignment="Center" 
+                             VerticalContentAlignment="Center"
+                             Style="{DynamicResource {x:Static res:TextBoxASB.nonetb1}}" 
+                             Background="White" Width="32" Height="32" 
+                             BorderThickness="0"/>
+                    <bt:Button2 Hover="{DynamicResource {x:Static res:ColorASB.Grey200}}" 
+                                Press="{DynamicResource {x:Static res:ColorASB.Grey300}}" 
+                                BorderThickness="0" 
+                                Background="White" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}"
+                                Width="32" Height="32" border_radius="0 5 5 0" >
+                        &lt;
+                    </bt:Button2>
+                    
+                </StackPanel>
+            </Grid>-->
         </Grid>
     </Border>
 </UserControl>

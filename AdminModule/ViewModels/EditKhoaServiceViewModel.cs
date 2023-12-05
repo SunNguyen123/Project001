@@ -56,13 +56,17 @@ namespace AdminModule.ViewModels
             this.dialogService = dialogService;
         }
 
-        private async void CloseDialogMethod(string obj)
+        private async void CloseDialogMethod(string objs)
         {
-            if (obj.Trim() == "OK")
+            if (objs.Trim() == "OK")
             {
                 int count= await kn.CountRecordAsync($"SELECT COUNT(*) FROM KHOA WHERE TenKhoa=N'{TenKhoa}' AND NOT MaKhoa='{MaKhoa}'");
                 if (!string.IsNullOrWhiteSpace(TenKhoa) && count==0)
                 {
+
+                    obj.TenKhoa = TenKhoa;
+                    obj.NamBatDau = NamBatDau;
+                    obj.GhiChu = GhiChu;
                     await kn.ExecuteAsync($"UPDATE KHOA SET TenKhoa=N'{TenKhoa}',NamBatDau='{NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{GhiChu}' WHERE MaKhoa='{MaKhoa}'");
                     var bt = ButtonResult.OK;
                     var dialogresult = new DialogResult(bt);
@@ -93,10 +97,10 @@ namespace AdminModule.ViewModels
         {
             
         }
-
+        private Khoa obj;
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            var obj = parameters.GetValue<Khoa>("obj") ;
+             obj = parameters.GetValue<Khoa>("obj") ;
             MaKhoa = obj.MaKhoa;
             TenKhoa = obj.TenKhoa;
             NamBatDau = obj.NamBatDau;

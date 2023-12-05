@@ -15,7 +15,7 @@ using System.Windows.Data;
 using AdminModule.Models;
 using AlphaChiTech.Virtualization;
 using System.Windows.Media.Imaging;
-
+using System.Text.RegularExpressions;
 namespace AdminModule.ViewModels
 {
     public class AddSinhVien_AdminViewModel : BaseModel, IDialogAware
@@ -32,6 +32,14 @@ namespace AdminModule.ViewModels
                 return _title;
             }
         }
+        private string _titleBt;
+
+        public string TitleBT
+        {
+            get { return _titleBt; }
+            set { SetProperty(ref _titleBt,value); }
+        }
+
         private string[] _gtSource = { "Nam", "Nữ" };
 
         public string[] GtSource
@@ -47,7 +55,7 @@ namespace AdminModule.ViewModels
             set { SetProperty(ref _gt, value); }
         }
 
-        private string _danToc;
+        private string _danToc="";
 
         public string DanToc
         {
@@ -66,7 +74,7 @@ namespace AdminModule.ViewModels
                 SetProperty(ref _danToc, value);
             }
         }
-        private string _tonGiao;
+        private string _tonGiao="";
 
         public string TonGiao
         {
@@ -84,7 +92,7 @@ namespace AdminModule.ViewModels
                 SetProperty(ref _tonGiao, value);
             }
         }
-        private string _diaChi;
+        private string _diaChi="";
 
         public string DiaChi
         {
@@ -103,7 +111,7 @@ namespace AdminModule.ViewModels
                 SetProperty(ref _diaChi, value);
             }
         }
-        private string _queQuan;
+        private string _queQuan="";
 
         public string QueQuan
         {
@@ -126,7 +134,14 @@ namespace AdminModule.ViewModels
         public string SDT
         {
             get { return sdt; }
-            set { SetProperty(ref sdt, value); }
+            set 
+            { 
+                SetProperty(ref sdt, value);
+                var p = "^0[0-9]{9}";
+                if (!Regex.IsMatch(SDT, p)) AddError(nameof(SDT),"SDT bắt đầu=0,gồm 10 số");
+                else RemoveError(nameof(SDT), "SDT bắt đầu=0,gồm 10 số");
+                
+            }
         }
         private DateTime _ngayNhapHoc=DateTime.Now;
 
@@ -173,16 +188,16 @@ namespace AdminModule.ViewModels
             get { return _cmnd; }
             set 
             {
-                if (value.Length == 0)
-                {
-                    AddError(nameof(CMND), "Không được bỏ trống !");
-                  
-                }
-                else
-                {
-                    RemoveError(nameof(CMND), "Không được bỏ trống !");
-                }
+
                 SetProperty(ref _cmnd, value);
+                var p = "^0[0-9]{9}";
+                if (!Regex.IsMatch(CMND, p)) AddError(nameof(CMND), "CMND gồm 10 số ,bắt đầu =0");
+                else RemoveError(nameof(CMND), "CMND gồm 10 số ,bắt đầu =0");
+                Task.Run(() => {
+                    int count = connectDB.CountRecord($"SELECT COUNT(*) FROM SINHVIEN WHERE CMND='{CMND}'");
+                    if (count > 1) AddError(nameof(CMND), "CMND đã tồn tại !");
+                    else RemoveError(nameof(CMND), "CMND đã tồn tại !");
+                });
             }
         }
         private string _maSV;
@@ -196,7 +211,7 @@ namespace AdminModule.ViewModels
             set { _maSV = value; }
         }
 
-        private string _tenSV;
+        private string _tenSV="";
 
         public string TenSV
         {
@@ -204,6 +219,7 @@ namespace AdminModule.ViewModels
             set
 
             {
+                SetProperty(ref _tenSV, value);
                 if (value.Length ==0) 
                 { 
                     AddError(nameof(TenSV), "Không được bỏ trống !"); 
@@ -213,8 +229,11 @@ namespace AdminModule.ViewModels
                 { 
                     RemoveError(nameof(TenSV), "Không được bỏ trống !"); 
                 }
-                SetProperty(ref _tenSV, value);
-
+                Task.Run(()=> {
+                    int count = connectDB.CountRecord($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV='{TenSV}'");
+                    if (count>1) AddError(nameof(TenSV), "Tên Sinh Viên đã tồn tại !");
+                    else RemoveError(nameof(TenSV), "Tên Sinh Viên đã tồn tại !");
+                });
 
             }
         }
@@ -229,7 +248,7 @@ namespace AdminModule.ViewModels
                 SetProperty<DateTime>(ref _ngaySinh,value); 
             }
         }
-        private string _ghiChu;
+        private string _ghiChu="";
 
         public string GhiChu
         {
@@ -248,8 +267,13 @@ namespace AdminModule.ViewModels
 
         public bool Loading
         {
-            get { return _isLoading; }
-            set { SetProperty<bool>(ref _isLoading,value) ; }
+            get { 
+                return _isLoading; 
+            }
+            set 
+            { 
+                SetProperty<bool>(ref _isLoading,value) ; 
+            }
         }
         private bool check;
         public DelegateCommand<string> ResultDialog 
@@ -300,26 +324,33 @@ namespace AdminModule.ViewModels
                 if (check)
                 {
                     
-                    if (!string.IsNullOrWhiteSpace(TenSV))
-                    {                        
+                    if (!string.IsNullOrWhiteSpace(TenSV) && PathImg!=null)
+                    { 
+                    int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN");
+                        Random rd = new Random();
                         bool gt = GioiTinh == "Nam" ? true : false;
-
+                        string maSV ="SV"+(rd.Next(1, 1000) + rd.Next(10, 800) / 2 + 1 + rd.Next(1, 1000)).ToString();
                         list.Add(new SinhVien()
                         {
                             TenSV = TenSV,
+                            MaSV = maSV,
                             STT = (list.Count + 1).ToString(),
                             CMND = CMND,
                             GioiTinh = gt,
-                            NgayNhapHoc=NgayNhapHoc,
-                            NgaySinh=NgaySinh,
-                            DiaChi=DiaChi,
-                            QueQuan=QueQuan,
-                            AnhDaiDien=PathImg,
-                            GhiChu=GhiChu,TonGiao=TonGiao,DanToc=DanToc,TenLop= ((Lop)ListLop.CurrentItem).TenLop
+                            NgayNhapHoc = NgayNhapHoc,
+                            NgaySinh = NgaySinh,
+                            DiaChi = DiaChi,
+                            QueQuan = QueQuan,
+                            AnhDaiDien = PathImg,
+                            GhiChu = GhiChu,
+                            TonGiao = TonGiao,
+                            DanToc = DanToc,
+                            SDT=SDT,
+                            TenLop = ((Lop)ListLop.CurrentItem).TenLop
 
                         }) ;
                         
-                        await connectDB.ExecuteImg(ConvertImg.cvimg(_filePath),CMND,TenSV,NgaySinh,gt,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,((Lop)ListLop.CurrentItem).MaLop,GhiChu);                       
+                        await connectDB.ExecuteSV(true,maSV, ConvertImg.cvimg(_filePath),CMND,TenSV,NgaySinh,gt,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,((Lop)ListLop.CurrentItem).MaLop,GhiChu);                       
                         RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
                     }
                     else
@@ -336,10 +367,24 @@ namespace AdminModule.ViewModels
                 }
                 else
                 {
-                    int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV=N'{TenSV}' AND NOT MaSV='{MaSV}'");
+            int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM SINHVIEN WHERE TenSV=N'{TenSV}' AND NOT MaSV='{MaSV}'");
                     if (!string.IsNullOrWhiteSpace(TenSV) && count == 0)
                     {
-                        await connectDB.ExecuteAsync($"");
+                        bool gt = GioiTinh == "Nam" ? true : false;
+                        sinhVien.AnhDaiDien = PathImg;
+                        sinhVien.CMND = CMND;
+                        sinhVien.TenSV = TenSV;
+                        sinhVien.GioiTinh = gt;
+                        sinhVien.NgayNhapHoc = NgayNhapHoc;
+                        sinhVien.NgaySinh = NgaySinh;
+                        sinhVien.MaLop = ((Lop)ListLop.CurrentItem).MaLop;
+                        sinhVien.TenLop = ((Lop)ListLop.CurrentItem).TenLop;
+                        sinhVien.DanToc = DanToc;
+                        sinhVien.TonGiao = TonGiao;
+                        sinhVien.DiaChi = DiaChi;
+                        sinhVien.QueQuan = QueQuan;
+                        sinhVien.GhiChu = GhiChu;
+                        await connectDB.ExecuteSV(false,MaSV, PathImg, CMND, TenSV, NgaySinh, gt, DanToc, TonGiao, DiaChi, QueQuan, SDT, NgayNhapHoc, ((Lop)ListLop.CurrentItem).MaLop, GhiChu);
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);
                         RequestClose?.Invoke(dialogresult);
@@ -348,7 +393,7 @@ namespace AdminModule.ViewModels
                     {
                         Loading = false;
                         var ts1 = new DialogParameters();
-                        ts1.Add("message1", $"Thông tin bạn vừa nhập đã tồn tại hoặc chưa đầy đủ");
+                        ts1.Add("message1", $"Thông tin bạn vừa nhập  chưa đầy đủ");
                         ts1.Add("message2", $"Vui lòng thử lại sau !");
                         dialogService.ShowDialog("DialogWindowView", ts1, (r) => { });
                     }
@@ -371,20 +416,24 @@ namespace AdminModule.ViewModels
         {
          
         }
-        private VirtualizingObservableCollection<SinhVien> list;
+        private SinhVien sinhVien;
+        private ObservableCollection<SinhVien> list;
         public async void OnDialogOpened(IDialogParameters parameters)
         {
-           await LoadKhoa();
+            await LoadKhoa();
             check = parameters.GetValue<bool>("flag");
             if (check)
             {
                 Title2 = "Thêm Sinh viên";
-                list = parameters.GetValue<VirtualizingObservableCollection<SinhVien>>("list");
+                TitleBT = "Thêm";
+                list = parameters.GetValue<ObservableCollection<SinhVien>>("ds");
             }
             else
             {
+                TitleBT = "Lưu";
                 Title2 = "Sửa Sinh viên";
-                SinhVien sinhVien = parameters.GetValue<SinhVien>("sv");
+                sinhVien = parameters.GetValue<SinhVien>("sv");
+                MaSV = sinhVien.MaSV;
                 CMND = sinhVien.CMND;
                 TenSV = sinhVien.TenSV;
                 NgaySinh = sinhVien.NgaySinh;
@@ -396,9 +445,9 @@ namespace AdminModule.ViewModels
                 GhiChu = sinhVien.GhiChu;
                 SDT = sinhVien.SDT;
                 NgayNhapHoc = sinhVien.NgayNhapHoc;
-                Lop lop = _listLop.FirstOrDefault(c=>c.MaLop==sinhVien.MaLop);
+                Lop lop = _listLop.FirstOrDefault<Lop>(c=>c.MaLop==sinhVien.MaLop);
                 ListLop.MoveCurrentTo(lop);
-                list = parameters.GetValue<VirtualizingObservableCollection<SinhVien>>("list");
+                list = parameters.GetValue<ObservableCollection<SinhVien>>("ds");
                 PathImg = sinhVien.AnhDaiDien;
 
             }

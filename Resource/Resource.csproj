@@ -66,6 +66,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblySource\ListViewASB.cs" />
+    <Compile Include="AssemblySource\ViewSV1.cs" />
     <Compile Include="AsyncVirtualCollection.cs" />
     <Compile Include="BaseModel.cs" />
     <Compile Include="BindingProxy.cs" />
@@ -135,6 +137,10 @@
     <Compile Include="AssemblySource\ButtonASB.cs" />
     <Compile Include="AssemblySource\CheckBoxASB.cs" />
     <Compile Include="AssemblySource\ColorASB.cs" />
+    <Page Include="View\ViewSV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblySource\ComboboxASB.cs" />

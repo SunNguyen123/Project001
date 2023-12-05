@@ -35,18 +35,8 @@ namespace AdminModule.Views
             Keyboard.ClearFocus();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-          
-        }
 
-        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
-        {
 
-                dgvKhoa.SelectAll();
-            
-          
-        }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -56,15 +46,10 @@ namespace AdminModule.Views
         private void dgvKhoa_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var datacontext = (qlKhoa_AdminViewModels)this.DataContext;
-            datacontext.SelectedObject = dgvKhoa.SelectedItems.Cast<Khoa>().ToList();
+            datacontext.SelectedObject = dgvKhoa.SelectedItem as Khoa;
         }
 
-        private void dgvKhoa_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-            var datacontext = (qlKhoa_AdminViewModels)this.DataContext;
 
-            datacontext.EditKhoa.Execute();
-        }
 
         private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {

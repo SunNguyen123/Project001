@@ -3,7 +3,8 @@
                     xmlns:nct="clr-namespace:Resource.NewControl"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgv1}" TargetType="{x:Type nct:DatagridNew2}">
-        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.Grey400}}"/>
         <Setter Property="BorderThickness" Value="1"/>

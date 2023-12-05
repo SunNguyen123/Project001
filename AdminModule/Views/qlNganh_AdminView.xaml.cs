@@ -18,18 +18,9 @@ namespace AdminModule.Views
             InitializeComponent();
         }
 
-        private void dgvKhoa_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-            var datacontext = (qlNganh_AdminViewModel)this.DataContext;
 
-            datacontext.Edit.Execute();
-        }
 
-        private void dgvKhoa_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var datacontext = (qlNganh_AdminViewModel)this.DataContext;
-            datacontext.SelectedObject = dgvNganh.SelectedItems.Cast<Nganh>().ToList();
-        }
+
 
         private void nganh_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

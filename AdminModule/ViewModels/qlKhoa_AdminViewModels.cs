@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using Prism.Events;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace AdminModule.ViewModels
 {
@@ -20,7 +21,7 @@ namespace AdminModule.ViewModels
         private int _count;
         private IConnectDB connectDB;
         private ObservableCollection<Khoa> _dsKhoa;
-        public List<Khoa> SelectedObject { get; set; }
+        public Khoa SelectedObject { get; set; }
         public DelegateCommand RemoveKhoa { set; get; }
         private string sqlLoadFull = "SELECT ROW_NUMBER() OVER( ORDER BY MaKhoa) AS STT,MaKhoa,TenKhoa,NamBatDau,GhiChu FROM KHOA";
         public DelegateCommand EditKhoa { set; get; }
@@ -91,58 +92,44 @@ namespace AdminModule.ViewModels
             AddKhoaCommand = new DelegateCommand(AddKhoaCommandMethod);
             TimKiemKhoaCommand = new DelegateCommand<string>(TimKiemKhoaCommandMethod);       
             RemoveKhoa = new DelegateCommand(RemoveKhoaMethod);
-            EditKhoa = new DelegateCommand(EditKhoaMethod);
-            EditKhoa2 = new DelegateCommand(EditKhoa2Method, Caneditexecute).ObservesProperty(() => SelectedObject);
+          
+            EditKhoa2 = new DelegateCommand(EditKhoa2Method);
             TimKiemKhoaCommandMethod(_gtTK);
         }
 
-        private bool Caneditexecute()
-        {
-            bool flag = true;
-            if (SelectedObject!=null)
-            {
-                flag= SelectedObject.Count == 1 ? true : false;
-            }
 
-            return flag;
-        }
 
         private void EditKhoa2Method()
         {
             var ts = new DialogParameters();
             ts.Add("obj", listKhoa.CurrentItem );
             dialogsv.ShowDialog("EditKhoa_AdminView",ts,(r)=> {
-              if(r.Result==ButtonResult.OK)  LoadData(sqlLoadFull);
+              
             });
         }
 
-        private async void EditKhoaMethod()
-        {
-            var khoa = listKhoa.CurrentItem as Khoa;          
-            await connectDB.ExecuteAsync($"UPDATE KHOA SET TenKhoa=N'{khoa.TenKhoa}',NamBatDau='{khoa.NamBatDau.ToString("yyyy-MM-d")}',Ghichu=N'{khoa.GhiChu}' WHERE MaKhoa='{khoa.MaKhoa}'");
-        }
+
 
         private  void RemoveKhoaMethod()
         {
             var p = new DialogParameters();
-            p.Add("count", SelectedObject.Count);
+            p.Add("count",1);
             dialogsv.ShowDialog("DialogDeleteView",p, async (r)=> 
             {
                 if (r.Result==ButtonResult.OK)
                 {
-                    foreach (var item in SelectedObject)
-                    {
 
-                        await connectDB.ExecuteAsync($"EXECUTE REMOVEKHOA '{item.MaKhoa}'");
+                    _dsKhoa.Remove(SelectedObject);
+                        await connectDB.ExecuteAsync($"EXECUTE REMOVEKHOA '{SelectedObject.MaKhoa}'");
 
-                    }
-                    TimKiemKhoaCommandMethod(_gtTK);
+                    
+                    
                 }
             });
 
         }
 
-        private void TimKiemKhoaCommandMethod(string q)
+        private async void TimKiemKhoaCommandMethod(string q)
         {
           
             if (string.IsNullOrWhiteSpace(q.Trim()) || q=="")
@@ -169,14 +156,14 @@ namespace AdminModule.ViewModels
         {
 
             var p = new DialogParameters();
-            p.Add("",100);
+            p.Add("objs",_dsKhoa);
             dialogsv.ShowDialog("AddKhoaServiceView",p,ResultCallBack);
         }
 
         private   void ResultCallBack(IDialogResult obj)
         {
             
-            if (obj.Result == ButtonResult.OK) TimKiemKhoaCommandMethod(_gtTK);
+            
         }
     }
 }

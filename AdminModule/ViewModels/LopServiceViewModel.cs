@@ -25,6 +25,13 @@ namespace AdminModule.ViewModels
                 return _title;
             }
         }
+        private string _titleBt;
+
+        public string TitleBT
+        {
+            get { return _titleBt; }
+            set { SetProperty(ref _titleBt, value); }
+        }
         private string _maLop;
 
         public string MaLop
@@ -53,7 +60,20 @@ namespace AdminModule.ViewModels
                     int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM LOP WHERE TenLOP=N'{TenLop}'");
                     if (!string.IsNullOrWhiteSpace(TenLop) && count == 0)
                     {
-                        await connectDB.ExecuteAsync($"INSERT INTO LOP  VALUES ('LP'+CAST(NEXT VALUE FOR SE_MALOP AS CHAR(5)),N'{TenLop}','{((KhoaHoc)ListKH.CurrentItem).MaKhoaHoc}','{((Nganh)ListNganh.CurrentItem).MaNganh}',N'{GhiChu}')");
+                        string maLop = "LP"+(lops.Count + 1 + 100).ToString();
+                        lops.Add(new Lop()
+                        {
+                            MaLop = maLop,
+                            TenLop = TenLop,
+                            STT = (lops.Count + 1).ToString(),
+                            MaNganh = ((Nganh)ListNganh.CurrentItem).MaNganh,
+                            TenNganh= ((Nganh)ListNganh.CurrentItem).TenNganh,
+                            MaKhoaHoc= ((KhoaHoc)ListKH.CurrentItem).MaKhoaHoc,
+                            TenKhoaHoc= ((KhoaHoc)ListKH.CurrentItem).TenKhoaHoc,
+                            GhiChu=GhiChu
+
+                        }) ;
+                        await connectDB.ExecuteAsync($"INSERT INTO LOP  VALUES ('{maLop}',N'{TenLop}','{((KhoaHoc)ListKH.CurrentItem).MaKhoaHoc}','{((Nganh)ListNganh.CurrentItem).MaNganh}',N'{GhiChu}')");
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);
                         RequestClose?.Invoke(dialogresult);
@@ -71,6 +91,13 @@ namespace AdminModule.ViewModels
                     int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM NGANH WHERE TenNganh=N'{TenLop}' AND NOT MaLop='{MaLop}'");
                     if (!string.IsNullOrWhiteSpace(TenLop) && count == 0)
                     {
+                        lop.TenLop = TenLop;
+                        lop.STT = (lops.Count + 1).ToString();
+                        lop.MaNganh = ((Nganh)ListNganh.CurrentItem).MaNganh;
+                        lop.TenNganh = ((Nganh)ListNganh.CurrentItem).TenNganh;
+                        lop.MaKhoaHoc = ((KhoaHoc)ListKH.CurrentItem).MaKhoaHoc;
+                        lop.TenKhoaHoc = ((KhoaHoc)ListKH.CurrentItem).TenKhoaHoc;
+                        lop.GhiChu = GhiChu;
                         await connectDB.ExecuteAsync($"UPDATE LOP SET TenLop=N'{TenLop}',MaKhoaHoc='{((KhoaHoc)ListKH.CurrentItem).MaKhoaHoc}',MaNganh='{((Nganh)ListNganh.CurrentItem).MaNganh}',Ghichu=N'{GhiChu}' WHERE MaLop='{MaLop}'");
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);
@@ -147,6 +174,7 @@ namespace AdminModule.ViewModels
             ListNganh = new ListCollectionView(_listNganh);
 
         }
+        ObservableCollection<Lop> lops;
         private async Task LoadNganh()
         {
 
@@ -154,6 +182,7 @@ namespace AdminModule.ViewModels
             ListKH = new ListCollectionView(_listKH);
 
         }
+        private Lop lop;
         public async void OnDialogOpened(IDialogParameters parameters)
         {
            await LoadKH();
@@ -163,16 +192,17 @@ namespace AdminModule.ViewModels
             if (check)
             {
                 Title2 = "Thêm lớp";
-
+                TitleBT = "Thêm";
+                lops = parameters.GetValue<ObservableCollection<Lop>>("objs");
             }
             else
             {
                 Title2 = "Sửa lớp";
-                Lop lop = parameters.GetValue<Lop>("obj");
+                TitleBT = "Lưu";
+                lop = parameters.GetValue<Lop>("obj");
                 TenLop = lop.TenLop;
                 Nganh nganh1 = _listNganh.FirstOrDefault(c => c.MaNganh == lop.MaNganh);
                 ListNganh.MoveCurrentTo(nganh1);
-
                 KhoaHoc khoaHoc = _listKH.FirstOrDefault(c => c.MaKhoaHoc == lop.MaKhoaHoc);
                 ListKH.MoveCurrentTo(khoaHoc);
                 MaLop = lop.MaLop;

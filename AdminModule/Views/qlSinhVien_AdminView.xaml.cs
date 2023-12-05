@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminModule.ViewModels;
+using AdminModule.Models;
 
 namespace AdminModule.Views
 {
@@ -29,6 +31,12 @@ namespace AdminModule.Views
         public qlSinhVien_AdminView()
         {
             InitializeComponent();
+        }
+
+        private void DatagridNew2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            qlSinhVien_AdminViewModel qlSinhVien_ = (qlSinhVien_AdminViewModel)this.DataContext;
+            qlSinhVien_.SelectSV = dgvSV.SelectedItem as SinhVien;
         }
     }
 }

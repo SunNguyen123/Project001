@@ -83,10 +83,12 @@
                 <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Năm bắt đầu" TextWrapping="Wrap" HorizontalAlignment="Left"  />
                 <DatePicker  Style="{DynamicResource {x:Static res:DatepickerASB.datePickerStyle}}" TabIndex="1" SelectedDate="{Binding NamBatDau, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
-                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Ghi chú" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                <TextBlock Margin="0 16 0 0" FontFamily="{DynamicResource {x:Static res:FontASB.Medium}}" VerticalAlignment="Center" FontSize="13" Text="Tên Khoa" TextWrapping="Wrap" HorizontalAlignment="Left"  />
                 <ComboBox  DisplayMemberPath="TenKhoa" TabIndex="2"  VerticalContentAlignment="Top" 
-                           IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding ListKhoa}" Width="240" 
-                           Margin="0 2 0 0" Height="32" Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" IsEditable="False" />
+                           IsSynchronizedWithCurrentItem="True" 
+                           ItemsSource="{Binding ListKhoa}" Width="240" 
+                           Margin="0 2 0 0" Height="32" 
+                           Style="{DynamicResource {x:Static res:ComboboxASB.CMBTEXT}}" ItemContainerStyle="{DynamicResource {x:Static res:ComboboxASB.CMBITEM1}}" IsEditable="False" />
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="16">
@@ -103,7 +105,7 @@
                             Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  
                             VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
-                    <TextBlock FontSize="14"><Run Text="Đồng ý"/></TextBlock>
+                    <TextBlock FontSize="14" Text="{Binding TitleBT}"></TextBlock>
 
                 </bt:Button2>
             </StackPanel>

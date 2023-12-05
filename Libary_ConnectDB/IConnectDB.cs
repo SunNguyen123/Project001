@@ -16,6 +16,6 @@ namespace Libary_ConnectDB
         void Execute(string query);
         IList<T> GetData<T>(string query);
         int CountRecord(string query);
-        Task ExecuteImg(params object[] p);
+        Task ExecuteSV(bool l,params object[] p);
     }
 }

@@ -63,27 +63,30 @@ namespace Libary_ConnectDB
             }
 
         }
-       public async Task ExecuteImg(params object[] p)
+       public async Task ExecuteSV(bool loai,params object[] p)
         {
 
+                string s = "";
+            if (loai) s = "EXEC INSERTSV @MaSV,@img,@CMND,@TenSV,@NgaySinh,@GioiTinh,@DanToc,@TonGiao,@DiaChi,@QueQuan,@SDT,@NgayNhapHoc,@MaLop,@GhiChu";
+            else  s= "UPDATE SINHVIEN SET TenSV='@TenSV',AnhDaiDien=@img,NgaySinh='@NgaySinh',GioiTinh=@GioiTinh,DanToc='@DanToc',CMND='@CMND',TonGiao='@TonGiao',DiaChi='@DiaChi',QueQuan='@QueQuan',@SDT='SDT',NgayNhapHoc='@NgayNhapHoc',MaLop='@MaLop',GhiChu='@GhiChu' WHERE MaSV='@MaSV' ";
             try
             {
-                string s = "EXEC INSERTSV @img,@CMND,@TenSV,@NgaySinh,@GioiTinh,@DanToc,@TonGiao,@DiaChi,@QueQuan,@SDT,@NgayNhapHoc,@MaLop,@GhiChu";
                 if (connection.State != System.Data.ConnectionState.Open) await connection.OpenAsync();
                 SqlCommand command = new SqlCommand(s, connection);
-                command.Parameters.AddWithValue("@img", (byte[])p[0]);
-                command.Parameters.AddWithValue("@CMND", p[1].ToString());
-                command.Parameters.AddWithValue("@TenSV", p[2].ToString());
-                command.Parameters.AddWithValue("@NgaySinh", p[3].ToString());
-                command.Parameters.AddWithValue("@GioiTinh", (bool)p[4]);
-                command.Parameters.AddWithValue("@DanToc", p[5].ToString());
-                command.Parameters.AddWithValue("@TonGiao", p[6].ToString());
-                command.Parameters.AddWithValue("@DiaChi", p[7].ToString());
-                command.Parameters.AddWithValue("@QueQuan", p[8].ToString());
-                command.Parameters.AddWithValue("@SDT", p[9].ToString());
-                command.Parameters.AddWithValue("@NgayNhapHoc", p[10].ToString());
-                command.Parameters.AddWithValue("@MaLop", p[11].ToString());
-                command.Parameters.AddWithValue("@GhiChu", p[12].ToString());
+                command.Parameters.AddWithValue("@MaSV", p[0].ToString());
+                command.Parameters.AddWithValue("@img", (byte[])p[1]);
+                command.Parameters.AddWithValue("@CMND", p[2].ToString());
+                command.Parameters.AddWithValue("@TenSV", p[3].ToString());
+                command.Parameters.AddWithValue("@NgaySinh", p[4].ToString());
+                command.Parameters.AddWithValue("@GioiTinh", (bool)p[5]);
+                command.Parameters.AddWithValue("@DanToc", p[6].ToString());
+                command.Parameters.AddWithValue("@TonGiao", p[7].ToString());
+                command.Parameters.AddWithValue("@DiaChi", p[8].ToString());
+                command.Parameters.AddWithValue("@QueQuan", p[9].ToString());
+                command.Parameters.AddWithValue("@SDT", p[10].ToString());
+                command.Parameters.AddWithValue("@NgayNhapHoc", p[11].ToString());
+                command.Parameters.AddWithValue("@MaLop", p[12].ToString());
+                command.Parameters.AddWithValue("@GhiChu", p[13].ToString());
                 command.ExecuteNonQuery();
 
 
@@ -172,8 +175,9 @@ namespace Libary_ConnectDB
             try
             {
 
-                if (connection.State != System.Data.ConnectionState.Open) connection.OpenAsync();
-                connection.Query(query);
+                if (connection.State != System.Data.ConnectionState.Open) connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
 
             }
             catch (Exception e)

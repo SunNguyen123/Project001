@@ -7,18 +7,22 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static local:ColorASB.Grey500}}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="0.7" 
+                    <Border x:Name="br" 
+                            Padding="{TemplateBinding Padding}" 
+                            BorderThickness="0.7" 
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             Background="{TemplateBinding Background}" 
                             CornerRadius="5" SnapsToDevicePixels="True" >
                         <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost"  
-                                          HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
+                            <ScrollViewer x:Name="PART_ContentHost"  Height="30"
+                                          HorizontalAlignment="Stretch" 
+                                          VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
                                           HorizontalScrollBarVisibility="Auto" 
                                           VerticalScrollBarVisibility="Disabled">
                                 
@@ -45,6 +49,9 @@
                         <Trigger Property="Validation.HasError" Value="True">
                             <Setter Property="BorderBrush" Value="Red" TargetName="br"/>
                             <Setter Property="Padding" Value="8 0 24 0" />
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=(Validation.Errors)[0].ErrorContent}"/>
+                            <Setter Property="ToolTip.IsOpen" Value="True"/>
+                            <Setter Property="ToolTip.StaysOpen" Value="False"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -68,7 +75,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
-                    <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="1.4" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
+                    <Border x:Name="br" Padding="{TemplateBinding Padding}" 
+                            BorderThickness="1.4" BorderBrush="{TemplateBinding BorderBrush}" 
+                            Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True" >
                         <Grid>
                             <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                                       HorizontalScrollBarVisibility="Hidden" 
@@ -147,6 +156,7 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type local:TextBoxASB},ResourceId=nonetb1}" TargetType="TextBox">
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static local:ColorASB.BD700}}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}">
         </Setter>
@@ -156,7 +166,7 @@
                 <ControlTemplate TargetType="TextBox">
                     <Border x:Name="br" Padding="{TemplateBinding Padding}" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"  SnapsToDevicePixels="True" >
                         <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
+                            <ScrollViewer x:Name="PART_ContentHost"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}" 
                                       HorizontalScrollBarVisibility="Auto" 
                                       VerticalScrollBarVisibility="Disabled"></ScrollViewer>
                            

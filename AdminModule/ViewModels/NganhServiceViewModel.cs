@@ -25,11 +25,18 @@ namespace AdminModule.ViewModels
                 return _title;
             }
         }
+        private string _titleBt;
+
+        public string TitleBT
+        {
+            get { return _titleBt; }
+            set { SetProperty(ref _titleBt, value); }
+        }
         private bool check;
         public string Title => _title;
         public DelegateCommand<string> ResultDialog { set; get; }
         public event Action<IDialogResult> RequestClose;
-       
+        private ObservableCollection<Nganh> dsNganh;
         private ObservableCollection<Khoa> _listKhoa;
         public ListCollectionView _dskhoa;
         public ListCollectionView ListKhoa
@@ -110,7 +117,18 @@ namespace AdminModule.ViewModels
                     int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM NGANH WHERE TenNganh=N'{TenNganh}'");
                     if (!string.IsNullOrWhiteSpace(TenNganh) && count == 0)
                     {
-                        await connectDB.ExecuteAsync($"INSERT INTO NGANH  VALUES ('NG'+CAST(NEXT VALUE FOR SE_MANGANH AS CHAR(5)),N'{TenNganh}','{((Khoa)ListKhoa.CurrentItem).MaKhoa}','{NamBatDau.ToString("yyyy-MM-d")}')");
+                        Random rd = new Random();
+                        string manNganh = "NG"+ (rd.Next(1, 100) + rd.Next(10, 80) / 2 + 1 + rd.Next(1, 100)).ToString();
+                        dsNganh.Add(new Nganh()
+                        {
+                            MaNganh = manNganh,
+                            STT= (dsNganh.Count + 1),
+                            TenNganh=TenNganh,
+                            NamBatDau=NamBatDau,
+                            MaKhoa= ((Khoa)ListKhoa.CurrentItem).MaKhoa,
+                            TenKhoa= ((Khoa)ListKhoa.CurrentItem).TenKhoa
+                        }) ;
+                        await connectDB.ExecuteAsync($"INSERT INTO NGANH  VALUES ('{manNganh}',N'{TenNganh}','{((Khoa)ListKhoa.CurrentItem).MaKhoa}','{NamBatDau.ToString("yyyy-MM-d")}')");
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);
                         RequestClose?.Invoke(dialogresult);
@@ -128,6 +146,17 @@ namespace AdminModule.ViewModels
                     int count = await connectDB.CountRecordAsync($"SELECT COUNT(*) FROM NGANH WHERE TenNganh=N'{TenNganh}' AND NOT MaNganh='{MaNganh}'");
                     if (!string.IsNullOrWhiteSpace(TenNganh) && count == 0)
                     {
+
+                        
+                        nganh.STT = (dsNganh.Count + 1);
+                        nganh.TenNganh = TenNganh;
+                        nganh.NamBatDau = NamBatDau;
+                        nganh.MaKhoa = ((Khoa)ListKhoa.CurrentItem).MaKhoa;
+                        nganh.TenKhoa = ((Khoa)ListKhoa.CurrentItem).TenKhoa;
+
+
+
+
                         await connectDB.ExecuteAsync($"UPDATE NGANH SET TenNganh=N'{TenNganh}',MaKhoa='{((Khoa)ListKhoa.CurrentItem).MaKhoa}',NamBatDau='{NamBatDau.ToString("yyyy-MM-d")}' WHERE MaNganh='{MaNganh}'");
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);
@@ -162,6 +191,7 @@ namespace AdminModule.ViewModels
             ListKhoa = new ListCollectionView(_listKhoa);
             
         }
+        private Nganh nganh;
         public async void OnDialogOpened(IDialogParameters parameters)
         {
             await  LoadKhoa();
@@ -169,14 +199,17 @@ namespace AdminModule.ViewModels
             if (check)
             {
                 Title2 = "Thêm ngành";
-
+                TitleBT = "Thêm";
+                dsNganh= parameters.GetValue<ObservableCollection<Nganh>>("objs");
             }
             else
             {
+                TitleBT = "Lưu";
                 Title2 = "Sửa ngành";
-                Nganh nganh = parameters.GetValue<Nganh>("obj");
+                nganh = parameters.GetValue<Nganh>("obj");
                 TenNganh = nganh.TenNganh;
-                Khoa khoa = _listKhoa.FirstOrDefault(c => c.MaKhoa == nganh.MaKhoa);
+                dsNganh = parameters.GetValue<ObservableCollection<Nganh>>("objs");
+                Khoa khoa = _listKhoa.FirstOrDefault<Khoa>(c => c.MaKhoa == nganh.MaKhoa);
                 ListKhoa.MoveCurrentTo(khoa);
                 MaNganh = nganh.MaNganh;
                 NamBatDau = nganh.NamBatDau;

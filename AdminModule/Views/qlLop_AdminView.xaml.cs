@@ -41,7 +41,7 @@ namespace AdminModule.Views
         private void dgvLop_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var datacontext = (qlLop_AdminViewModel)this.DataContext;
-            datacontext.SelectedObject = dgvLop.SelectedItems.Cast<Lop>().ToList();
+            datacontext.SelectedObject = dgvLop.SelectedItem as Lop;
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Prism.Mvvm;
 using Prism.Regions;
 using Libary_ConnectDB;
 using Library_Dialog;
 using Prism.Services.Dialogs;
 using AdminModule.Models;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Prism.Commands;
 using Resource;
@@ -21,24 +20,51 @@ namespace AdminModule.ViewModels
         private int _countRecord;
              
         private string[] _dkTimKiem = { "Mã","Tên"};
-        private VirtualizingObservableCollection<SinhVien> _listSV2=null;    
+        private Lazy<DelegateCommand> _xoaSVCommand;
+        private SinhVien _selecSV;
+        public SinhVien SelectSV 
+        {
+            set => _selecSV = value;
+            get => _selecSV; 
+        }
 
-        public VirtualizingObservableCollection<SinhVien> ListSV2
+        public DelegateCommand XoaSVCommand
+        {
+            get
+            {
+               return _xoaSVCommand.Value;
+            }
+        }
+        private Lazy<DelegateCommand> _suaSVCommand;
+        public DelegateCommand SuaSVCommand
+        {
+            get
+            {
+                return _suaSVCommand.Value;
+            }
+        }
+        private ObservableCollection<SinhVien> _danhsachSV;
+        public ObservableCollection<SinhVien> DanhSachSV
         {
             get 
             {
-                if (_listSV2 == null)
-                {
-                    _listSV2 = new VirtualizingObservableCollection<SinhVien>(new PaginationManager<SinhVien>(new SinhVienSource(connect)));
-                }
-                return _listSV2; 
+
+                return _danhsachSV; 
             }
-            set 
+            set
             {
-                SetProperty<VirtualizingObservableCollection<SinhVien>>(ref _listSV2,value);
+                SetProperty<ObservableCollection<SinhVien>>(ref _danhsachSV,value);
             }
         }
+        private ListCollectionView listCollectionViewSV;
+        public ListCollectionView ListCollectionViewSV
+        {
+            get => listCollectionViewSV;
+            set => SetProperty<ListCollectionView>(ref listCollectionViewSV,value);
 
+
+
+        }
         public string[] DieuKienTK
         {
             get { return _dkTimKiem ; }
@@ -52,6 +78,12 @@ namespace AdminModule.ViewModels
             set { _gtTk = value; }
         }
         private string _dk = "Mã";
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set { SetProperty<bool>(ref _isLoading,value); }
+        }
 
         public string DieuKienTimKiem
         {
@@ -80,12 +112,58 @@ namespace AdminModule.ViewModels
             this.connect = connect;
             ThemSVCommand = new DelegateCommand(ThemSVMethod);
             TimKiemCommand = new DelegateCommand<string>(TimKiemCommandMethod);
+            _danhsachSV = new ObservableCollection<SinhVien>();
+            _xoaSVCommand = new Lazy<DelegateCommand>(()=>new DelegateCommand(XoaSVMethod));
+            _suaSVCommand = new Lazy<DelegateCommand>(() => new DelegateCommand(SuaSVMethod));
+            LoadData();
+        }
+
+        private void SuaSVMethod()
+        {
+            var result = new DialogParameters();
+            result.Add("flag", false); 
+            result.Add("ds",DanhSachSV);
+            result.Add("sv", SelectSV);
+            dialogService.ShowDialog("AddSinhVien_AdminView", result, (p) =>
+            {
+
+
+            });
+        }
+
+        private void XoaSVMethod()
+        {
+            var p = new DialogParameters();
+            p.Add("count", 1);
+            dialogService.ShowDialog("DialogDeleteView",p,(r)=> 
+            {
+            if (r.Result == ButtonResult.OK)
+            {
+                Task.Run(() => 
+                {
+                connect.Execute($"EXECUTE DELSV '{((SinhVien)ListCollectionViewSV.CurrentItem).MaSV}'");
+                });
+                }
+                DanhSachSV.Remove((SinhVien)ListCollectionViewSV.CurrentItem);
+            
+            });
+        }
+
+        private  async Task LoadData()
+        {
+            IsLoading = true;           
+            DanhSachSV=await connect.GetDataAsync<SinhVien>("SELECT ROW_NUMBER() OVER( ORDER BY MaSV) AS STT,MaSV,AnhDaiDien,TenSV,CMND,NgaySinh,GioiTinh,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,LOP.MaLop,SinhVien.GhiChu,LOP.TenLop FROM SinhVien  LEFT JOIN LOP ON LOP.MaLop=SinhVien.MaLop ;");
+            ListCollectionViewSV = new ListCollectionView(DanhSachSV);
+            IsLoading = false;
 
         }
 
+
+
+
         private void TimKiemCommandMethod(string obj)
         {
-            
+           
         }
 
  
@@ -94,8 +172,7 @@ namespace AdminModule.ViewModels
         {
             var result = new DialogParameters();
             result.Add("flag",true);
-            result.Add("list", ListSV2);
-
+            result.Add("ds",DanhSachSV);
             dialogService.ShowDialog("AddSinhVien_AdminView",result,(p)=> 
             {
 

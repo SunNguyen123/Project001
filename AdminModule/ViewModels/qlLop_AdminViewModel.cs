@@ -21,7 +21,7 @@ namespace AdminModule.ViewModels
         private IConnectDB connectDB;
         private ObservableCollection<Lop> _ds;
 
-        public List<Lop> SelectedObject { get; set; }
+        public Lop SelectedObject { get; set; }
 
 
         public DelegateCommand Remove { set; get; }
@@ -65,7 +65,7 @@ namespace AdminModule.ViewModels
         public ListCollectionView ListData
         {
             get { return _list; }
-            set { SetProperty(ref _list, value); }
+            set { SetProperty<ListCollectionView>(ref _list, value); }
         }
 
         public int Count
@@ -95,22 +95,13 @@ namespace AdminModule.ViewModels
             TimKiemCommand = new DelegateCommand<string>(TimKiemCommandMethod);
             Remove = new DelegateCommand(RemoveMethod);
             Edit = new DelegateCommand(EditMethod);
-            Edit2 = new DelegateCommand(Edit2Method, Caneditexecute).ObservesProperty(() => SelectedObject);
+            Edit2 = new DelegateCommand(Edit2Method);
             TimKiemCommandMethod(_gtTK);
             
             
         }
 
-        private bool Caneditexecute()
-        {
-            bool flag = true;
-            if (SelectedObject != null)
-            {
-                flag = SelectedObject.Count == 1 ? true : false;
-            }
 
-            return flag;
-        }
 
         private void Edit2Method()
         {
@@ -118,7 +109,7 @@ namespace AdminModule.ViewModels
             ts.Add("obj", _list.CurrentItem);
             ts.Add("flag", false);
             dialogsv.ShowDialog("LopServiceView", ts, (r) => {
-                if (r.Result == ButtonResult.OK) LoadData(sqlLoadFull);
+               
             });
         }
 
@@ -135,23 +126,22 @@ namespace AdminModule.ViewModels
         private void RemoveMethod()
         {
             var p = new DialogParameters();
-            p.Add("count", SelectedObject.Count);
+            p.Add("count", 1);
             dialogsv.ShowDialog("DialogDeleteView", p, async (r) =>
             {
                 if (r.Result == ButtonResult.OK)
                 {
-                    foreach (var item in SelectedObject)
-                    {
 
-                        await connectDB.ExecuteAsync($"EXECUTE REMOVELOP '{item.MaLop}'");
+                        await connectDB.ExecuteAsync($"EXECUTE REMOVELOP '{((Lop)ListData.CurrentItem).MaLop}'");
+                    _ds.Remove((Lop)ListData.CurrentItem);
 
-                    }
-                    TimKiemCommandMethod(_gtTK);
+                  
+                    
                 }
             });
         }
 
-        private void TimKiemCommandMethod(string obj)
+        private async void TimKiemCommandMethod(string obj)
         {
             if (string.IsNullOrWhiteSpace(obj.Trim()) || obj == "")
             {
@@ -177,12 +167,13 @@ namespace AdminModule.ViewModels
         {
             var p = new DialogParameters();
             p.Add("flag", true);
+            p.Add("objs", _ds);
             dialogsv.ShowDialog("LopServiceView", p, ResultCallBack);
         }
 
         private void ResultCallBack(IDialogResult obj)
         {
-            if (obj.Result == ButtonResult.OK) TimKiemCommandMethod(_gtTK);
+            
         }
     }
 }

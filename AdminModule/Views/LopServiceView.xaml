@@ -108,7 +108,7 @@
                             Hover="{DynamicResource {x:Static res:ColorASB.BD200}}" Press="{DynamicResource {x:Static res:ColorASB.BD400}}" border_radius="3"  
                             VerticalAlignment="Top" Style="{DynamicResource {x:Static res:ButtonASB.Bt_Round}}" HorizontalAlignment="Right" >
 
-                    <TextBlock FontSize="14"><Run Text="Đồng ý"/></TextBlock>
+                    <TextBlock FontSize="14" Text="{Binding TitleBT}"></TextBlock>
 
                 </bt:Button2>
             </StackPanel>

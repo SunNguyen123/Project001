@@ -10,7 +10,10 @@ namespace AdminModule.Models
         public string STT
         {
             get { return _stt; }
-            set { _stt = value; }
+            set 
+            {
+                SetProperty(ref _stt,value);
+            }
         }
 
         private string _maSV;
@@ -21,14 +24,16 @@ namespace AdminModule.Models
             { 
                 return _maSV;
             }
-            set { _maSV = value; }
+            set {
+                SetProperty(ref _maSV, value);
+            }
         }
         private byte[] _anhDaiDien;
 
         public byte[] AnhDaiDien
         {
             get { return _anhDaiDien; }
-            set { _anhDaiDien = value; }
+            set { SetProperty<byte[]>(ref _anhDaiDien, value); }
         }
 
         private string _cmnd;
@@ -57,7 +62,7 @@ namespace AdminModule.Models
         public DateTime NgaySinh
         {
             get { return _ngaySinh; }
-            set { _ngaySinh = value; }
+            set { SetProperty<DateTime>(ref _ngaySinh, value); }
         }
 
         private bool _gt;
@@ -65,49 +70,49 @@ namespace AdminModule.Models
         public bool GioiTinh
         {
             get { return _gt; }
-            set { _gt = value; }
+            set { SetProperty<bool>(ref _gt, value); }
         }
         private string _danToc;
 
         public string DanToc
         {
             get { return _danToc; }
-            set { _danToc = value; }
+            set { SetProperty(ref _danToc, value); }
         }
         private string _tonGiao;
 
         public string TonGiao
         {
             get { return _tonGiao; }
-            set { _tonGiao = value; }
+            set { SetProperty(ref _tonGiao, value); }
         }
         private string _diaChi;
 
         public string DiaChi
         {
             get { return _diaChi; }
-            set { _diaChi = value; }
+            set { SetProperty(ref _diaChi, value); }
         }
         private string _queQuan;
 
         public string QueQuan
         {
             get { return _queQuan; }
-            set { _queQuan = value; }
+            set { SetProperty(ref _queQuan, value); }
         }
         private string sdt;
 
         public string SDT
         {
             get { return sdt; }
-            set { sdt = value; }
+            set { SetProperty(ref sdt, value); }
         }
         private DateTime _ngayNhapHoc;  
 
         public DateTime NgayNhapHoc
         {
             get { return _ngayNhapHoc; }
-            set { _ngayNhapHoc = value; }
+            set { SetProperty<DateTime>(ref _ngayNhapHoc, value); }
         }
 
 
@@ -116,7 +121,7 @@ namespace AdminModule.Models
         public string MaLop
         {
             get { return _maLop; }
-            set { _maLop = value; }
+            set { SetProperty(ref _maLop, value); }
         }
 
 
@@ -125,14 +130,14 @@ namespace AdminModule.Models
         public string TenLop
         {
             get { return _tenLop; }
-            set { _tenLop = value; }
+            set { SetProperty(ref _tenLop, value); }
         }
         private string _ghiChu;
 
         public string GhiChu
         {
             get { return _ghiChu; }
-            set { _ghiChu = value; }
+            set { SetProperty(ref _ghiChu, value); }
         }
 
     }
