@@ -371,19 +371,6 @@ namespace AdminModule.ViewModels
                     if (!string.IsNullOrWhiteSpace(TenSV) && count == 0)
                     {
                         bool gt = GioiTinh == "Nam" ? true : false;
-                        sinhVien.AnhDaiDien = PathImg;
-                        sinhVien.CMND = CMND;
-                        sinhVien.TenSV = TenSV;
-                        sinhVien.GioiTinh = gt;
-                        sinhVien.NgayNhapHoc = NgayNhapHoc;
-                        sinhVien.NgaySinh = NgaySinh;
-                        sinhVien.MaLop = ((Lop)ListLop.CurrentItem).MaLop;
-                        sinhVien.TenLop = ((Lop)ListLop.CurrentItem).TenLop;
-                        sinhVien.DanToc = DanToc;
-                        sinhVien.TonGiao = TonGiao;
-                        sinhVien.DiaChi = DiaChi;
-                        sinhVien.QueQuan = QueQuan;
-                        sinhVien.GhiChu = GhiChu;
                         await connectDB.ExecuteSV(false,MaSV, PathImg, CMND, TenSV, NgaySinh, gt, DanToc, TonGiao, DiaChi, QueQuan, SDT, NgayNhapHoc, ((Lop)ListLop.CurrentItem).MaLop, GhiChu);
                         var bt = ButtonResult.OK;
                         var dialogresult = new DialogResult(bt);

@@ -12,6 +12,7 @@ namespace AdminModule.Models
             set { SetProperty(ref _stt,value); }
         }
 
+
         private string _maLop;
 
         public string MaLop

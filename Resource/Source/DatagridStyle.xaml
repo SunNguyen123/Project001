@@ -7,7 +7,7 @@
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.Grey400}}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="1.2"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
         <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type nct:DatagridNew2}">
                     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" 
+                                Background="{TemplateBinding Background}" UseLayoutRounding="True"
                                 Padding="{TemplateBinding Padding}"  CornerRadius="5"
                                 SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
@@ -106,7 +106,7 @@
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgvheader}" TargetType="DataGridColumnHeader">
         <Setter Property="Background" Value="White"/>
       
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.Grey500}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.Grey400}}"/>
         <Setter Property="BorderThickness" Value="0 0 1 1"/>
         <Setter Property="FontFamily" Value="{DynamicResource {x:Static res:FontASB.Medium}}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD600}}"/>
@@ -127,8 +127,8 @@
                                 </Grid.ColumnDefinitions>
                                 <ContentPresenter Margin="8 0 8 0"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Image 
-                                       VerticalAlignment="Center" Grid.Column="1" Margin="8" Width="16" Height="16" SnapsToDevicePixels="True" x:Name="img" Source="/Resource;component/img/8674526_ic_fluent_chevron_down_regular_icon.png" />
+
+
 
 
                             </Grid>
@@ -141,14 +141,7 @@
                  Style="{DynamicResource {x:Static res:ScrollBarASB.ColumnHeaderGripperStyle}}" />
                         </Grid>
 
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="SortDirection" Value="Ascending">
-                            <Setter Property="Source" Value="/Resource;component/img/8674511_ic_fluent_chevron_up_regular_icon.png" TargetName="img"/>
-                        </Trigger>
-                        <Trigger Property="CanUserSort" Value="False">
-                            <Setter Property="Visibility" Value="Hidden" TargetName="img"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
+        
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -160,11 +153,13 @@
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgvrow}" TargetType="{x:Type DataGridRow}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.BD400}}"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="MinHeight" Value="32"/>
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
+        
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"
           >
             
@@ -296,8 +291,9 @@
     </Style>
 
     <Style x:Key="{ComponentResourceKey TypeInTargetAssembly={x:Type res:DatagridASB},ResourceId=dgvcell}" TargetType="{x:Type DataGridCell}">
-        
+
         <Setter Property="Foreground" Value="{DynamicResource {x:Static res:ColorASB.BD700}}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static res:ColorASB.BD400}}"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         

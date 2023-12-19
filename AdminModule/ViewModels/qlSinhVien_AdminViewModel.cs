@@ -17,7 +17,6 @@ namespace AdminModule.ViewModels
 
     public class qlSinhVien_AdminViewModel : BindableBase, IRegionMemberLifetime
     {
-        private int _countRecord;
              
         private string[] _dkTimKiem = { "Mã","Tên"};
         private Lazy<DelegateCommand> _xoaSVCommand;
@@ -26,6 +25,29 @@ namespace AdminModule.ViewModels
         {
             set => _selecSV = value;
             get => _selecSV; 
+        }
+        private DelegateCommand _taiLaiDuLieuCommand;
+
+        public DelegateCommand TaiLaiDulieuCommand
+        {
+            get { return _taiLaiDuLieuCommand; }
+            set { _taiLaiDuLieuCommand = value; }
+        }
+
+        private DelegateCommand _trangTruocCommand;
+
+        public DelegateCommand TrangTruocCommand
+        {
+            get { return _trangTruocCommand; }
+            set { _trangTruocCommand = value; }
+        }
+
+        private DelegateCommand _trangSauCommand;
+
+        public DelegateCommand TrangSauCommand
+        {
+            get { return _trangSauCommand; }
+            set { _trangSauCommand = value; }
         }
 
         public DelegateCommand XoaSVCommand
@@ -95,15 +117,37 @@ namespace AdminModule.ViewModels
         }
         public DelegateCommand ThemSVCommand { set; get; }
         public DelegateCommand<string> TimKiemCommand { get; set; }
-        public int CountRecord
+        private int _soLuongSV;
+        public int SoLuongSV
         {
-            get { return _countRecord; }
-            set { SetProperty<int>(ref _countRecord, value); }
+            get { return _soLuongSV; }
+            set { SetProperty<int>(ref _soLuongSV, value); }
         }
- 
- 
+
+        private int _trangHienTai;
+
+        public int TrangHienTai
+        {
+            get { return _trangHienTai; }
+            set { SetProperty<int>(ref _trangHienTai,value); }
+        }
+
+        private int _soLuongTrang;
+
+        public int SoLuongTrang
+        {
+            get { return _soLuongTrang; }
+            set { SetProperty<int>(ref _soLuongTrang, value); }
+        }
+
 
         public bool KeepAlive => true;
+
+        public async Task TaiTrangSauMethod() 
+        { 
+        
+        }
+
         private IConnectDB connect;
         private IDialogService dialogService;
         public qlSinhVien_AdminViewModel(IConnectDB connect,IDialogService dialogService)
@@ -113,9 +157,12 @@ namespace AdminModule.ViewModels
             ThemSVCommand = new DelegateCommand(ThemSVMethod);
             TimKiemCommand = new DelegateCommand<string>(TimKiemCommandMethod);
             _danhsachSV = new ObservableCollection<SinhVien>();
-            _xoaSVCommand = new Lazy<DelegateCommand>(()=>new DelegateCommand(XoaSVMethod));
+            _xoaSVCommand = new Lazy<DelegateCommand>(()=>new DelegateCommand(async()=> await XoaSVMethod()));
             _suaSVCommand = new Lazy<DelegateCommand>(() => new DelegateCommand(SuaSVMethod));
-            LoadData();
+            _trangSauCommand = new DelegateCommand(async()=>await TaiTrangSauMethod());
+            _taiLaiDuLieuCommand = new DelegateCommand(async ()=> await TaiDuLieuMethod());
+
+
         }
 
         private void SuaSVMethod()
@@ -131,25 +178,25 @@ namespace AdminModule.ViewModels
             });
         }
 
-        private void XoaSVMethod()
+        private async Task XoaSVMethod()
         {
+            await Task.Delay(10);
             var p = new DialogParameters();
             p.Add("count", 1);
-            dialogService.ShowDialog("DialogDeleteView",p,(r)=> 
+            dialogService.ShowDialog("DialogDeleteView",p, (r)=>
             {
-            if (r.Result == ButtonResult.OK)
-            {
-                Task.Run(() => 
+                if (r.Result == ButtonResult.OK)
                 {
-                connect.Execute($"EXECUTE DELSV '{((SinhVien)ListCollectionViewSV.CurrentItem).MaSV}'");
-                });
+
+                   connect.Execute($"EXECUTE DELSV '{((SinhVien)ListCollectionViewSV.CurrentItem).MaSV}'");
+                   
                 }
-                DanhSachSV.Remove((SinhVien)ListCollectionViewSV.CurrentItem);
+            }
             
-            });
+            );
         }
 
-        private  async Task LoadData()
+        private  async Task TaiDuLieuMethod()
         {
             IsLoading = true;           
             DanhSachSV=await connect.GetDataAsync<SinhVien>("SELECT ROW_NUMBER() OVER( ORDER BY MaSV) AS STT,MaSV,AnhDaiDien,TenSV,CMND,NgaySinh,GioiTinh,DanToc,TonGiao,DiaChi,QueQuan,SDT,NgayNhapHoc,LOP.MaLop,SinhVien.GhiChu,LOP.TenLop FROM SinhVien  LEFT JOIN LOP ON LOP.MaLop=SinhVien.MaLop ;");
